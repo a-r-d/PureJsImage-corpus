@@ -1,0 +1,21 @@
+src/generators/fixtures.ts
+  s_3fedbb84e3441a::t_e057820fac152b 326-327
+test/determinism.test.ts
+  s_3fedbb84e3441a::t_e057820fac152b 88-117,119-130
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "cea1ffbad1f8fbb6266d54a6e7e2d1674e40dc55",
+  "prompts": {},
+  "sessions": {
+    "s_3fedbb84e3441a": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a04817-b4de-7d40-b7d3-adaae4bc9013",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "aaron decker <aaron@ard.ninja>"
+    }
+  }
+}
