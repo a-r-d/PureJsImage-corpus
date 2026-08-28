@@ -323,7 +323,8 @@ function x3p(): Uint8Array {
   });
   return zipSync(
     { 'main.xml': strToU8(main), 'bindata/data.bin': data },
-    { level: 0, mtime: new Date('1980-01-02T00:00:00.000Z') },
+    // fflate writes the Date's local fields into the timezone-free DOS timestamp.
+    { level: 0, mtime: new Date(1980, 0, 1, 19, 0, 0) },
   );
 }
 

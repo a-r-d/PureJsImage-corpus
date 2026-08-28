@@ -85,17 +85,49 @@ describe('deterministic artifacts', () => {
     );
   });
 
-  it('migrates the sibling PureJsImage manifest without missing fields or duplicate bytes', async () => {
-    const manifest = JSON.parse(
-      await readFile(fromRoot('../PureJsImage/benchmark/corpus/manifest.json'), 'utf8'),
-    ) as unknown;
+  it('reports valid, duplicate, incomplete, and unlicensed legacy manifest entries', () => {
+    const first = {
+      id: 'first',
+      file: 'first.png',
+      url: 'https://example.com/first.png',
+      sourcePage: 'https://example.com/first',
+      author: 'Example Author',
+      license: 'CC0-1.0',
+      expected: { sha256: 'a'.repeat(64) },
+    };
+    const manifest = {
+      sources: [
+        first,
+        { ...first, id: 'duplicate', file: 'duplicate.png' },
+        {
+          ...first,
+          id: 'missing-license',
+          file: 'missing-license.png',
+          license: '',
+          expected: { sha256: 'b'.repeat(64) },
+        },
+        {
+          ...first,
+          id: 'missing-hash',
+          file: 'missing-hash.png',
+          expected: {},
+        },
+        { id: 'broken' },
+      ],
+    };
     expect(inspectLegacyManifest(manifest)).toEqual({
-      total: 43,
-      valid: 43,
-      deduplicated: 0,
-      errors: [],
-      missingLicenses: [],
-      missingHashes: [],
+      total: 5,
+      valid: 4,
+      deduplicated: 1,
+      errors: [
+        {
+          index: 4,
+          id: 'broken',
+          message: 'Missing a required legacy field or expected object.',
+        },
+      ],
+      missingLicenses: ['missing-license'],
+      missingHashes: ['missing-hash'],
     });
   });
 });
