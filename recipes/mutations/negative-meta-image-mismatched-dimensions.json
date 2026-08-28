@@ -9,7 +9,7 @@
   "operations": [
     {
       "op": "overwrite-bytes",
-      "offset": 44,
+      "offset": 40,
       "bytesHex": "392039"
     }
   ]

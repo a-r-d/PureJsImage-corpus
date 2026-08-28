@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "scientific/x3p/float32-3x2",
-  "caseRevision": 1,
+  "caseRevision": 2,
   "title": "X3P archive float32 surface",
   "description": "X3P archive float32 surface, written by the transparent generator x3p.",
   "domain": "scientific",
@@ -11,18 +11,13 @@
     "mediaTypes": ["application/octet-stream"],
     "features": [
       "axes.xy",
-      "compression.unknown",
       "compression.zip",
       "endian.little",
       "format.x3p",
       "frames.single",
-      "http.range",
       "image.bit-depth.32",
-      "image.bit-depth.unknown",
       "image.color.gray",
-      "image.color.unknown",
       "image.sample.float",
-      "image.sample.unknown",
       "layout.archive",
       "purejsimage.reader.x3p"
     ]
@@ -39,8 +34,8 @@
       "storage": "generated",
       "sourceId": "purejsimage-corpus-generated",
       "sourcePath": "recipes/generated/scientific-x3p-float32-3x2.json",
-      "bytes": 737,
-      "sha256": "6cb535642d922aa8de55306febd5f36756a978663ea6688decfa89b6e0b7c5a5",
+      "bytes": 781,
+      "sha256": "4ceef3be690943ddf328dfd001b4fbaf48876e3c0893b3a9e07f62136e03d9cd",
       "mediaType": "application/octet-stream"
     }
   ],
@@ -67,19 +62,21 @@
     "deidentified": "not-applicable",
     "notes": ["No human-derived medical data."]
   },
+  "certification": {
+    "status": "generator-reviewed",
+    "evidence": []
+  },
   "expected": {
     "classification": "valid",
     "outcome": "success",
-    "operations": ["metadata", "full-decode", "range-read"],
+    "operations": ["metadata", "full-decode"],
     "comparison": {
       "method": "structural"
     },
-    "metadata": {
-      "generator": "x3p"
-    },
+    "metadata": {},
     "resourceLimits": {
       "timeoutMs": 5000,
-      "maxInputBytes": 737,
+      "maxInputBytes": 781,
       "maxDecodedPixels": 100000000,
       "maxFrames": 1000,
       "maxHeapMiB": 512
@@ -88,24 +85,18 @@
   "coverage": {
     "features": [
       "axes.xy",
-      "compression.unknown",
       "compression.zip",
       "endian.little",
       "format.x3p",
       "frames.single",
-      "http.range",
       "image.bit-depth.32",
-      "image.bit-depth.unknown",
       "image.color.gray",
-      "image.color.unknown",
       "image.sample.float",
-      "image.sample.unknown",
       "layout.archive",
       "purejsimage.reader.x3p"
     ],
     "selectionReason": "Provides a small independently written x3p case for x3p.",
     "priority": "high"
   },
-  "collections": ["smoke", "scientific-small", "directory-formats"],
   "notes": ["The generator is independent of PureJsImage codec implementations."]
 }

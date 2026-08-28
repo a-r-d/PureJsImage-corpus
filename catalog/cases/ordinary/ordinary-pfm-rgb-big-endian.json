@@ -12,17 +12,12 @@
     "features": [
       "axes.xy",
       "compression.none",
-      "compression.unknown",
       "endian.big",
       "format.pfm",
       "frames.single",
-      "http.range",
       "image.bit-depth.32",
-      "image.bit-depth.unknown",
       "image.color.rgb",
-      "image.color.unknown",
       "image.sample.float",
-      "image.sample.unknown",
       "layout.single-file",
       "purejsimage.reader.netpbm"
     ]
@@ -67,16 +62,18 @@
     "deidentified": "not-applicable",
     "notes": ["No human-derived medical data."]
   },
+  "certification": {
+    "status": "generator-reviewed",
+    "evidence": []
+  },
   "expected": {
     "classification": "valid",
     "outcome": "success",
-    "operations": ["metadata", "full-decode", "range-read"],
+    "operations": ["metadata", "full-decode"],
     "comparison": {
       "method": "structural"
     },
-    "metadata": {
-      "generator": "pfm"
-    },
+    "metadata": {},
     "resourceLimits": {
       "timeoutMs": 5000,
       "maxInputBytes": 59,
@@ -89,23 +86,17 @@
     "features": [
       "axes.xy",
       "compression.none",
-      "compression.unknown",
       "endian.big",
       "format.pfm",
       "frames.single",
-      "http.range",
       "image.bit-depth.32",
-      "image.bit-depth.unknown",
       "image.color.rgb",
-      "image.color.unknown",
       "image.sample.float",
-      "image.sample.unknown",
       "layout.single-file",
       "purejsimage.reader.netpbm"
     ],
     "selectionReason": "Provides a small independently written pfm case for netpbm.",
     "priority": "high"
   },
-  "collections": ["smoke", "ordinary-conformance"],
   "notes": ["The generator is independent of PureJsImage codec implementations."]
 }

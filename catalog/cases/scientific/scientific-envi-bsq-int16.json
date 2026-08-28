@@ -13,17 +13,12 @@
       "axes.xy",
       "companion-files",
       "compression.none",
-      "compression.unknown",
       "endian.little",
       "format.envi",
       "frames.single",
-      "http.range",
       "image.bit-depth.16",
-      "image.bit-depth.unknown",
       "image.color.multiband",
-      "image.color.unknown",
       "image.sample.signed",
-      "image.sample.unknown",
       "interleave.bsq",
       "layout.companion-set",
       "purejsimage.reader.envi"
@@ -79,16 +74,18 @@
     "deidentified": "not-applicable",
     "notes": ["No human-derived medical data."]
   },
+  "certification": {
+    "status": "generator-reviewed",
+    "evidence": []
+  },
   "expected": {
     "classification": "valid",
     "outcome": "success",
-    "operations": ["metadata", "full-decode", "range-read"],
+    "operations": ["metadata", "full-decode"],
     "comparison": {
       "method": "structural"
     },
-    "metadata": {
-      "generator": "envi"
-    },
+    "metadata": {},
     "resourceLimits": {
       "timeoutMs": 5000,
       "maxInputBytes": 268,
@@ -102,17 +99,12 @@
       "axes.xy",
       "companion-files",
       "compression.none",
-      "compression.unknown",
       "endian.little",
       "format.envi",
       "frames.single",
-      "http.range",
       "image.bit-depth.16",
-      "image.bit-depth.unknown",
       "image.color.multiband",
-      "image.color.unknown",
       "image.sample.signed",
-      "image.sample.unknown",
       "interleave.bsq",
       "layout.companion-set",
       "purejsimage.reader.envi"
@@ -120,6 +112,5 @@
     "selectionReason": "Provides a small independently written envi case for envi.",
     "priority": "high"
   },
-  "collections": ["smoke", "scientific-small", "directory-formats"],
   "notes": ["The generator is independent of PureJsImage codec implementations."]
 }

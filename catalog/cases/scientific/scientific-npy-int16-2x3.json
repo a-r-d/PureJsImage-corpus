@@ -12,17 +12,12 @@
     "features": [
       "axes.xy",
       "compression.none",
-      "compression.unknown",
       "endian.little",
       "format.npy",
       "frames.single",
-      "http.range",
       "image.bit-depth.16",
-      "image.bit-depth.unknown",
       "image.color.gray",
-      "image.color.unknown",
       "image.sample.signed",
-      "image.sample.unknown",
       "layout.single-file",
       "purejsimage.reader.npy"
     ]
@@ -67,16 +62,18 @@
     "deidentified": "not-applicable",
     "notes": ["No human-derived medical data."]
   },
+  "certification": {
+    "status": "generator-reviewed",
+    "evidence": []
+  },
   "expected": {
     "classification": "valid",
     "outcome": "success",
-    "operations": ["metadata", "full-decode", "range-read"],
+    "operations": ["metadata", "full-decode"],
     "comparison": {
       "method": "structural"
     },
-    "metadata": {
-      "generator": "npy"
-    },
+    "metadata": {},
     "resourceLimits": {
       "timeoutMs": 5000,
       "maxInputBytes": 140,
@@ -89,23 +86,17 @@
     "features": [
       "axes.xy",
       "compression.none",
-      "compression.unknown",
       "endian.little",
       "format.npy",
       "frames.single",
-      "http.range",
       "image.bit-depth.16",
-      "image.bit-depth.unknown",
       "image.color.gray",
-      "image.color.unknown",
       "image.sample.signed",
-      "image.sample.unknown",
       "layout.single-file",
       "purejsimage.reader.npy"
     ],
     "selectionReason": "Provides a small independently written npy case for npy.",
     "priority": "high"
   },
-  "collections": ["smoke", "scientific-small"],
   "notes": ["The generator is independent of PureJsImage codec implementations."]
 }

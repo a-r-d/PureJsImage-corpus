@@ -12,18 +12,13 @@
     "features": [
       "axes.xy",
       "compression.none",
-      "compression.unknown",
       "directory-tree",
       "endian.little",
       "format.ome-zarr",
       "frames.single",
-      "http.range",
       "image.bit-depth.16",
-      "image.bit-depth.unknown",
       "image.color.gray",
-      "image.color.unknown",
       "image.sample.signed",
-      "image.sample.unknown",
       "layout.directory-tree",
       "purejsimage.reader.ome-zarr"
     ]
@@ -78,16 +73,18 @@
     "deidentified": "not-applicable",
     "notes": ["No human-derived medical data."]
   },
+  "certification": {
+    "status": "generator-reviewed",
+    "evidence": []
+  },
   "expected": {
     "classification": "valid",
     "outcome": "success",
-    "operations": ["metadata", "full-decode", "range-read"],
+    "operations": ["metadata", "full-decode"],
     "comparison": {
       "method": "structural"
     },
-    "metadata": {
-      "generator": "ome-zarr"
-    },
+    "metadata": {},
     "resourceLimits": {
       "timeoutMs": 5000,
       "maxInputBytes": 684,
@@ -100,24 +97,18 @@
     "features": [
       "axes.xy",
       "compression.none",
-      "compression.unknown",
       "directory-tree",
       "endian.little",
       "format.ome-zarr",
       "frames.single",
-      "http.range",
       "image.bit-depth.16",
-      "image.bit-depth.unknown",
       "image.color.gray",
-      "image.color.unknown",
       "image.sample.signed",
-      "image.sample.unknown",
       "layout.directory-tree",
       "purejsimage.reader.ome-zarr"
     ],
     "selectionReason": "Provides a small independently written ome-zarr case for ome-zarr.",
     "priority": "high"
   },
-  "collections": ["smoke", "scientific-small", "directory-formats", "large-range"],
   "notes": ["The generator is independent of PureJsImage codec implementations."]
 }

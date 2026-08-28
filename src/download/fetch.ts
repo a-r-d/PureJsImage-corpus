@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto';
-import { createWriteStream, type Dirent } from 'node:fs';
-import { mkdir, open, readFile, rename, rm, stat } from 'node:fs/promises';
+import { createReadStream, createWriteStream, type Dirent } from 'node:fs';
+import { mkdir, open, rename, rm, stat } from 'node:fs/promises';
 import { dirname } from 'node:path';
 import { pipeline } from 'node:stream/promises';
 import { Readable, Transform } from 'node:stream';
@@ -12,6 +12,7 @@ export interface DownloadOptions {
   offline?: boolean;
   retries?: number;
   maximumBytes?: number;
+  timeoutMs?: number;
   fetchImplementation?: typeof fetch;
 }
 
@@ -23,11 +24,9 @@ async function validBlob(
   try {
     const info = await stat(path);
     if (info.size !== expectedBytes) return false;
-    return (
-      createHash('sha256')
-        .update(await readFile(path))
-        .digest('hex') === expectedHash
-    );
+    const hash = createHash('sha256');
+    for await (const chunk of createReadStream(path)) hash.update(chunk as Buffer);
+    return hash.digest('hex') === expectedHash;
   } catch {
     return false;
   }
@@ -45,6 +44,15 @@ async function acquireLock(path: string): Promise<() => Promise<void>> {
       };
     } catch (error: unknown) {
       if (!(error instanceof Error) || !('code' in error) || error.code !== 'EEXIST') throw error;
+      try {
+        const existing = await stat(path);
+        if (Date.now() - existing.mtimeMs > 30 * 60_000) {
+          await rm(path, { force: true });
+          continue;
+        }
+      } catch {
+        continue;
+      }
       await new Promise((resolve) => setTimeout(resolve, 25 + attempt * 2));
     }
   }
@@ -56,9 +64,13 @@ async function fetchOnce(
   destination: string,
   asset: CaseAsset,
   maximumBytes: number,
+  timeoutMs: number,
   fetchImplementation: typeof fetch,
 ): Promise<void> {
-  const response = await fetchImplementation(url, { redirect: 'follow' });
+  const response = await fetchImplementation(url, {
+    redirect: 'follow',
+    signal: AbortSignal.timeout(timeoutMs),
+  });
   if (!response.ok || !response.body) throw new Error(`${response.status} ${response.statusText}`);
   const finalUrl = new URL(response.url || url);
   if (!['http:', 'https:'].includes(finalUrl.protocol)) {
@@ -127,6 +139,7 @@ export async function fetchAsset(asset: CaseAsset, options: DownloadOptions): Pr
             temporary,
             asset,
             Math.min(options.maximumBytes ?? asset.bytes, asset.bytes),
+            options.timeoutMs ?? 60_000,
             options.fetchImplementation ?? fetch,
           );
           await rename(temporary, destination);

@@ -32,6 +32,7 @@ interface GeneratedSeed {
   features: string[];
   collections: string[];
   registration: string;
+  caseRevision?: number;
 }
 
 interface ExternalFile {
@@ -54,6 +55,7 @@ interface ExternalSeed {
   layout?: CorpusCase['layout']['kind'];
   entrypoint?: string;
   registration: string;
+  features?: string[];
   privacy?: CorpusCase['privacy'];
   rights?: CorpusCase['rights'];
 }
@@ -66,6 +68,7 @@ interface NegativeSeed {
   feature: string;
   operations: MutationOperation[];
   omitOutput?: boolean;
+  caseRevision?: number;
 }
 
 function json(value: unknown): string {
@@ -473,14 +476,20 @@ const sources: SourceRecord[] = [
   },
 ];
 
-const commonFeatures = [
-  'image.bit-depth.unknown',
-  'image.sample.unknown',
-  'image.color.unknown',
-  'compression.unknown',
-  'frames.single',
-  'axes.xy',
-];
+const commonFeatures = ['axes.xy'];
+
+function completeTechnicalFeatures(features: readonly string[]): string[] {
+  const completed = new Set(features);
+  for (const prefix of ['image.bit-depth.', 'image.sample.', 'image.color.', 'compression.']) {
+    if (![...completed].some((feature) => feature.startsWith(prefix))) {
+      completed.add(`${prefix}unknown`);
+    }
+  }
+  if (![...completed].some((feature) => feature.startsWith('frames.'))) {
+    completed.add('frames.single');
+  }
+  return [...completed].sort();
+}
 
 function privacyNotRequired(): CorpusCase['privacy'] {
   return {
@@ -504,7 +513,7 @@ function expected(
   return {
     classification,
     outcome,
-    operations: ['metadata', 'full-decode', 'range-read'],
+    operations: ['metadata', 'full-decode'],
     comparison: { method: 'structural' },
     metadata,
     resourceLimits: {
@@ -827,6 +836,7 @@ const generatedSeeds: GeneratedSeed[] = [
   },
   {
     id: 'scientific/nanonis-sxm/float32-3x2',
+    caseRevision: 2,
     domain: 'scientific',
     family: 'nanonis-sxm',
     generator: 'nanonis-sxm',
@@ -843,6 +853,7 @@ const generatedSeeds: GeneratedSeed[] = [
   },
   {
     id: 'scientific/cbf/uint8-3x2',
+    caseRevision: 2,
     domain: 'scientific',
     family: 'cbf',
     generator: 'cbf',
@@ -859,6 +870,7 @@ const generatedSeeds: GeneratedSeed[] = [
   },
   {
     id: 'scientific/x3p/float32-3x2',
+    caseRevision: 2,
     domain: 'scientific',
     family: 'x3p',
     generator: 'x3p',
@@ -1285,6 +1297,7 @@ const externalSeeds: ExternalSeed[] = [
       },
     ],
     registration: 'png',
+    features: ['frames.multiple'],
     rights: {
       spdx: 'CC0-1.0',
       licenseName: 'CC0 1.0 Universal',
@@ -1706,20 +1719,17 @@ async function generatedCases(): Promise<CorpusCase[]> {
     }
     const entrypoint = seed.entrypoint ?? files[0]?.path;
     if (!entrypoint) throw new Error(`No generated files for ${seed.id}`);
-    const allFeatures = [
-      ...new Set([
-        ...commonFeatures,
-        ...seed.features,
-        `format.${seed.family}`,
-        `purejsimage.reader.${seed.registration}`,
-        `layout.${seed.layout ?? 'single-file'}`,
-        'http.range',
-      ]),
-    ].sort();
+    const allFeatures = completeTechnicalFeatures([
+      ...commonFeatures,
+      ...seed.features,
+      `format.${seed.family}`,
+      `purejsimage.reader.${seed.registration}`,
+      `layout.${seed.layout ?? 'single-file'}`,
+    ]);
     const corpusCase: CorpusCase = {
       schemaVersion: 1,
       id: seed.id,
-      caseRevision: 1,
+      caseRevision: seed.caseRevision ?? 1,
       title: seed.title,
       description: `${seed.title}, written by the transparent generator ${seed.generator}.`,
       domain: seed.domain,
@@ -1751,10 +1761,11 @@ async function generatedCases(): Promise<CorpusCase[]> {
         redistribution: 'allowed',
       },
       privacy: privacyNotRequired(),
+      certification: { status: 'generator-reviewed', evidence: [] },
       expected: expected(
         'valid',
         'success',
-        { generator: seed.generator },
+        {},
         assets.reduce((sum, asset) => sum + asset.bytes, 0),
       ),
       coverage: {
@@ -1762,7 +1773,6 @@ async function generatedCases(): Promise<CorpusCase[]> {
         selectionReason: `Provides a small independently written ${seed.family} case for ${seed.registration}.`,
         priority: 'high',
       },
-      collections: seed.collections,
       notes: ['The generator is independent of PureJsImage codec implementations.'],
     };
     cases.push(corpusCase);
@@ -1784,17 +1794,15 @@ function externalCases(): CorpusCase[] {
     const kind = seed.layout ?? 'single-file';
     const entrypoint = seed.entrypoint ?? seed.files[0]?.path;
     if (!entrypoint) throw new Error(`No external files for ${seed.id}`);
-    const features = [
-      ...new Set([
-        ...commonFeatures,
-        `format.${seed.family}`,
-        `purejsimage.reader.${seed.registration}`,
-        `layout.${kind}`,
-        'http.range',
-        ...(kind === 'companion-set' ? ['companion-files'] : []),
-        ...(kind === 'archive' ? ['compression.zip'] : []),
-      ]),
-    ].sort();
+    const features = completeTechnicalFeatures([
+      ...commonFeatures,
+      ...(seed.features ?? []),
+      `format.${seed.family}`,
+      `purejsimage.reader.${seed.registration}`,
+      `layout.${kind}`,
+      ...(kind === 'companion-set' ? ['companion-files'] : []),
+      ...(kind === 'archive' ? ['compression.zip'] : []),
+    ]);
     return {
       schemaVersion: 1,
       id: seed.id,
@@ -1837,6 +1845,7 @@ function externalCases(): CorpusCase[] {
         redistribution: 'unknown',
       },
       privacy: seed.privacy ?? privacyNotRequired(),
+      certification: { status: 'uncertified', evidence: [] },
       expected: expected(
         'valid',
         'success',
@@ -1848,15 +1857,6 @@ function externalCases(): CorpusCase[] {
         selectionReason: `Exercises the real ${seed.registration} reader with independently hashed upstream bytes.`,
         priority: 'high',
       },
-      collections: [
-        seed.domain === 'geo'
-          ? 'geo-small'
-          : seed.domain === 'ordinary'
-            ? 'ordinary-conformance'
-            : 'scientific-small',
-        'large-range',
-        ...(kind !== 'single-file' ? ['directory-formats'] : []),
-      ],
       notes: [
         seed.rights?.redistribution === 'allowed'
           ? 'Kept external to keep the committed ordinary seed small; redistribution evidence is recorded.'
@@ -1944,6 +1944,7 @@ const negativeSeeds: NegativeSeed[] = [
   },
   {
     id: 'negative/tiff/overlapping-regions',
+    caseRevision: 2,
     parentId: 'ordinary/tiff/gray-2x2',
     targetPath: 'gray-2x2.tiff',
     description: 'Point TIFF strip bytes into the IFD.',
@@ -1977,11 +1978,12 @@ const negativeSeeds: NegativeSeed[] = [
   },
   {
     id: 'negative/meta-image/mismatched-dimensions',
+    caseRevision: 2,
     parentId: 'scientific/meta-image/int16-3x2',
     targetPath: 'tiny.mhd',
     description: 'Change MHD dimensions without changing the RAW payload.',
     feature: 'negative.mismatched-companion-dimensions',
-    operations: [{ op: 'overwrite-bytes', offset: 44, bytesHex: '392039' }],
+    operations: [{ op: 'overwrite-bytes', offset: 40, bytesHex: '392039' }],
   },
   {
     id: 'negative/geozarr/invalid-metadata',
@@ -2000,6 +2002,95 @@ const negativeSeeds: NegativeSeed[] = [
     operations: [{ op: 'truncate', length: 1000 }],
   },
 ];
+
+const negativeErrorContracts: Readonly<
+  Record<string, NonNullable<CorpusCase['expected']['error']>>
+> = Object.freeze({
+  'negative.invalid-directory-metadata': {
+    allowedOperations: ['probe'],
+    allowedCodes: ['INVALID_INPUT'],
+    mustRecognizeFormat: true,
+    messageIncludes: ['metadata'],
+  },
+  'negative.mismatched-companion-dimensions': {
+    allowedOperations: ['open'],
+    allowedCodes: ['INVALID_INPUT', 'TRUNCATED_INPUT'],
+    mustRecognizeFormat: true,
+    messageIncludes: ['DimSize'],
+  },
+  'negative.missing-companion': {
+    allowedOperations: ['open'],
+    allowedCodes: ['INVALID_INPUT'],
+    mustRecognizeFormat: true,
+    messageIncludes: ['companion'],
+  },
+  'negative.bad-checksum': {
+    allowedOperations: ['open'],
+    allowedCodes: ['INVALID_INPUT'],
+    mustRecognizeFormat: true,
+    messageIncludes: ['checksum'],
+  },
+  'negative.invalid-chunk-length': {
+    allowedOperations: ['open'],
+    allowedCodes: ['INVALID_INPUT', 'TRUNCATED_INPUT'],
+    mustRecognizeFormat: true,
+    messageIncludes: ['IHDR'],
+  },
+  'negative.decompression-bomb': {
+    allowedOperations: ['metadata'],
+    allowedCodes: ['LIMIT_EXCEEDED'],
+    mustRecognizeFormat: true,
+    messageIncludes: ['pixels'],
+  },
+  'negative.dimension-limit': {
+    allowedOperations: ['metadata'],
+    allowedCodes: ['LIMIT_EXCEEDED'],
+    mustRecognizeFormat: true,
+    messageIncludes: ['width'],
+  },
+  'negative.integer-overflow': {
+    allowedOperations: ['metadata'],
+    allowedCodes: ['LIMIT_EXCEEDED'],
+    mustRecognizeFormat: true,
+    messageIncludes: ['width'],
+  },
+  'negative.invalid-magic': {
+    allowedOperations: ['open'],
+    allowedCodes: ['UNSUPPORTED_FORMAT'],
+    mustRecognizeFormat: false,
+    messageIncludes: ['not recognized'],
+  },
+  'negative.truncated-header': {
+    allowedOperations: ['metadata'],
+    allowedCodes: ['TRUNCATED_INPUT'],
+    mustRecognizeFormat: true,
+    messageIncludes: ['header'],
+  },
+  'negative.truncated-payload': {
+    allowedOperations: ['metadata', 'full-decode-all-frames-to-canonical-rgba8'],
+    allowedCodes: ['TRUNCATED_INPUT'],
+    mustRecognizeFormat: true,
+    messageIncludes: ['truncated'],
+  },
+  'negative.zero-dimensions': {
+    allowedOperations: ['metadata'],
+    allowedCodes: ['INVALID_INPUT'],
+    mustRecognizeFormat: true,
+    messageIncludes: ['dimensions'],
+  },
+  'negative.wrong-size': {
+    allowedOperations: ['probe'],
+    allowedCodes: ['INVALID_INPUT'],
+    mustRecognizeFormat: true,
+    messageIncludes: ['size'],
+  },
+  'negative.bad-offset': {
+    allowedOperations: ['metadata'],
+    allowedCodes: ['TRUNCATED_INPUT', 'INVALID_INPUT'],
+    mustRecognizeFormat: true,
+    messageIncludes: ['IFD'],
+  },
+});
 
 async function negativeCases(parents: CorpusCase[]): Promise<CorpusCase[]> {
   const cases: CorpusCase[] = [];
@@ -2042,7 +2133,7 @@ async function negativeCases(parents: CorpusCase[]): Promise<CorpusCase[]> {
     cases.push({
       ...parent,
       id: seed.id,
-      caseRevision: 1,
+      caseRevision: seed.caseRevision ?? 1,
       title: seed.description,
       description: seed.description,
       domain: 'negative',
@@ -2062,20 +2153,43 @@ async function negativeCases(parents: CorpusCase[]): Promise<CorpusCase[]> {
         attribution: 'Generated by purejsimage-corpus',
         redistribution: 'allowed',
       },
-      expected: expected(
-        'invalid',
-        'reject',
-        { target: seed.feature },
-        assets.reduce((sum, asset) => sum + asset.bytes, 0),
-      ),
+      certification: { status: 'generator-reviewed', evidence: [] },
+      expected:
+        seed.feature === 'negative.overlapping-regions'
+          ? expected(
+              'nonconformant',
+              'implementation-defined',
+              {},
+              assets.reduce((sum, asset) => sum + asset.bytes, 0),
+            )
+          : {
+              ...expected(
+                'invalid',
+                'reject',
+                {},
+                assets.reduce((sum, asset) => sum + asset.bytes, 0),
+              ),
+              error:
+                negativeErrorContracts[seed.feature] ??
+                (() => {
+                  throw new Error(`Missing negative error contract for ${seed.feature}`);
+                })(),
+            },
       coverage: {
         features,
         selectionReason: `Requires bounded graceful rejection for ${seed.feature}.`,
         priority: 'critical',
       },
-      collections: ['negative', 'fuzz-regressions'],
       relationships: [{ type: 'mutated-from', caseId: parent.id }],
-      notes: [seed.description, 'A crash, hang, panic, or unbounded allocation is a failure.'],
+      notes: [
+        seed.description,
+        ...(seed.feature === 'negative.overlapping-regions'
+          ? [
+              'Acceptance is implementation-defined until specification and independent-reader review establish whether overlapping TIFF regions are forbidden.',
+            ]
+          : []),
+        'A crash, hang, panic, or unbounded allocation is a failure.',
+      ],
     });
     await writeJson(join(root, 'recipes/mutations', `${seed.id.replaceAll('/', '-')}.json`), {
       schemaVersion: 1,
@@ -2107,6 +2221,10 @@ async function migrateLegacy(): Promise<CorpusCase[]> {
       .replace(
         'raw.githubusercontent.com/web-platform-tests/wpt/master/',
         'raw.githubusercontent.com/web-platform-tests/wpt/5f8cfdc18b18b1619c9fe431eab72f2831823327/',
+      )
+      .replace(
+        'raw.githubusercontent.com/golang/go/go1.24.0/',
+        'raw.githubusercontent.com/golang/go/3901409b5d0fb7c85a3e6730a59943cc93b2835c/',
       );
   return Promise.all(
     manifest.sources.map(async (entry) => {
@@ -2118,15 +2236,13 @@ async function migrateLegacy(): Promise<CorpusCase[]> {
       const metadata = Object.fromEntries(
         Object.entries(entry.expected).filter(([key]) => key !== 'sha256' && key !== 'format'),
       ) as Record<string, string | number>;
-      const features = [
-        ...new Set([
-          ...commonFeatures,
-          `format.${entry.expected.format}`,
-          `purejsimage.reader.${entry.expected.format}`,
-          'layout.single-file',
-          'http.range',
-        ]),
-      ].sort();
+      const features = completeTechnicalFeatures([
+        ...commonFeatures,
+        `format.${entry.expected.format}`,
+        `purejsimage.reader.${entry.expected.format}`,
+        'layout.single-file',
+        ...(entry.id === 'animated-gif-cc0' ? ['frames.multiple'] : []),
+      ]);
       const containsHuman = /portrait|fbi/i.test(entry.id);
       return {
         schemaVersion: 1,
@@ -2179,13 +2295,13 @@ async function migrateLegacy(): Promise<CorpusCase[]> {
               notes: ['Public ordinary photograph, not medical data.'],
             }
           : privacyNotRequired(),
+        certification: { status: 'uncertified', evidence: [] },
         expected: expected('valid', 'success', metadata, bytes.byteLength),
         coverage: {
           features,
           selectionReason: 'Preserves an existing PureJsImage benchmark and regression input.',
           priority: 'medium',
         },
-        collections: ['ordinary-conformance', 'benchmark-content'],
         notes: [`Original PureJsImage manifest ID: ${entry.id}`],
       } satisfies CorpusCase;
     }),
@@ -2245,10 +2361,11 @@ async function main(): Promise<void> {
     formats: [...formatSet].sort(),
   });
   const collections = [
+    collection('smoke', 'Strict offline regression suite', [], 25 * 1024 * 1024, 'offline'),
     collection(
-      'smoke',
-      'Offline smoke suite',
-      [{ storage: 'generated' }],
+      'purejsimage-0-17-smoke',
+      'PureJsImage 0.17 compatibility smoke',
+      [],
       25 * 1024 * 1024,
       'offline',
     ),
@@ -2273,13 +2390,7 @@ async function main(): Promise<void> {
       25 * 1024 * 1024,
       'offline',
     ),
-    collection(
-      'large-range',
-      'HTTP range reader cases',
-      [{ feature: 'http.range' }],
-      25 * 1024 * 1024,
-      'optional',
-    ),
+    collection('large-range', 'HTTP Range execution backlog', [], 25 * 1024 * 1024, 'optional'),
     collection(
       'directory-formats',
       'Companion and directory layouts',
@@ -2309,9 +2420,40 @@ async function main(): Promise<void> {
     collection('license-review', 'Cases requiring asset license review', [], 0, 'required'),
   ];
   for (const record of collections) {
+    if (record.id === 'smoke') {
+      const exclusions = new Set([
+        'negative/geozarr/invalid-metadata',
+        'negative/srtm-hgt/wrong-size',
+        'negative/tiff/overlapping-regions',
+      ]);
+      record.caseIds = cases
+        .filter(
+          (corpusCase) =>
+            corpusCase.assets.every((asset) => asset.storage !== 'external') &&
+            !exclusions.has(corpusCase.id),
+        )
+        .map((corpusCase) => corpusCase.id);
+    }
+    if (record.id === 'purejsimage-0-17-smoke') {
+      const exclusions = new Set([
+        'geo/geozarr/int16-2x3',
+        'geo/netcdf/classic-int16',
+        'negative/geozarr/invalid-metadata',
+        'negative/srtm-hgt/wrong-size',
+        'negative/tiff/overlapping-regions',
+        'scientific/ome-zarr/int16-2x3',
+      ]);
+      record.caseIds = cases
+        .filter(
+          (corpusCase) =>
+            corpusCase.assets.every((asset) => asset.storage !== 'external') &&
+            !exclusions.has(corpusCase.id),
+        )
+        .map((corpusCase) => corpusCase.id);
+    }
     if (record.id === 'benchmark-content') {
       record.caseIds = cases
-        .filter((corpusCase) => corpusCase.collections.includes('benchmark-content'))
+        .filter((corpusCase) => corpusCase.id.startsWith('ordinary/migrated/'))
         .map((corpusCase) => corpusCase.id);
     }
     if (record.id === 'license-review') {

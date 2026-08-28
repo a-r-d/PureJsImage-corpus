@@ -15,7 +15,6 @@
       "compression.unknown",
       "format.tia-emi",
       "frames.single",
-      "http.range",
       "image.bit-depth.unknown",
       "image.color.unknown",
       "image.sample.unknown",
@@ -74,10 +73,14 @@
     "deidentified": "not-applicable",
     "notes": ["No human-derived medical data."]
   },
+  "certification": {
+    "status": "uncertified",
+    "evidence": []
+  },
   "expected": {
     "classification": "valid",
     "outcome": "success",
-    "operations": ["metadata", "full-decode", "range-read"],
+    "operations": ["metadata", "full-decode"],
     "comparison": {
       "method": "structural"
     },
@@ -97,7 +100,6 @@
       "compression.unknown",
       "format.tia-emi",
       "frames.single",
-      "http.range",
       "image.bit-depth.unknown",
       "image.color.unknown",
       "image.sample.unknown",
@@ -107,7 +109,6 @@
     "selectionReason": "Exercises the real tia-emi reader with independently hashed upstream bytes.",
     "priority": "high"
   },
-  "collections": ["scientific-small", "large-range", "directory-formats"],
   "notes": ["External because asset-level redistribution rights are not established."],
   "relationships": [
     {

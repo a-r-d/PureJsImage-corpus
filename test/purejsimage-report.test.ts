@@ -21,17 +21,18 @@ function caseById(cases: CorpusCase[], id: string): CorpusCase {
 const success: PureJsImageWorkerResult = {
   kind: 'success',
   adapter: 'codec',
-  operation: 'full-decode-all-frames-to-qoi',
+  operation: 'full-decode-all-frames-to-canonical-rgba8',
+  executedOperations: ['metadata', 'full-decode'],
   implementation: 'qoi@1',
   outputBytes: 34,
   metadata: { width: 2, height: 2 },
 };
 
-function workerError(message: string, code?: string): PureJsImageWorkerResult {
+function workerError(message: string, code?: string, operation = 'open'): PureJsImageWorkerResult {
   return {
     kind: 'error',
     adapter: 'codec',
-    operation: 'open',
+    operation,
     error: { name: 'ImageError', ...(code ? { code } : {}), message },
   };
 }
@@ -41,15 +42,25 @@ describe('PureJsImage corpus reporting', () => {
     const { cases } = await loadCatalog();
     const valid = caseById(cases, 'ordinary/qoi/rgba-2x2');
     const invalid = caseById(cases, 'negative/qoi/truncated-header');
+    const invalidMagic = caseById(cases, 'negative/qoi/invalid-magic');
 
     expect(verdictFor(valid, success)).toBe('pass');
     expect(verdictFor(valid, workerError('bad input', 'INVALID_INPUT'))).toBe('fail');
-    expect(verdictFor(invalid, workerError('truncated input', 'INVALID_INPUT'))).toBe('pass');
-    expect(verdictFor(invalid, workerError('No codec matched', 'UNSUPPORTED_FORMAT'))).toBe('pass');
+    expect(
+      verdictFor(invalid, workerError('QOI header is truncated', 'TRUNCATED_INPUT', 'metadata')),
+    ).toBe('pass');
+    expect(verdictFor(invalid, workerError('No codec matched', 'UNSUPPORTED_FORMAT'))).toBe('fail');
+    expect(
+      verdictFor(invalidMagic, workerError('Input format is not recognized', 'UNSUPPORTED_FORMAT')),
+    ).toBe('pass');
     expect(verdictFor(invalid, success)).toBe('fail');
     expect(verdictFor(valid, workerError('No codec matched', 'UNSUPPORTED_FORMAT'))).toBe(
       'unsupported',
     );
+
+    const wrongMetadata = structuredClone(valid);
+    wrongMetadata.expected.metadata = { width: 3 };
+    expect(verdictFor(wrongMetadata, success)).toBe('fail');
   });
 
   it('renders build identity, per-format counts, and per-case evidence', () => {
@@ -88,7 +99,7 @@ describe('PureJsImage corpus reporting', () => {
       },
       execution: {
         isolation: 'child-process-per-case',
-        codec: 'metadata+full-frame-decode-to-qoi',
+        codec: 'metadata+canonical-rgba8-frame-decode',
         scientific: 'metadata+full-plane-decode',
         geo: 'metadata+full-primary-resolution-decode',
         minimumTimeoutMs: 5_000,

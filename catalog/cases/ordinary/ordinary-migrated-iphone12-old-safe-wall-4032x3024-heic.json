@@ -14,7 +14,6 @@
       "compression.unknown",
       "format.heic",
       "frames.single",
-      "http.range",
       "image.bit-depth.unknown",
       "image.color.unknown",
       "image.sample.unknown",
@@ -62,10 +61,14 @@
     "deidentified": "not-applicable",
     "notes": ["No human-derived medical data."]
   },
+  "certification": {
+    "status": "uncertified",
+    "evidence": []
+  },
   "expected": {
     "classification": "valid",
     "outcome": "success",
-    "operations": ["metadata", "full-decode", "range-read"],
+    "operations": ["metadata", "full-decode"],
     "comparison": {
       "method": "structural"
     },
@@ -87,7 +90,6 @@
       "compression.unknown",
       "format.heic",
       "frames.single",
-      "http.range",
       "image.bit-depth.unknown",
       "image.color.unknown",
       "image.sample.unknown",
@@ -97,6 +99,5 @@
     "selectionReason": "Preserves an existing PureJsImage benchmark and regression input.",
     "priority": "medium"
   },
-  "collections": ["ordinary-conformance", "benchmark-content"],
   "notes": ["Original PureJsImage manifest ID: iphone12-old-safe-wall-4032x3024-heic"]
 }

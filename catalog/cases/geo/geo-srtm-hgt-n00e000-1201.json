@@ -12,18 +12,13 @@
     "features": [
       "axes.xy",
       "compression.none",
-      "compression.unknown",
       "endian.big",
       "format.srtm-hgt",
       "frames.single",
       "geo.filename-location",
-      "http.range",
       "image.bit-depth.16",
-      "image.bit-depth.unknown",
       "image.color.gray",
-      "image.color.unknown",
       "image.sample.signed",
-      "image.sample.unknown",
       "layout.single-file",
       "purejsimage.reader.srtm-hgt"
     ]
@@ -68,16 +63,18 @@
     "deidentified": "not-applicable",
     "notes": ["No human-derived medical data."]
   },
+  "certification": {
+    "status": "generator-reviewed",
+    "evidence": []
+  },
   "expected": {
     "classification": "valid",
     "outcome": "success",
-    "operations": ["metadata", "full-decode", "range-read"],
+    "operations": ["metadata", "full-decode"],
     "comparison": {
       "method": "structural"
     },
-    "metadata": {
-      "generator": "srtm-hgt"
-    },
+    "metadata": {},
     "resourceLimits": {
       "timeoutMs": 5000,
       "maxInputBytes": 2884802,
@@ -90,24 +87,18 @@
     "features": [
       "axes.xy",
       "compression.none",
-      "compression.unknown",
       "endian.big",
       "format.srtm-hgt",
       "frames.single",
       "geo.filename-location",
-      "http.range",
       "image.bit-depth.16",
-      "image.bit-depth.unknown",
       "image.color.gray",
-      "image.color.unknown",
       "image.sample.signed",
-      "image.sample.unknown",
       "layout.single-file",
       "purejsimage.reader.srtm-hgt"
     ],
     "selectionReason": "Provides a small independently written srtm-hgt case for srtm-hgt.",
     "priority": "high"
   },
-  "collections": ["smoke", "geo-small", "large-range"],
   "notes": ["The generator is independent of PureJsImage codec implementations."]
 }

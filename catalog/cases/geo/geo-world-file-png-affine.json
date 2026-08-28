@@ -13,16 +13,11 @@
       "axes.xy",
       "companion-files",
       "compression.deflate",
-      "compression.unknown",
       "format.image-world-file",
       "frames.single",
       "geo.affine",
-      "http.range",
       "image.bit-depth.8",
-      "image.bit-depth.unknown",
       "image.color.rgba",
-      "image.color.unknown",
-      "image.sample.unknown",
       "image.sample.unsigned",
       "layout.companion-set",
       "purejsimage.reader.image-world-file"
@@ -78,16 +73,18 @@
     "deidentified": "not-applicable",
     "notes": ["No human-derived medical data."]
   },
+  "certification": {
+    "status": "generator-reviewed",
+    "evidence": []
+  },
   "expected": {
     "classification": "valid",
     "outcome": "success",
-    "operations": ["metadata", "full-decode", "range-read"],
+    "operations": ["metadata", "full-decode"],
     "comparison": {
       "method": "structural"
     },
-    "metadata": {
-      "generator": "png-world"
-    },
+    "metadata": {},
     "resourceLimits": {
       "timeoutMs": 5000,
       "maxInputBytes": 103,
@@ -101,16 +98,11 @@
       "axes.xy",
       "companion-files",
       "compression.deflate",
-      "compression.unknown",
       "format.image-world-file",
       "frames.single",
       "geo.affine",
-      "http.range",
       "image.bit-depth.8",
-      "image.bit-depth.unknown",
       "image.color.rgba",
-      "image.color.unknown",
-      "image.sample.unknown",
       "image.sample.unsigned",
       "layout.companion-set",
       "purejsimage.reader.image-world-file"
@@ -118,6 +110,5 @@
     "selectionReason": "Provides a small independently written image-world-file case for image-world-file.",
     "priority": "high"
   },
-  "collections": ["smoke", "geo-small", "directory-formats"],
   "notes": ["The generator is independent of PureJsImage codec implementations."]
 }

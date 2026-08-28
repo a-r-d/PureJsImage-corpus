@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "scientific/cbf/uint8-3x2",
-  "caseRevision": 1,
+  "caseRevision": 2,
   "title": "CBF uncompressed uint8 array",
   "description": "CBF uncompressed uint8 array, written by the transparent generator cbf.",
   "domain": "scientific",
@@ -12,16 +12,11 @@
     "features": [
       "axes.xy",
       "compression.none",
-      "compression.unknown",
       "endian.little",
       "format.cbf",
       "frames.single",
-      "http.range",
       "image.bit-depth.8",
-      "image.bit-depth.unknown",
       "image.color.gray",
-      "image.color.unknown",
-      "image.sample.unknown",
       "image.sample.unsigned",
       "layout.single-file",
       "purejsimage.reader.cbf"
@@ -39,8 +34,8 @@
       "storage": "generated",
       "sourceId": "purejsimage-corpus-generated",
       "sourcePath": "recipes/generated/scientific-cbf-uint8-3x2.json",
-      "bytes": 439,
-      "sha256": "3e08ae024842cdeef5db7a5ea7eb8318e6ef47ba31c5121caef5ddc51aabbfdd",
+      "bytes": 480,
+      "sha256": "eeef3cccab9b3f67a682a4643be4c85a0b80bbb99c5970bfbbc278ae3e06dd4a",
       "mediaType": "application/octet-stream"
     }
   ],
@@ -67,19 +62,21 @@
     "deidentified": "not-applicable",
     "notes": ["No human-derived medical data."]
   },
+  "certification": {
+    "status": "generator-reviewed",
+    "evidence": []
+  },
   "expected": {
     "classification": "valid",
     "outcome": "success",
-    "operations": ["metadata", "full-decode", "range-read"],
+    "operations": ["metadata", "full-decode"],
     "comparison": {
       "method": "structural"
     },
-    "metadata": {
-      "generator": "cbf"
-    },
+    "metadata": {},
     "resourceLimits": {
       "timeoutMs": 5000,
-      "maxInputBytes": 439,
+      "maxInputBytes": 480,
       "maxDecodedPixels": 100000000,
       "maxFrames": 1000,
       "maxHeapMiB": 512
@@ -89,16 +86,11 @@
     "features": [
       "axes.xy",
       "compression.none",
-      "compression.unknown",
       "endian.little",
       "format.cbf",
       "frames.single",
-      "http.range",
       "image.bit-depth.8",
-      "image.bit-depth.unknown",
       "image.color.gray",
-      "image.color.unknown",
-      "image.sample.unknown",
       "image.sample.unsigned",
       "layout.single-file",
       "purejsimage.reader.cbf"
@@ -106,6 +98,5 @@
     "selectionReason": "Provides a small independently written cbf case for cbf.",
     "priority": "high"
   },
-  "collections": ["smoke", "scientific-small"],
   "notes": ["The generator is independent of PureJsImage codec implementations."]
 }

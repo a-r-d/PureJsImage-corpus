@@ -12,17 +12,12 @@
     "features": [
       "axes.xy",
       "compression.none",
-      "compression.unknown",
       "endian.little",
       "format.gsf",
       "frames.single",
-      "http.range",
       "image.bit-depth.32",
-      "image.bit-depth.unknown",
       "image.color.gray",
-      "image.color.unknown",
       "image.sample.float",
-      "image.sample.unknown",
       "layout.single-file",
       "purejsimage.reader.gsf"
     ]
@@ -67,16 +62,18 @@
     "deidentified": "not-applicable",
     "notes": ["No human-derived medical data."]
   },
+  "certification": {
+    "status": "generator-reviewed",
+    "evidence": []
+  },
   "expected": {
     "classification": "valid",
     "outcome": "success",
-    "operations": ["metadata", "full-decode", "range-read"],
+    "operations": ["metadata", "full-decode"],
     "comparison": {
       "method": "structural"
     },
-    "metadata": {
-      "generator": "gsf"
-    },
+    "metadata": {},
     "resourceLimits": {
       "timeoutMs": 5000,
       "maxInputBytes": 112,
@@ -89,23 +86,17 @@
     "features": [
       "axes.xy",
       "compression.none",
-      "compression.unknown",
       "endian.little",
       "format.gsf",
       "frames.single",
-      "http.range",
       "image.bit-depth.32",
-      "image.bit-depth.unknown",
       "image.color.gray",
-      "image.color.unknown",
       "image.sample.float",
-      "image.sample.unknown",
       "layout.single-file",
       "purejsimage.reader.gsf"
     ],
     "selectionReason": "Provides a small independently written gsf case for gsf.",
     "priority": "high"
   },
-  "collections": ["smoke", "scientific-small"],
   "notes": ["The generator is independent of PureJsImage codec implementations."]
 }

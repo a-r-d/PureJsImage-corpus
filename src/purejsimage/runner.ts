@@ -4,7 +4,7 @@ import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
 import { dirname, join, relative, resolve } from 'node:path';
 import type { CorpusCase } from '../catalog/types.js';
 import { materializeCase } from '../materialize/index.js';
-import { renderPureJsImageReport, summarizeResults, verdictFor } from './report.js';
+import { evaluateResult, renderPureJsImageReport, summarizeResults } from './report.js';
 import type {
   PureJsImageCaseResult,
   PureJsImageCorpusReport,
@@ -54,6 +54,8 @@ function isWorkerResult(value: unknown): value is PureJsImageWorkerResult {
       validAdapter &&
       typeof candidate.operation === 'string' &&
       typeof candidate.implementation === 'string' &&
+      Array.isArray(candidate.executedOperations) &&
+      candidate.executedOperations.every((operation) => typeof operation === 'string') &&
       typeof candidate.outputBytes === 'number' &&
       Number.isFinite(candidate.outputBytes) &&
       candidate.metadata !== null &&
@@ -280,7 +282,13 @@ async function runCase(
       error: { name: 'WorkerCrash', message: 'Worker result is missing' },
     };
   }
-  return { ...base, verdict: verdictFor(corpusCase, child.worker), worker: child.worker };
+  const evaluation = evaluateResult(corpusCase, child.worker);
+  return {
+    ...base,
+    verdict: evaluation.verdict,
+    ...(evaluation.failures.length > 0 ? { expectationFailures: evaluation.failures } : {}),
+    worker: child.worker,
+  };
 }
 
 export async function runPureJsImageCorpus(
@@ -302,7 +310,7 @@ export async function runPureJsImageCorpus(
     library,
     execution: {
       isolation: 'child-process-per-case',
-      codec: 'metadata+full-frame-decode-to-qoi',
+      codec: 'metadata+canonical-rgba8-frame-decode',
       scientific: 'metadata+full-plane-decode',
       geo: 'metadata+full-primary-resolution-decode',
       minimumTimeoutMs: 5_000,

@@ -95,6 +95,7 @@ export function buildCoverage(catalog: Catalog): Record<string, unknown> {
       dialect: countBy(cases, (item) => [item.format.dialect ?? 'unspecified']),
       layoutType: countBy(cases, (item) => [item.layout.kind]),
       classification: countBy(cases, (item) => [item.expected.classification]),
+      certification: countBy(cases, (item) => [item.certification.status]),
       bitDepth: countBy(cases, (item) => featureValues(item, 'image.bit-depth.')),
       sampleType: countBy(cases, (item) => featureValues(item, 'image.sample.')),
       colorModel: countBy(cases, (item) => featureValues(item, 'image.color.')),

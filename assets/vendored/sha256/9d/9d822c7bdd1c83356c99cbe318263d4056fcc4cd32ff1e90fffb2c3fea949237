@@ -1,6 +1,5 @@
 ObjectType = Image
 NDims = 2
-DimSize = 3 2
-E9 9entType = MET_SHORT
+DimSize = 39 9ElementType = MET_SHORT
 ElementByteOrderMSB = False
 ElementDataFile = tiny.raw

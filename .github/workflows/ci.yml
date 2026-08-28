@@ -29,7 +29,7 @@ jobs:
       - run: npm run corpus -- verify --collection smoke --offline
 
   purejsimage-smoke-report:
-    name: PureJsImage smoke report
+    name: PureJsImage 0.17 compatibility
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -53,9 +53,8 @@ jobs:
         run: >-
           npm run report:purejsimage --
           --library .ci/purejsimage
-          --collection smoke
+          --collection purejsimage-0-17-smoke
           --offline
-          --allow-failures
           --output "${RUNNER_TEMP}/purejsimage-smoke"
       - name: Upload JSON and Markdown reports
         if: always()

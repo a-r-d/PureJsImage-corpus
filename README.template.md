@@ -44,6 +44,7 @@ A **case** is one thing a reader opens. It may use one file or a group of relate
 | Original source and pinned revision | A result can be traced back to where the file came from. |
 | License and redistribution decision | The repository only ships files it is allowed to ship. |
 | Privacy review | Medical or human-derived data is not included casually. |
+| Certification status and evidence | Generator review is kept distinct from independent conformance evidence. |
 | Expected result | Valid files should open; broken files should fail cleanly. |
 | Time, memory, frame, and pixel limits | A small hostile file cannot consume unlimited resources. |
 
@@ -65,8 +66,10 @@ npm ci
 npm run check
 ```
 
-The smoke collection is fully offline and stays below 25 MiB. These commands help when exploring
-or preparing other collections:
+The strict smoke collection is fully offline, stays below 25 MiB, and contains only explicitly
+selected cases whose generators or mutations have been reviewed. It is a regression gate, not a
+claim that every expected output has independent conformance certification. These commands help
+when exploring or preparing other collections:
 
 | Command | What it does |
 | --- | --- |
@@ -90,20 +93,21 @@ build and hashes the built `dist/` directory.
 
 | Verdict | Meaning |
 | --- | --- |
-| `pass` | A valid case opened and decoded, or a broken case was rejected cleanly. |
-| `fail` | The library rejected a valid case or accepted a case that should be rejected. |
+| `pass` | Every declared operation ran and matched its structural, metadata, exact-hash, or rejection contract. |
+| `fail` | A declared operation did not run, an expectation differed, or rejection did not match its contract. |
 | `unsupported` | The tested library does not claim to handle this valid format or operation. |
 | `timeout` | The case exceeded its time limit. |
 | `crash` | The isolated worker exited without a usable result. |
 | `unavailable` | A required file could not be found or did not match its recorded bytes. |
 
 Ordinary images decode every frame. Scientific datasets decode every plane. Geospatial datasets
-decode every non-spatial selection at full primary resolution. Output bytes are hashed so two runs
-can be compared.
+decode every non-spatial selection at full primary resolution. Ordinary decoded pixels are hashed
+directly in the documented canonical envelope; they are not re-encoded through another codec.
 
 ```sh
 npm run report:purejsimage -- --offline
 npm run report:purejsimage -- --collection smoke --offline
+npm run report:purejsimage -- --collection purejsimage-0-17-smoke --offline
 npm run report:purejsimage -- --case ordinary/qoi/rgba-2x2 --offline
 ```
 
@@ -124,8 +128,10 @@ Tools can read the JSON records under `catalog/` or the generated `generated/cat
 `generated/cases.jsonl`. The local server supports normal requests and HTTP byte ranges for testing
 remote readers without changing the source files.
 
-Passing a case only means the file is valid and the tested operation behaved as expected. It does
-not mean PureJsImage supports every format in this repository. PureJsImage-specific results live
+Passing a case only means the selected operation matched the recorded expectation. The separate
+certification field says whether that expectation is merely generator-reviewed or supported by an
+independent oracle, upstream conformance vector, or specification-derived evidence. A pass does not
+mean PureJsImage supports every format in this repository. PureJsImage-specific results live
 under [`expectations/purejsimage/`](expectations/purejsimage/); comparison rules are described in
 [`docs/ORACLES.md`](docs/ORACLES.md).
 

@@ -12,18 +12,13 @@
     "features": [
       "axes.xy",
       "compression.none",
-      "compression.unknown",
       "endian.big",
       "format.netcdf-cf",
       "frames.single",
       "geo.crs",
-      "http.range",
       "image.bit-depth.16",
-      "image.bit-depth.unknown",
       "image.color.gray",
-      "image.color.unknown",
       "image.sample.signed",
-      "image.sample.unknown",
       "layout.single-file",
       "metadata.cf-1.8",
       "purejsimage.reader.netcdf-cf"
@@ -69,16 +64,18 @@
     "deidentified": "not-applicable",
     "notes": ["No human-derived medical data."]
   },
+  "certification": {
+    "status": "generator-reviewed",
+    "evidence": []
+  },
   "expected": {
     "classification": "valid",
     "outcome": "success",
-    "operations": ["metadata", "full-decode", "range-read"],
+    "operations": ["metadata", "full-decode"],
     "comparison": {
       "method": "structural"
     },
-    "metadata": {
-      "generator": "cf-netcdf"
-    },
+    "metadata": {},
     "resourceLimits": {
       "timeoutMs": 5000,
       "maxInputBytes": 412,
@@ -91,18 +88,13 @@
     "features": [
       "axes.xy",
       "compression.none",
-      "compression.unknown",
       "endian.big",
       "format.netcdf-cf",
       "frames.single",
       "geo.crs",
-      "http.range",
       "image.bit-depth.16",
-      "image.bit-depth.unknown",
       "image.color.gray",
-      "image.color.unknown",
       "image.sample.signed",
-      "image.sample.unknown",
       "layout.single-file",
       "metadata.cf-1.8",
       "purejsimage.reader.netcdf-cf"
@@ -110,6 +102,5 @@
     "selectionReason": "Provides a small independently written netcdf-cf case for netcdf-cf.",
     "priority": "high"
   },
-  "collections": ["smoke", "geo-small"],
   "notes": ["The generator is independent of PureJsImage codec implementations."]
 }

@@ -13,17 +13,12 @@
       "axes.xy",
       "companion-files",
       "compression.none",
-      "compression.unknown",
       "endian.little",
       "format.meta-image",
       "frames.single",
-      "http.range",
       "image.bit-depth.16",
-      "image.bit-depth.unknown",
       "image.color.gray",
-      "image.color.unknown",
       "image.sample.signed",
-      "image.sample.unknown",
       "layout.companion-set",
       "purejsimage.reader.meta-image"
     ]
@@ -69,22 +64,30 @@
     "deidentified": "not-applicable",
     "notes": ["No human-derived medical data."]
   },
+  "certification": {
+    "status": "generator-reviewed",
+    "evidence": []
+  },
   "expected": {
     "classification": "invalid",
     "outcome": "reject",
-    "operations": ["metadata", "full-decode", "range-read"],
+    "operations": ["metadata", "full-decode"],
     "comparison": {
       "method": "structural"
     },
-    "metadata": {
-      "target": "negative.missing-companion"
-    },
+    "metadata": {},
     "resourceLimits": {
       "timeoutMs": 5000,
       "maxInputBytes": 122,
       "maxDecodedPixels": 100000000,
       "maxFrames": 1000,
       "maxHeapMiB": 512
+    },
+    "error": {
+      "allowedOperations": ["open"],
+      "allowedCodes": ["INVALID_INPUT"],
+      "mustRecognizeFormat": true,
+      "messageIncludes": ["companion"]
     }
   },
   "coverage": {
@@ -92,17 +95,12 @@
       "axes.xy",
       "companion-files",
       "compression.none",
-      "compression.unknown",
       "endian.little",
       "format.meta-image",
       "frames.single",
-      "http.range",
       "image.bit-depth.16",
-      "image.bit-depth.unknown",
       "image.color.gray",
-      "image.color.unknown",
       "image.sample.signed",
-      "image.sample.unknown",
       "layout.companion-set",
       "negative.graceful-rejection",
       "negative.missing-companion",
@@ -111,7 +109,6 @@
     "selectionReason": "Requires bounded graceful rejection for negative.missing-companion.",
     "priority": "critical"
   },
-  "collections": ["negative", "fuzz-regressions"],
   "notes": [
     "Omit the RAW file named by the MHD header.",
     "A crash, hang, panic, or unbounded allocation is a failure."

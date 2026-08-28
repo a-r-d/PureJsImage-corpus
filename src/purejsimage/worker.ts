@@ -122,7 +122,9 @@ function errorResult(
   request: PureJsImageWorkerRequest,
 ): PureJsImageWorkerResult {
   const value = error instanceof Error ? error : new Error(String(error));
-  const code = record(value, 'error').code;
+  const explicitCode = record(value, 'error').code;
+  const prefixedCode = /^([A-Z][A-Z_]+):/u.exec(value.message)?.[1];
+  const code = typeof explicitCode === 'string' ? explicitCode : prefixedCode;
   const message = [request.materializedDirectory, request.libraryPath, process.cwd()].reduce(
     (current, localPath) => current.replaceAll(localPath, '[local-path]'),
     value.message,
@@ -164,44 +166,137 @@ function bytesOf(value: unknown, label: string): Uint8Array {
   return new Uint8Array(value.buffer, value.byteOffset, value.byteLength);
 }
 
+async function canonicalRgbaFrame(
+  decoderValue: unknown,
+  normalizePixelBlocksValue: unknown,
+): Promise<{ bytes: Uint8Array; width: number; height: number }> {
+  const decoder = record(decoderValue, 'image decoder');
+  const width = numberValue(decoder.width, 'decoder width');
+  const height = numberValue(decoder.height, 'decoder height');
+  if (!Number.isSafeInteger(width) || !Number.isSafeInteger(height) || width < 1 || height < 1) {
+    throw new Error('Decoder dimensions are invalid');
+  }
+  const pixelCount = width * height;
+  if (!Number.isSafeInteger(pixelCount)) throw new Error('Decoder dimensions overflow');
+  const decoded = callable(decoder.decode, 'image decoder decode').call(decoder);
+  if (decoded === null || typeof decoded !== 'object' || !(Symbol.asyncIterator in decoded)) {
+    throw new Error('Image decoder did not return an async iterable');
+  }
+  const normalized = callable(normalizePixelBlocksValue, 'normalizePixelBlocks')(
+    decoded,
+    stringValue(decoder.pixelFormat, 'decoder pixel format'),
+  );
+  if (
+    normalized === null ||
+    typeof normalized !== 'object' ||
+    !(Symbol.asyncIterator in normalized)
+  ) {
+    throw new Error('Pixel normalization did not return an async iterable');
+  }
+  const output = new Uint8Array(pixelCount * 4);
+  const coverage = new Uint8Array(pixelCount);
+  for await (const blockValue of normalized as AsyncIterable<unknown>) {
+    const block = record(blockValue, 'normalized pixel block');
+    const x = numberValue(block.x, 'pixel block x');
+    const y = numberValue(block.y, 'pixel block y');
+    const blockWidth = numberValue(block.width, 'pixel block width');
+    const blockHeight = numberValue(block.height, 'pixel block height');
+    const stride = numberValue(block.stride, 'pixel block stride');
+    const format = stringValue(block.format, 'pixel block format');
+    const channels = format === 'gray8' ? 1 : format === 'rgb8' ? 3 : format === 'rgba8' ? 4 : 0;
+    const data = bytesOf(block.data, 'pixel block data');
+    if (
+      channels === 0 ||
+      ![x, y, blockWidth, blockHeight, stride].every(Number.isSafeInteger) ||
+      x < 0 ||
+      y < 0 ||
+      blockWidth < 1 ||
+      blockHeight < 1 ||
+      x + blockWidth > width ||
+      y + blockHeight > height ||
+      stride < blockWidth * channels ||
+      data.byteLength < stride * (blockHeight - 1) + blockWidth * channels
+    ) {
+      if (typeof block.release === 'function') block.release();
+      throw new Error('Normalized pixel block is invalid');
+    }
+    for (let localY = 0; localY < blockHeight; localY += 1) {
+      for (let localX = 0; localX < blockWidth; localX += 1) {
+        const pixel = (y + localY) * width + x + localX;
+        if (coverage[pixel] !== 0) {
+          if (typeof block.release === 'function') block.release();
+          throw new Error('Normalized pixel blocks overlap');
+        }
+        coverage[pixel] = 1;
+        const source = localY * stride + localX * channels;
+        const target = pixel * 4;
+        const gray = data[source] ?? 0;
+        output[target] = gray;
+        output[target + 1] = channels === 1 ? gray : (data[source + 1] ?? 0);
+        output[target + 2] = channels === 1 ? gray : (data[source + 2] ?? 0);
+        output[target + 3] = channels === 4 ? (data[source + 3] ?? 0) : 255;
+      }
+    }
+    if (typeof block.release === 'function') block.release();
+  }
+  if (coverage.some((value) => value !== 1)) throw new Error('Normalized pixel blocks have gaps');
+  return { bytes: output, width, height };
+}
+
 async function runCodec(request: PureJsImageWorkerRequest): Promise<PureJsImageWorkerResult> {
   const adapter = 'codec';
   let operation = 'load-library';
   try {
-    const [coreValue, codecsValue, heicValue] = await Promise.all([
+    const [coreValue, codecsValue, heicValue, pixelValue] = await Promise.all([
       import(moduleUrl(request.libraryPath, 'index.js')),
       import(moduleUrl(request.libraryPath, 'codec-entries/all.js')),
       import(moduleUrl(request.libraryPath, 'codec-entries/experimental/heic.js')),
+      import(moduleUrl(request.libraryPath, 'pixel.js')),
     ]);
     const core = record(coreValue, 'PureJsImage core module');
     const codecs = record(codecsValue, 'PureJsImage codecs module');
     const heic = record(heicValue, 'PureJsImage HEIC module');
+    const pixel = record(pixelValue, 'PureJsImage pixel module');
     const allCodecs = arrayValue(codecs.allCodecs, 'allCodecs');
     const experimentalHeifCodec = record(heic.experimentalHeifCodec, 'experimentalHeifCodec');
-    const createImageLibrary = callable(core.createImageLibrary, 'createImageLibrary');
-    const library = record(
-      createImageLibrary([...allCodecs, experimentalHeifCodec]),
-      'image library',
+    if (typeof core.CodecRegistry !== 'function') throw new Error('CodecRegistry is unavailable');
+    if (typeof core.FileSource !== 'function') throw new Error('FileSource is unavailable');
+    const registry = record(
+      Reflect.construct(core.CodecRegistry, [[...allCodecs, experimentalHeifCodec]]),
+      'codec registry',
     );
+    const fileSource = core.FileSource as unknown as Record<string, unknown>;
     const limits = request.corpusCase.expected.resourceLimits;
-    const openImage = async (frame?: number): Promise<UnknownRecord> =>
-      record(
-        await callable(library.open, 'image library open').call(library, entrypoint(request), {
-          tolerantDecoding: false,
-          ...(frame === undefined ? {} : { frame }),
-          limits: {
-            maxInputBytes: Math.max(1, limits.maxInputBytes),
-            maxPixels: Math.max(1, limits.maxDecodedPixels),
-            maxFrames: Math.max(1, limits.maxFrames),
-            maxDecodedBytes: Math.max(1, limits.maxDecodedPixels * 16),
-          },
-        }),
-        'opened image',
-      );
+    const resolvedLimits = {
+      ...record(core.defaultImageLimits, 'default image limits'),
+      maxWidth: Math.max(1, limits.maxDecodedPixels),
+      maxHeight: Math.max(1, limits.maxDecodedPixels),
+      maxInputBytes: Math.max(1, limits.maxInputBytes),
+      maxPixels: Math.max(1, limits.maxDecodedPixels),
+      maxFrames: Math.max(1, limits.maxFrames),
+      maxDecodedBytes: Math.max(1, limits.maxDecodedPixels * 16),
+    };
     operation = 'open';
-    const image = await openImage();
+    const source = record(
+      await callable(fileSource.open, 'FileSource.open').call(core.FileSource, entrypoint(request)),
+      'file source',
+    );
+    if (numberValue(source.size, 'input size') > resolvedLimits.maxInputBytes) {
+      throw new Error(
+        `LIMIT_EXCEEDED: Input is ${source.size as number} bytes; maxInputBytes is ${resolvedLimits.maxInputBytes}`,
+      );
+    }
+    const codec = record(
+      await callable(registry.detect, 'codec registry detect').call(registry, source),
+      'image codec',
+    );
     operation = 'metadata';
-    const metadata = await callable(image.metadata, 'image metadata').call(image);
+    const metadata = await callable(codec.metadata, 'codec metadata').call(
+      codec,
+      source,
+      resolvedLimits,
+      { tolerantDecoding: false },
+    );
     const safeMetadata = record(jsonSafe(metadata), 'codec metadata');
     const frames =
       typeof safeMetadata.frames === 'number' && Number.isInteger(safeMetadata.frames)
@@ -210,31 +305,42 @@ async function runCodec(request: PureJsImageWorkerRequest): Promise<PureJsImageW
     if (frames < 1 || frames > limits.maxFrames) {
       throw new Error(`LIMIT_EXCEEDED: Image has ${frames} frames; maximum is ${limits.maxFrames}`);
     }
-    operation = 'full-decode-all-frames-to-qoi';
+    operation = 'full-decode-all-frames-to-canonical-rgba8';
     const hash = createHash('sha256');
+    hash.update('rgba8-decoder-v1\0');
     let outputBytes = 0;
     for (let frame = 0; frame < frames; frame += 1) {
-      const frameImage = frames === 1 ? image : await openImage(frame);
-      const encodedImage = record(
-        callable(frameImage.qoi, 'QOI encode').call(frameImage),
-        'QOI pipeline',
+      if (typeof codec.createDecoder !== 'function') {
+        throw new Error(`UNSUPPORTED_OPERATION: ${String(codec.format)} decoder is unavailable`);
+      }
+      const decoder = await callable(codec.createDecoder, 'codec createDecoder').call(
+        codec,
+        source,
+        resolvedLimits,
+        { tolerantDecoding: false, frame },
       );
-      const output = bytesOf(
-        await callable(encodedImage.toBuffer, 'image toBuffer').call(encodedImage),
-        'codec output',
-      );
-      outputBytes += output.byteLength;
-      hash.update(String(output.byteLength));
-      hash.update('\0');
-      hash.update(output);
+      const canonical = await canonicalRgbaFrame(decoder, pixel.normalizePixelBlocks);
+      outputBytes += canonical.bytes.byteLength;
+      const frameHeader = Buffer.allocUnsafe(12);
+      frameHeader.writeUInt32BE(frame, 0);
+      frameHeader.writeUInt32BE(canonical.width, 4);
+      frameHeader.writeUInt32BE(canonical.height, 8);
+      hash.update(frameHeader);
+      hash.update(canonical.bytes);
     }
     return {
       kind: 'success',
       adapter,
       operation,
-      implementation: 'codec-registry',
+      executedOperations: [
+        'metadata',
+        'full-decode',
+        ...(frames > 1 ? ['all-frames' as const] : []),
+      ],
+      implementation: `${stringValue(codec.format, 'codec format')}@registry`,
       outputBytes,
       outputSha256: hash.digest('hex'),
+      canonical: 'rgba8-decoder-v1',
       metadata: { ...safeMetadata, decodedFrames: frames },
     };
   } catch (error: unknown) {
@@ -456,6 +562,7 @@ async function runScientific(request: PureJsImageWorkerRequest): Promise<PureJsI
       kind: 'success',
       adapter,
       operation,
+      executedOperations: ['metadata', ...(outputBytes > 0 ? ['full-decode' as const] : [])],
       implementation: `${stringValue(reader.id, 'scientific reader id')}@${stringValue(reader.version, 'scientific reader version')}`,
       outputBytes,
       ...(outputBytes > 0 ? { outputSha256: hash.digest('hex') } : {}),
@@ -631,6 +738,7 @@ async function runGeo(request: PureJsImageWorkerRequest): Promise<PureJsImageWor
       kind: 'success',
       adapter,
       operation,
+      executedOperations: ['metadata', 'full-decode'],
       implementation: `${reader.descriptor.id}@${reader.descriptor.version}`,
       outputBytes,
       ...(outputBytes > 0 ? { outputSha256: hash.digest('hex') } : {}),

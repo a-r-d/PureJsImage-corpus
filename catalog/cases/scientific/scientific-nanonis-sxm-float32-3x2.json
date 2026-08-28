@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "scientific/nanonis-sxm/float32-3x2",
-  "caseRevision": 1,
+  "caseRevision": 2,
   "title": "Nanonis SXM float32 scan",
   "description": "Nanonis SXM float32 scan, written by the transparent generator nanonis-sxm.",
   "domain": "scientific",
@@ -12,17 +12,12 @@
     "features": [
       "axes.xy",
       "compression.none",
-      "compression.unknown",
       "endian.big",
       "format.nanonis-sxm",
       "frames.single",
-      "http.range",
       "image.bit-depth.32",
-      "image.bit-depth.unknown",
       "image.color.gray",
-      "image.color.unknown",
       "image.sample.float",
-      "image.sample.unknown",
       "layout.single-file",
       "purejsimage.reader.nanonis-sxm"
     ]
@@ -39,8 +34,8 @@
       "storage": "generated",
       "sourceId": "purejsimage-corpus-generated",
       "sourcePath": "recipes/generated/scientific-nanonis-sxm-float32-3x2.json",
-      "bytes": 129,
-      "sha256": "a8771e0dd742f2e49fab08af99d293c3d8e690bbce10a1b2c8a32924e6f87b3f",
+      "bytes": 258,
+      "sha256": "36f0da78601b2d44df19eec73323593f293c9b2c1840a7aefadeff161f698306",
       "mediaType": "application/octet-stream"
     }
   ],
@@ -67,19 +62,21 @@
     "deidentified": "not-applicable",
     "notes": ["No human-derived medical data."]
   },
+  "certification": {
+    "status": "generator-reviewed",
+    "evidence": []
+  },
   "expected": {
     "classification": "valid",
     "outcome": "success",
-    "operations": ["metadata", "full-decode", "range-read"],
+    "operations": ["metadata", "full-decode"],
     "comparison": {
       "method": "structural"
     },
-    "metadata": {
-      "generator": "nanonis-sxm"
-    },
+    "metadata": {},
     "resourceLimits": {
       "timeoutMs": 5000,
-      "maxInputBytes": 129,
+      "maxInputBytes": 258,
       "maxDecodedPixels": 100000000,
       "maxFrames": 1000,
       "maxHeapMiB": 512
@@ -89,23 +86,17 @@
     "features": [
       "axes.xy",
       "compression.none",
-      "compression.unknown",
       "endian.big",
       "format.nanonis-sxm",
       "frames.single",
-      "http.range",
       "image.bit-depth.32",
-      "image.bit-depth.unknown",
       "image.color.gray",
-      "image.color.unknown",
       "image.sample.float",
-      "image.sample.unknown",
       "layout.single-file",
       "purejsimage.reader.nanonis-sxm"
     ],
     "selectionReason": "Provides a small independently written nanonis-sxm case for nanonis-sxm.",
     "priority": "high"
   },
-  "collections": ["smoke", "scientific-small"],
   "notes": ["The generator is independent of PureJsImage codec implementations."]
 }

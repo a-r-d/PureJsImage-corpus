@@ -79,8 +79,16 @@ Total cases: 117
 
 | Value | Cases |
 | --- | ---: |
-| invalid | 15 |
+| invalid | 14 |
+| nonconformant | 1 |
 | valid | 102 |
+
+## certification
+
+| Value | Cases |
+| --- | ---: |
+| generator-reviewed | 51 |
+| uncertified | 66 |
 
 ## bitDepth
 
@@ -91,7 +99,7 @@ Total cases: 117
 | 16 | 21 |
 | 32 | 6 |
 | text | 1 |
-| unknown | 117 |
+| unknown | 66 |
 
 ## sampleType
 
@@ -99,7 +107,7 @@ Total cases: 117
 | --- | ---: |
 | float | 6 |
 | signed | 21 |
-| unknown | 117 |
+| unknown | 66 |
 | unsigned | 24 |
 
 ## colorModel
@@ -112,7 +120,7 @@ Total cases: 117
 | rgb | 4 |
 | rgba | 13 |
 | rgbe | 1 |
-| unknown | 117 |
+| unknown | 66 |
 
 ## compression
 
@@ -122,7 +130,7 @@ Total cases: 117
 | none | 38 |
 | qoi | 8 |
 | rle | 1 |
-| unknown | 117 |
+| unknown | 65 |
 | zip | 2 |
 
 ## endianness
@@ -136,7 +144,8 @@ Total cases: 117
 
 | Value | Cases |
 | --- | ---: |
-| single | 117 |
+| multiple | 2 |
+| single | 115 |
 
 ## dimensionalityAndAxes
 
@@ -173,7 +182,7 @@ Total cases: 117
 
 | Value | Cases |
 | --- | ---: |
-| yes | 117 |
+| no | 117 |
 
 ## pureJsImageRegistration
 

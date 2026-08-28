@@ -14,7 +14,6 @@
       "compression.unknown",
       "format.png",
       "frames.single",
-      "http.range",
       "image.bit-depth.unknown",
       "image.color.unknown",
       "image.sample.unknown",
@@ -34,7 +33,7 @@
       "storage": "external",
       "sourceId": "purejsimage",
       "sourcePath": "pngsuite-palette-8.png",
-      "resolvedUrl": "https://raw.githubusercontent.com/golang/go/go1.24.0/src/image/png/testdata/pngsuite/basn3p08.png",
+      "resolvedUrl": "https://raw.githubusercontent.com/golang/go/3901409b5d0fb7c85a3e6730a59943cc93b2835c/src/image/png/testdata/pngsuite/basn3p08.png",
       "bytes": 1286,
       "sha256": "eca1db90338a8481e4d3f2469befa06d7564534e9323b6a8040ed0cdd281d952",
       "mediaType": "image/png"
@@ -62,10 +61,14 @@
     "deidentified": "not-applicable",
     "notes": ["No human-derived medical data."]
   },
+  "certification": {
+    "status": "uncertified",
+    "evidence": []
+  },
   "expected": {
     "classification": "valid",
     "outcome": "success",
-    "operations": ["metadata", "full-decode", "range-read"],
+    "operations": ["metadata", "full-decode"],
     "comparison": {
       "method": "structural"
     },
@@ -87,7 +90,6 @@
       "compression.unknown",
       "format.png",
       "frames.single",
-      "http.range",
       "image.bit-depth.unknown",
       "image.color.unknown",
       "image.sample.unknown",
@@ -97,6 +99,5 @@
     "selectionReason": "Preserves an existing PureJsImage benchmark and regression input.",
     "priority": "medium"
   },
-  "collections": ["ordinary-conformance", "benchmark-content"],
   "notes": ["Original PureJsImage manifest ID: pngsuite-palette-8"]
 }

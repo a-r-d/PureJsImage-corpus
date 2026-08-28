@@ -12,15 +12,10 @@
     "features": [
       "axes.xy",
       "compression.qoi",
-      "compression.unknown",
       "format.qoi",
       "frames.single",
-      "http.range",
       "image.bit-depth.8",
-      "image.bit-depth.unknown",
       "image.color.rgba",
-      "image.color.unknown",
-      "image.sample.unknown",
       "image.sample.unsigned",
       "layout.single-file",
       "purejsimage.reader.qoi"
@@ -66,16 +61,18 @@
     "deidentified": "not-applicable",
     "notes": ["No human-derived medical data."]
   },
+  "certification": {
+    "status": "generator-reviewed",
+    "evidence": []
+  },
   "expected": {
     "classification": "valid",
     "outcome": "success",
-    "operations": ["metadata", "full-decode", "range-read"],
+    "operations": ["metadata", "full-decode"],
     "comparison": {
       "method": "structural"
     },
-    "metadata": {
-      "generator": "qoi-rgba"
-    },
+    "metadata": {},
     "resourceLimits": {
       "timeoutMs": 5000,
       "maxInputBytes": 42,
@@ -88,15 +85,10 @@
     "features": [
       "axes.xy",
       "compression.qoi",
-      "compression.unknown",
       "format.qoi",
       "frames.single",
-      "http.range",
       "image.bit-depth.8",
-      "image.bit-depth.unknown",
       "image.color.rgba",
-      "image.color.unknown",
-      "image.sample.unknown",
       "image.sample.unsigned",
       "layout.single-file",
       "purejsimage.reader.qoi"
@@ -104,6 +96,5 @@
     "selectionReason": "Provides a small independently written qoi case for qoi.",
     "priority": "high"
   },
-  "collections": ["smoke", "ordinary-conformance"],
   "notes": ["The generator is independent of PureJsImage codec implementations."]
 }

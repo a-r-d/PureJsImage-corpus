@@ -293,7 +293,7 @@ function gsf(): Uint8Array {
 
 function sxm(): Uint8Array {
   const header = text(
-    ':NANONIS_VERSION:\n2\n:SCAN_PIXELS:\n3 2\n:SCAN_RANGE:\n3e-9 2e-9\n:SCANIT_TYPE:\nFLOAT MSBFIRST\n:SCANIT_END:\n\x1a\x04',
+    ':NANONIS_VERSION:\n2\n:SCAN_PIXELS:\n3 2\n:SCAN_RANGE:\n3e-9 2e-9\n:SCAN_OFFSET:\n0 0\n:SCAN_ANGLE:\n0\n:SCAN_DIR:\ndown\n:DATA_INFO:\nIndex\tName\tUnit\tDirection\tCalibration\tOffset\n0\tHeight\tm\tforward\t1\t0\n:SCANIT_TYPE:\nFLOAT MSBFIRST\n:SCANIT_END:\n\x1a\x04',
   );
   const values = new Uint8Array(24);
   const view = new DataView(values.buffer);
@@ -304,10 +304,11 @@ function sxm(): Uint8Array {
 }
 
 function cbf(): Uint8Array {
-  const binary = new Uint8Array([0x0c, 0x1a, 0x04, 0xd5, 0, 1, 2, 3, 4, 5]);
+  // x-CBF_BYTE_OFFSET stores signed deltas. These six bytes decode to 0, 1, 2, 3, 4, 5.
+  const binary = new Uint8Array([0x0c, 0x1a, 0x04, 0xd5, 0, 1, 1, 1, 1, 1]);
   return concat(
     text(
-      '###CBF: VERSION 1.0\ndata_image_1\n_array_data.header_convention "PILATUS_1.2"\n--CIF-BINARY-FORMAT-SECTION--\nContent-Type: application/octet-stream; conversions="x-CBF_NONE"\nX-Binary-Size: 6\nX-Binary-ID: 1\nX-Binary-Element-Type: "unsigned 8-bit integer"\nX-Binary-Element-Byte-Order: LITTLE_ENDIAN\nX-Binary-Number-of-Elements: 6\nX-Binary-Size-Fastest-Dimension: 3\nX-Binary-Size-Second-Dimension: 2\n\n',
+      '###CBF: VERSION 1.0\ndata_image_1\n_array_data.header_convention "PILATUS_1.2"\n--CIF-BINARY-FORMAT-SECTION--\nContent-Type: application/octet-stream; conversions="x-CBF_BYTE_OFFSET"\nContent-Transfer-Encoding: BINARY\nX-Binary-Size: 6\nX-Binary-ID: 1\nX-Binary-Element-Type: "unsigned 8-bit integer"\nX-Binary-Element-Byte-Order: LITTLE_ENDIAN\nX-Binary-Number-of-Elements: 6\nX-Binary-Size-Fastest-Dimension: 3\nX-Binary-Size-Second-Dimension: 2\n\n',
     ),
     binary,
     text('\n--CIF-BINARY-FORMAT-SECTION----\n'),
@@ -315,7 +316,7 @@ function cbf(): Uint8Array {
 }
 
 function x3p(): Uint8Array {
-  const main = `<?xml version="1.0" encoding="UTF-8"?><ISO5436_2><Record1><Revision>ISO5436-2:2000</Revision><FeatureType>SUR</FeatureType><Axes><CX><AxisType>I</AxisType><Increment>1</Increment></CX><CY><AxisType>I</AxisType><Increment>1</Increment></CY><CZ><AxisType>A</AxisType><DataType>F</DataType></CZ></Axes></Record1><Record3><MatrixDimension><SizeX>3</SizeX><SizeY>2</SizeY><SizeZ>1</SizeZ></MatrixDimension><DataLink><PointDataLink>bindata/data.bin</PointDataLink></DataLink></Record3></ISO5436_2>`;
+  const main = `<?xml version="1.0" encoding="UTF-8"?><ISO5436_2><Record1><Revision>ISO5436-2:2000</Revision><FeatureType>SUR</FeatureType><Axes><CX><AxisType>I</AxisType><DataType>F</DataType><Increment>1</Increment></CX><CY><AxisType>I</AxisType><DataType>F</DataType><Increment>1</Increment></CY><CZ><AxisType>A</AxisType><DataType>F</DataType></CZ></Axes></Record1><Record3><MatrixDimension><SizeX>3</SizeX><SizeY>2</SizeY><SizeZ>1</SizeZ></MatrixDimension><DataLink><PointDataLink>bindata/data.bin</PointDataLink></DataLink></Record3></ISO5436_2>`;
   const data = new Uint8Array(24);
   const view = new DataView(data.buffer);
   [0, 1, -1, 3.5, -2.25, 42].forEach((value, index) => {

@@ -1,4 +1,6 @@
-import { copyFile, link, mkdir, rm } from 'node:fs/promises';
+import { randomUUID } from 'node:crypto';
+import { constants } from 'node:fs';
+import { copyFile, mkdir, rename, rm } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import type { CorpusCase } from '../catalog/types.js';
 import { blobPath, materializedPath, vendoredBlobPath } from '../cache/paths.js';
@@ -15,22 +17,28 @@ export async function materializeCase(
   options: MaterializeOptions,
 ): Promise<string> {
   const destination = materializedPath(corpusCase.id, options.cacheRoot);
-  await rm(destination, { recursive: true, force: true });
-  for (const asset of corpusCase.assets) {
-    const source =
-      asset.storage === 'external'
-        ? await fetchAsset(asset, {
-            cacheRoot: options.cacheRoot,
-            offline: options.offline ?? false,
-          })
-        : vendoredBlobPath(asset.sha256, options.root);
-    const output = join(destination, ...asset.path.split('/'));
-    await mkdir(dirname(output), { recursive: true });
-    try {
-      await link(source, output);
-    } catch {
-      await copyFile(source, output);
+  const staging = `${destination}.tmp-${process.pid}-${randomUUID()}`;
+  try {
+    for (const asset of corpusCase.assets) {
+      const source =
+        asset.storage === 'external'
+          ? await fetchAsset(asset, {
+              cacheRoot: options.cacheRoot,
+              offline: options.offline ?? false,
+            })
+          : vendoredBlobPath(asset.sha256, options.root);
+      const output = join(staging, ...asset.path.split('/'));
+      await mkdir(dirname(output), { recursive: true });
+      // A hard link would let a misbehaving reader mutate the canonical content-addressed blob.
+      // Reflink copies preserve copy-on-write efficiency without sharing write identity.
+      await copyFile(source, output, constants.COPYFILE_FICLONE);
     }
+    await rm(destination, { recursive: true, force: true });
+    await mkdir(dirname(destination), { recursive: true });
+    await rename(staging, destination);
+  } catch (error: unknown) {
+    await rm(staging, { recursive: true, force: true });
+    throw error;
   }
   return destination;
 }

@@ -13,8 +13,7 @@
       "axes.xy",
       "compression.unknown",
       "format.png",
-      "frames.single",
-      "http.range",
+      "frames.multiple",
       "image.bit-depth.unknown",
       "image.color.unknown",
       "image.sample.unknown",
@@ -63,10 +62,14 @@
     "deidentified": "not-applicable",
     "notes": ["No human-derived medical data."]
   },
+  "certification": {
+    "status": "uncertified",
+    "evidence": []
+  },
   "expected": {
     "classification": "valid",
     "outcome": "success",
-    "operations": ["metadata", "full-decode", "range-read"],
+    "operations": ["metadata", "full-decode"],
     "comparison": {
       "method": "structural"
     },
@@ -84,8 +87,7 @@
       "axes.xy",
       "compression.unknown",
       "format.png",
-      "frames.single",
-      "http.range",
+      "frames.multiple",
       "image.bit-depth.unknown",
       "image.color.unknown",
       "image.sample.unknown",
@@ -95,7 +97,6 @@
     "selectionReason": "Exercises the real png reader with independently hashed upstream bytes.",
     "priority": "high"
   },
-  "collections": ["ordinary-conformance", "large-range"],
   "notes": [
     "Kept external to keep the committed ordinary seed small; redistribution evidence is recorded."
   ]

@@ -19,9 +19,11 @@ export interface PureJsImageWorkerSuccess {
   kind: 'success';
   adapter: PureJsImageAdapter;
   operation: string;
+  executedOperations: CorpusCase['expected']['operations'];
   implementation: string;
   outputBytes: number;
   outputSha256?: string;
+  canonical?: 'rgba8-decoder-v1' | 'rgba8-srgb-v1' | 'ndarray-v1';
   metadata: Record<string, unknown>;
 }
 
@@ -42,6 +44,7 @@ export interface PureJsImageCaseResult {
   expectedOutcome: CorpusCase['expected']['outcome'];
   verdict: PureJsImageVerdict;
   durationMs: number;
+  expectationFailures?: string[];
   worker?: PureJsImageWorkerResult;
   error?: PureJsImageError;
 }
@@ -61,7 +64,7 @@ export interface PureJsImageCorpusReport {
   library: PureJsImageLibraryIdentity;
   execution: {
     isolation: 'child-process-per-case';
-    codec: 'metadata+full-frame-decode-to-qoi';
+    codec: 'metadata+canonical-rgba8-frame-decode';
     scientific: 'metadata+full-plane-decode';
     geo: 'metadata+full-primary-resolution-decode';
     minimumTimeoutMs: number;

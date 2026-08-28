@@ -12,17 +12,12 @@
     "features": [
       "axes.xy",
       "compression.none",
-      "compression.unknown",
       "endian.big",
       "format.fits",
       "frames.single",
-      "http.range",
       "image.bit-depth.16",
-      "image.bit-depth.unknown",
       "image.color.gray",
-      "image.color.unknown",
       "image.sample.signed",
-      "image.sample.unknown",
       "layout.single-file",
       "purejsimage.reader.fits"
     ]
@@ -67,16 +62,18 @@
     "deidentified": "not-applicable",
     "notes": ["No human-derived medical data."]
   },
+  "certification": {
+    "status": "generator-reviewed",
+    "evidence": []
+  },
   "expected": {
     "classification": "valid",
     "outcome": "success",
-    "operations": ["metadata", "full-decode", "range-read"],
+    "operations": ["metadata", "full-decode"],
     "comparison": {
       "method": "structural"
     },
-    "metadata": {
-      "generator": "fits"
-    },
+    "metadata": {},
     "resourceLimits": {
       "timeoutMs": 5000,
       "maxInputBytes": 5760,
@@ -89,23 +86,17 @@
     "features": [
       "axes.xy",
       "compression.none",
-      "compression.unknown",
       "endian.big",
       "format.fits",
       "frames.single",
-      "http.range",
       "image.bit-depth.16",
-      "image.bit-depth.unknown",
       "image.color.gray",
-      "image.color.unknown",
       "image.sample.signed",
-      "image.sample.unknown",
       "layout.single-file",
       "purejsimage.reader.fits"
     ],
     "selectionReason": "Provides a small independently written fits case for fits.",
     "priority": "high"
   },
-  "collections": ["smoke", "scientific-small"],
   "notes": ["The generator is independent of PureJsImage codec implementations."]
 }

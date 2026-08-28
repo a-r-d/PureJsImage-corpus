@@ -1,16 +1,12 @@
 {
   "schemaVersion": 1,
   "id": "large-range",
-  "title": "HTTP range reader cases",
-  "description": "HTTP range reader cases cases.",
-  "intendedUse": "HTTP range reader cases",
+  "title": "HTTP Range execution backlog",
+  "description": "HTTP Range execution backlog cases.",
+  "intendedUse": "HTTP Range execution backlog",
   "networkPolicy": "optional",
   "maximumVendoredBytes": 26214400,
   "caseIds": [],
-  "selectors": [
-    {
-      "feature": "http.range"
-    }
-  ],
+  "selectors": [],
   "exclusions": []
 }

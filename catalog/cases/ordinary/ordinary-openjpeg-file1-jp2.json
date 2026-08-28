@@ -14,7 +14,6 @@
       "compression.unknown",
       "format.jp2",
       "frames.single",
-      "http.range",
       "image.bit-depth.unknown",
       "image.color.unknown",
       "image.sample.unknown",
@@ -62,10 +61,14 @@
     "deidentified": "not-applicable",
     "notes": ["No human-derived medical data."]
   },
+  "certification": {
+    "status": "uncertified",
+    "evidence": []
+  },
   "expected": {
     "classification": "valid",
     "outcome": "success",
-    "operations": ["metadata", "full-decode", "range-read"],
+    "operations": ["metadata", "full-decode"],
     "comparison": {
       "method": "structural"
     },
@@ -84,7 +87,6 @@
       "compression.unknown",
       "format.jp2",
       "frames.single",
-      "http.range",
       "image.bit-depth.unknown",
       "image.color.unknown",
       "image.sample.unknown",
@@ -94,6 +96,5 @@
     "selectionReason": "Exercises the real jp2 reader with independently hashed upstream bytes.",
     "priority": "high"
   },
-  "collections": ["ordinary-conformance", "large-range"],
   "notes": ["External because asset-level redistribution rights are not established."]
 }

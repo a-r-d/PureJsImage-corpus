@@ -12,18 +12,13 @@
     "features": [
       "axes.xy",
       "compression.none",
-      "compression.unknown",
       "endian.big",
       "format.srtm-hgt",
       "frames.single",
       "geo.filename-location",
-      "http.range",
       "image.bit-depth.16",
-      "image.bit-depth.unknown",
       "image.color.gray",
-      "image.color.unknown",
       "image.sample.signed",
-      "image.sample.unknown",
       "layout.single-file",
       "purejsimage.reader.srtm-hgt"
     ]
@@ -70,40 +65,43 @@
     "deidentified": "not-applicable",
     "notes": ["No human-derived medical data."]
   },
+  "certification": {
+    "status": "generator-reviewed",
+    "evidence": []
+  },
   "expected": {
     "classification": "invalid",
     "outcome": "reject",
-    "operations": ["metadata", "full-decode", "range-read"],
+    "operations": ["metadata", "full-decode"],
     "comparison": {
       "method": "structural"
     },
-    "metadata": {
-      "target": "negative.wrong-size"
-    },
+    "metadata": {},
     "resourceLimits": {
       "timeoutMs": 5000,
       "maxInputBytes": 1000,
       "maxDecodedPixels": 100000000,
       "maxFrames": 1000,
       "maxHeapMiB": 512
+    },
+    "error": {
+      "allowedOperations": ["probe"],
+      "allowedCodes": ["INVALID_INPUT"],
+      "mustRecognizeFormat": true,
+      "messageIncludes": ["size"]
     }
   },
   "coverage": {
     "features": [
       "axes.xy",
       "compression.none",
-      "compression.unknown",
       "endian.big",
       "format.srtm-hgt",
       "frames.single",
       "geo.filename-location",
-      "http.range",
       "image.bit-depth.16",
-      "image.bit-depth.unknown",
       "image.color.gray",
-      "image.color.unknown",
       "image.sample.signed",
-      "image.sample.unknown",
       "layout.single-file",
       "negative.graceful-rejection",
       "negative.wrong-size",
@@ -112,7 +110,6 @@
     "selectionReason": "Requires bounded graceful rejection for negative.wrong-size.",
     "priority": "critical"
   },
-  "collections": ["negative", "fuzz-regressions"],
   "notes": [
     "Truncate an HGT tile to a nonstandard byte size.",
     "A crash, hang, panic, or unbounded allocation is a failure."

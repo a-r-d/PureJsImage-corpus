@@ -79,6 +79,7 @@ function corpusCase(id = 'ordinary/test/base'): CorpusCase {
       deidentified: 'not-applicable',
       notes: [],
     },
+    certification: { status: 'uncertified', evidence: [] },
     expected: {
       classification: 'valid',
       outcome: 'success',
@@ -98,7 +99,6 @@ function corpusCase(id = 'ordinary/test/base'): CorpusCase {
       selectionReason: 'Tests validation.',
       priority: 'high',
     },
-    collections: ['test'],
     notes: [],
   };
 }
@@ -134,6 +134,40 @@ describe('schema and semantic validation', () => {
     expect(validators.case({ ...value, placeholder: true })).toBe(false);
   });
 
+  it('requires evidence for oracle certification and exact comparison hashes', async () => {
+    const singleOracle = corpusCase();
+    singleOracle.certification.status = 'single-oracle';
+    let issues = await validateSemantics(catalog([singleOracle]), '/does-not-matter');
+    expect(issues.some((item) => item.message.includes('certification lacks evidence'))).toBe(true);
+
+    const exact = corpusCase();
+    exact.expected.comparison = {
+      method: 'exact',
+      canonical: 'rgba8-srgb-v1',
+      sha256: '11'.repeat(32),
+    };
+    issues = await validateSemantics(catalog([exact]), '/does-not-matter');
+    expect(issues.some((item) => item.message.includes('matching certification evidence'))).toBe(
+      true,
+    );
+  });
+
+  it('keeps uncertified cases out of the strict smoke collection', async () => {
+    const issues = await validateSemantics(catalog(), '/does-not-matter');
+    expect(issues.some((item) => item.message.includes('uncertified case in strict smoke'))).toBe(
+      false,
+    );
+
+    const testCatalog = catalog();
+    const firstCollection = testCatalog.collections[0];
+    if (!firstCollection) throw new Error('Semantic fixture has no collection');
+    testCatalog.collections[0] = { ...firstCollection, id: 'smoke' };
+    const smokeIssues = await validateSemantics(testCatalog, '/does-not-matter');
+    expect(
+      smokeIssues.some((item) => item.message.includes('uncertified case in strict smoke')),
+    ).toBe(true);
+  });
+
   it.each(['../escape', '/absolute', 'C:/drive', 'a\\b', 'a//b', 'a/./b', 'a/../b'])(
     'rejects unsafe paths: %s',
     (path) => expect(isSafeRelativePath(path)).toBe(false),
@@ -167,7 +201,7 @@ describe('schema and semantic validation', () => {
         expect.stringContaining('entrypoint is not an asset'),
         expect.stringContaining('unsafe asset path'),
         expect.stringContaining('unknown source'),
-        expect.stringContaining('floating GitHub'),
+        expect.stringContaining('unpinned GitHub'),
       ]),
     );
   });

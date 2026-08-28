@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import { createHash } from 'node:crypto';
+import { createReadStream } from 'node:fs';
 import { readFile, stat } from 'node:fs/promises';
 import { join } from 'node:path';
 import { Command } from 'commander';
@@ -97,9 +98,9 @@ casesOption(program.command('verify'))
               })
             : join(fromRoot(), 'assets/vendored/sha256', asset.sha256.slice(0, 2), asset.sha256);
         const info = await stat(path);
-        const actual = createHash('sha256')
-          .update(await readFile(path))
-          .digest('hex');
+        const hash = createHash('sha256');
+        for await (const chunk of createReadStream(path)) hash.update(chunk as Buffer);
+        const actual = hash.digest('hex');
         if (info.size !== asset.bytes || actual !== asset.sha256)
           throw new Error(`Verification failed: ${corpusCase.id}/${asset.path}`);
       }

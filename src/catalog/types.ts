@@ -96,6 +96,24 @@ export interface CorpusCase {
     deidentified: 'yes' | 'no' | 'unknown' | 'not-applicable';
     notes: string[];
   };
+  certification: {
+    status:
+      | 'uncertified'
+      | 'generator-reviewed'
+      | 'single-oracle'
+      | 'multi-oracle'
+      | 'upstream-conformance-vector'
+      | 'spec-derived';
+    evidence: Array<{
+      implementation: string;
+      version: string;
+      containerDigest?: string;
+      operation: string;
+      result: 'success' | 'reject' | 'implementation-defined';
+      canonicalOutputSha256?: string;
+      notes?: string;
+    }>;
+  };
   expected: {
     classification: 'valid' | 'invalid' | 'nonconformant' | 'crash-regression';
     outcome: 'success' | 'reject' | 'implementation-defined';
@@ -112,7 +130,7 @@ export interface CorpusCase {
       | { method: 'structural' }
       | {
           method: 'exact';
-          canonical: 'rgba8-srgb-v1' | 'ndarray-v1' | 'metadata-json-v1';
+          canonical: 'rgba8-decoder-v1' | 'rgba8-srgb-v1' | 'ndarray-v1' | 'metadata-json-v1';
           sha256: string;
         }
       | {
@@ -123,6 +141,12 @@ export interface CorpusCase {
           alphaExact: boolean;
         };
     metadata: Record<string, string | number | boolean | null>;
+    error?: {
+      allowedOperations: string[];
+      allowedCodes: string[];
+      mustRecognizeFormat: boolean;
+      messageIncludes: string[];
+    };
     resourceLimits: {
       timeoutMs: number;
       maxInputBytes: number;
@@ -137,7 +161,6 @@ export interface CorpusCase {
     priority: 'critical' | 'high' | 'medium' | 'low';
     redundancyGroup?: string;
   };
-  collections: string[];
   relationships?: Array<{
     type:
       | 'parent'

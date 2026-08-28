@@ -12,20 +12,15 @@
     "features": [
       "axes.xy",
       "compression.none",
-      "compression.unknown",
       "directory-tree",
       "endian.little",
       "format.geozarr",
       "frames.single",
       "geo.affine",
       "geo.crs",
-      "http.range",
       "image.bit-depth.16",
-      "image.bit-depth.unknown",
       "image.color.gray",
-      "image.color.unknown",
       "image.sample.signed",
-      "image.sample.unknown",
       "layout.directory-tree",
       "purejsimage.reader.geozarr"
     ]
@@ -82,42 +77,45 @@
     "deidentified": "not-applicable",
     "notes": ["No human-derived medical data."]
   },
+  "certification": {
+    "status": "generator-reviewed",
+    "evidence": []
+  },
   "expected": {
     "classification": "invalid",
     "outcome": "reject",
-    "operations": ["metadata", "full-decode", "range-read"],
+    "operations": ["metadata", "full-decode"],
     "comparison": {
       "method": "structural"
     },
-    "metadata": {
-      "target": "negative.invalid-directory-metadata"
-    },
+    "metadata": {},
     "resourceLimits": {
       "timeoutMs": 5000,
       "maxInputBytes": 667,
       "maxDecodedPixels": 100000000,
       "maxFrames": 1000,
       "maxHeapMiB": 512
+    },
+    "error": {
+      "allowedOperations": ["probe"],
+      "allowedCodes": ["INVALID_INPUT"],
+      "mustRecognizeFormat": true,
+      "messageIncludes": ["metadata"]
     }
   },
   "coverage": {
     "features": [
       "axes.xy",
       "compression.none",
-      "compression.unknown",
       "directory-tree",
       "endian.little",
       "format.geozarr",
       "frames.single",
       "geo.affine",
       "geo.crs",
-      "http.range",
       "image.bit-depth.16",
-      "image.bit-depth.unknown",
       "image.color.gray",
-      "image.color.unknown",
       "image.sample.signed",
-      "image.sample.unknown",
       "layout.directory-tree",
       "negative.graceful-rejection",
       "negative.invalid-directory-metadata",
@@ -126,7 +124,6 @@
     "selectionReason": "Requires bounded graceful rejection for negative.invalid-directory-metadata.",
     "priority": "critical"
   },
-  "collections": ["negative", "fuzz-regressions"],
   "notes": [
     "Replace the root JSON object delimiter.",
     "A crash, hang, panic, or unbounded allocation is a failure."

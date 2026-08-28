@@ -12,16 +12,11 @@
     "features": [
       "axes.xy",
       "compression.none",
-      "compression.unknown",
       "endian.little",
       "format.ome-tiff",
       "frames.single",
-      "http.range",
       "image.bit-depth.8",
-      "image.bit-depth.unknown",
       "image.color.gray",
-      "image.color.unknown",
-      "image.sample.unknown",
       "image.sample.unsigned",
       "layout.single-file",
       "metadata.ome-xml",
@@ -68,16 +63,18 @@
     "deidentified": "not-applicable",
     "notes": ["No human-derived medical data."]
   },
+  "certification": {
+    "status": "generator-reviewed",
+    "evidence": []
+  },
   "expected": {
     "classification": "valid",
     "outcome": "success",
-    "operations": ["metadata", "full-decode", "range-read"],
+    "operations": ["metadata", "full-decode"],
     "comparison": {
       "method": "structural"
     },
-    "metadata": {
-      "generator": "ome-tiff"
-    },
+    "metadata": {},
     "resourceLimits": {
       "timeoutMs": 5000,
       "maxInputBytes": 306,
@@ -90,16 +87,11 @@
     "features": [
       "axes.xy",
       "compression.none",
-      "compression.unknown",
       "endian.little",
       "format.ome-tiff",
       "frames.single",
-      "http.range",
       "image.bit-depth.8",
-      "image.bit-depth.unknown",
       "image.color.gray",
-      "image.color.unknown",
-      "image.sample.unknown",
       "image.sample.unsigned",
       "layout.single-file",
       "metadata.ome-xml",
@@ -108,6 +100,5 @@
     "selectionReason": "Provides a small independently written ome-tiff case for ome-tiff.",
     "priority": "high"
   },
-  "collections": ["smoke", "scientific-small"],
   "notes": ["The generator is independent of PureJsImage codec implementations."]
 }

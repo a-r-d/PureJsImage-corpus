@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "negative/tiff/overlapping-regions",
-  "caseRevision": 1,
+  "caseRevision": 2,
   "title": "Point TIFF strip bytes into the IFD.",
   "description": "Point TIFF strip bytes into the IFD.",
   "domain": "negative",
@@ -12,16 +12,11 @@
     "features": [
       "axes.xy",
       "compression.none",
-      "compression.unknown",
       "endian.little",
       "format.tiff",
       "frames.single",
-      "http.range",
       "image.bit-depth.8",
-      "image.bit-depth.unknown",
       "image.color.gray",
-      "image.color.unknown",
-      "image.sample.unknown",
       "image.sample.unsigned",
       "layout.single-file",
       "purejsimage.reader.tiff"
@@ -69,16 +64,18 @@
     "deidentified": "not-applicable",
     "notes": ["No human-derived medical data."]
   },
+  "certification": {
+    "status": "generator-reviewed",
+    "evidence": []
+  },
   "expected": {
-    "classification": "invalid",
-    "outcome": "reject",
-    "operations": ["metadata", "full-decode", "range-read"],
+    "classification": "nonconformant",
+    "outcome": "implementation-defined",
+    "operations": ["metadata", "full-decode"],
     "comparison": {
       "method": "structural"
     },
-    "metadata": {
-      "target": "negative.overlapping-regions"
-    },
+    "metadata": {},
     "resourceLimits": {
       "timeoutMs": 5000,
       "maxInputBytes": 138,
@@ -91,16 +88,11 @@
     "features": [
       "axes.xy",
       "compression.none",
-      "compression.unknown",
       "endian.little",
       "format.tiff",
       "frames.single",
-      "http.range",
       "image.bit-depth.8",
-      "image.bit-depth.unknown",
       "image.color.gray",
-      "image.color.unknown",
-      "image.sample.unknown",
       "image.sample.unsigned",
       "layout.single-file",
       "negative.graceful-rejection",
@@ -110,9 +102,9 @@
     "selectionReason": "Requires bounded graceful rejection for negative.overlapping-regions.",
     "priority": "critical"
   },
-  "collections": ["negative", "fuzz-regressions"],
   "notes": [
     "Point TIFF strip bytes into the IFD.",
+    "Acceptance is implementation-defined until specification and independent-reader review establish whether overlapping TIFF regions are forbidden.",
     "A crash, hang, panic, or unbounded allocation is a failure."
   ],
   "relationships": [

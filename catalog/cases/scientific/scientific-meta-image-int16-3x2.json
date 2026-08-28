@@ -13,17 +13,12 @@
       "axes.xy",
       "companion-files",
       "compression.none",
-      "compression.unknown",
       "endian.little",
       "format.meta-image",
       "frames.single",
-      "http.range",
       "image.bit-depth.16",
-      "image.bit-depth.unknown",
       "image.color.gray",
-      "image.color.unknown",
       "image.sample.signed",
-      "image.sample.unknown",
       "layout.companion-set",
       "purejsimage.reader.meta-image"
     ]
@@ -78,16 +73,18 @@
     "deidentified": "not-applicable",
     "notes": ["No human-derived medical data."]
   },
+  "certification": {
+    "status": "generator-reviewed",
+    "evidence": []
+  },
   "expected": {
     "classification": "valid",
     "outcome": "success",
-    "operations": ["metadata", "full-decode", "range-read"],
+    "operations": ["metadata", "full-decode"],
     "comparison": {
       "method": "structural"
     },
-    "metadata": {
-      "generator": "meta-image"
-    },
+    "metadata": {},
     "resourceLimits": {
       "timeoutMs": 5000,
       "maxInputBytes": 134,
@@ -101,23 +98,17 @@
       "axes.xy",
       "companion-files",
       "compression.none",
-      "compression.unknown",
       "endian.little",
       "format.meta-image",
       "frames.single",
-      "http.range",
       "image.bit-depth.16",
-      "image.bit-depth.unknown",
       "image.color.gray",
-      "image.color.unknown",
       "image.sample.signed",
-      "image.sample.unknown",
       "layout.companion-set",
       "purejsimage.reader.meta-image"
     ],
     "selectionReason": "Provides a small independently written meta-image case for meta-image.",
     "priority": "high"
   },
-  "collections": ["smoke", "scientific-small", "directory-formats"],
   "notes": ["The generator is independent of PureJsImage codec implementations."]
 }

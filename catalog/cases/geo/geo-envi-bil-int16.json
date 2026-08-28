@@ -13,18 +13,13 @@
       "axes.xy",
       "companion-files",
       "compression.none",
-      "compression.unknown",
       "endian.little",
       "format.geo-envi",
       "frames.single",
       "geo.crs",
-      "http.range",
       "image.bit-depth.16",
-      "image.bit-depth.unknown",
       "image.color.multiband",
-      "image.color.unknown",
       "image.sample.signed",
-      "image.sample.unknown",
       "interleave.bil",
       "layout.companion-set",
       "purejsimage.reader.geo-envi"
@@ -80,16 +75,18 @@
     "deidentified": "not-applicable",
     "notes": ["No human-derived medical data."]
   },
+  "certification": {
+    "status": "generator-reviewed",
+    "evidence": []
+  },
   "expected": {
     "classification": "valid",
     "outcome": "success",
-    "operations": ["metadata", "full-decode", "range-read"],
+    "operations": ["metadata", "full-decode"],
     "comparison": {
       "method": "structural"
     },
-    "metadata": {
-      "generator": "envi"
-    },
+    "metadata": {},
     "resourceLimits": {
       "timeoutMs": 5000,
       "maxInputBytes": 265,
@@ -103,18 +100,13 @@
       "axes.xy",
       "companion-files",
       "compression.none",
-      "compression.unknown",
       "endian.little",
       "format.geo-envi",
       "frames.single",
       "geo.crs",
-      "http.range",
       "image.bit-depth.16",
-      "image.bit-depth.unknown",
       "image.color.multiband",
-      "image.color.unknown",
       "image.sample.signed",
-      "image.sample.unknown",
       "interleave.bil",
       "layout.companion-set",
       "purejsimage.reader.geo-envi"
@@ -122,6 +114,5 @@
     "selectionReason": "Provides a small independently written geo-envi case for geo-envi.",
     "priority": "high"
   },
-  "collections": ["smoke", "geo-small", "directory-formats"],
   "notes": ["The generator is independent of PureJsImage codec implementations."]
 }

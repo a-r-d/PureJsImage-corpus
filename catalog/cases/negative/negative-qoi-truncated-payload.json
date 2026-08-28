@@ -12,15 +12,10 @@
     "features": [
       "axes.xy",
       "compression.qoi",
-      "compression.unknown",
       "format.qoi",
       "frames.single",
-      "http.range",
       "image.bit-depth.8",
-      "image.bit-depth.unknown",
       "image.color.rgba",
-      "image.color.unknown",
-      "image.sample.unknown",
       "image.sample.unsigned",
       "layout.single-file",
       "purejsimage.reader.qoi"
@@ -68,37 +63,40 @@
     "deidentified": "not-applicable",
     "notes": ["No human-derived medical data."]
   },
+  "certification": {
+    "status": "generator-reviewed",
+    "evidence": []
+  },
   "expected": {
     "classification": "invalid",
     "outcome": "reject",
-    "operations": ["metadata", "full-decode", "range-read"],
+    "operations": ["metadata", "full-decode"],
     "comparison": {
       "method": "structural"
     },
-    "metadata": {
-      "target": "negative.truncated-payload"
-    },
+    "metadata": {},
     "resourceLimits": {
       "timeoutMs": 5000,
       "maxInputBytes": 19,
       "maxDecodedPixels": 100000000,
       "maxFrames": 1000,
       "maxHeapMiB": 512
+    },
+    "error": {
+      "allowedOperations": ["metadata", "full-decode-all-frames-to-canonical-rgba8"],
+      "allowedCodes": ["TRUNCATED_INPUT"],
+      "mustRecognizeFormat": true,
+      "messageIncludes": ["truncated"]
     }
   },
   "coverage": {
     "features": [
       "axes.xy",
       "compression.qoi",
-      "compression.unknown",
       "format.qoi",
       "frames.single",
-      "http.range",
       "image.bit-depth.8",
-      "image.bit-depth.unknown",
       "image.color.rgba",
-      "image.color.unknown",
-      "image.sample.unknown",
       "image.sample.unsigned",
       "layout.single-file",
       "negative.graceful-rejection",
@@ -108,7 +106,6 @@
     "selectionReason": "Requires bounded graceful rejection for negative.truncated-payload.",
     "priority": "critical"
   },
-  "collections": ["negative", "fuzz-regressions"],
   "notes": [
     "Truncate after the first QOI pixel.",
     "A crash, hang, panic, or unbounded allocation is a failure."

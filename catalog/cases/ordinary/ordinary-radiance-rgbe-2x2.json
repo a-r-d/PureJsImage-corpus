@@ -12,16 +12,11 @@
     "features": [
       "axes.xy",
       "compression.rle",
-      "compression.unknown",
       "format.radiance-hdr",
       "frames.single",
-      "http.range",
       "image.bit-depth.8",
-      "image.bit-depth.unknown",
       "image.color.rgbe",
-      "image.color.unknown",
       "image.sample.float",
-      "image.sample.unknown",
       "layout.single-file",
       "purejsimage.reader.radiance-hdr"
     ]
@@ -66,16 +61,18 @@
     "deidentified": "not-applicable",
     "notes": ["No human-derived medical data."]
   },
+  "certification": {
+    "status": "generator-reviewed",
+    "evidence": []
+  },
   "expected": {
     "classification": "valid",
     "outcome": "success",
-    "operations": ["metadata", "full-decode", "range-read"],
+    "operations": ["metadata", "full-decode"],
     "comparison": {
       "method": "structural"
     },
-    "metadata": {
-      "generator": "radiance-rgbe"
-    },
+    "metadata": {},
     "resourceLimits": {
       "timeoutMs": 5000,
       "maxInputBytes": 79,
@@ -88,22 +85,16 @@
     "features": [
       "axes.xy",
       "compression.rle",
-      "compression.unknown",
       "format.radiance-hdr",
       "frames.single",
-      "http.range",
       "image.bit-depth.8",
-      "image.bit-depth.unknown",
       "image.color.rgbe",
-      "image.color.unknown",
       "image.sample.float",
-      "image.sample.unknown",
       "layout.single-file",
       "purejsimage.reader.radiance-hdr"
     ],
     "selectionReason": "Provides a small independently written radiance-hdr case for radiance-hdr.",
     "priority": "high"
   },
-  "collections": ["smoke", "ordinary-conformance"],
   "notes": ["The generator is independent of PureJsImage codec implementations."]
 }

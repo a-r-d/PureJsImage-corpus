@@ -24,15 +24,84 @@ function isUnsupported(worker: PureJsImageWorkerResult): boolean {
   );
 }
 
+export interface ExpectationEvaluation {
+  verdict: PureJsImageVerdict;
+  failures: string[];
+}
+
+export function evaluateResult(
+  corpusCase: CorpusCase,
+  worker: PureJsImageWorkerResult,
+): ExpectationEvaluation {
+  if (worker.kind === 'error') {
+    if (corpusCase.expected.outcome === 'implementation-defined') {
+      return { verdict: 'pass', failures: [] };
+    }
+    if (corpusCase.expected.outcome !== 'reject') {
+      return { verdict: isUnsupported(worker) ? 'unsupported' : 'fail', failures: [] };
+    }
+    const contract = corpusCase.expected.error;
+    if (!contract) {
+      return { verdict: 'fail', failures: ['Expected rejection has no error contract'] };
+    }
+    const failures: string[] = [];
+    if (contract.mustRecognizeFormat && isUnsupported(worker)) {
+      failures.push('Reader did not recognize the expected format');
+    }
+    if (!contract.allowedOperations.includes(worker.operation)) {
+      failures.push(`Error occurred during unexpected operation ${worker.operation}`);
+    }
+    if (!worker.error.code || !contract.allowedCodes.includes(worker.error.code)) {
+      failures.push(`Unexpected error code ${worker.error.code ?? '(missing)'}`);
+    }
+    const message = worker.error.message.toLowerCase();
+    for (const expectedText of contract.messageIncludes) {
+      if (!message.includes(expectedText.toLowerCase())) {
+        failures.push(`Error message does not identify ${expectedText}`);
+      }
+    }
+    return { verdict: failures.length === 0 ? 'pass' : 'fail', failures };
+  }
+
+  if (corpusCase.expected.outcome === 'reject') {
+    return { verdict: 'fail', failures: ['Expected rejection, but decoding succeeded'] };
+  }
+  if (corpusCase.expected.outcome === 'implementation-defined') {
+    return { verdict: 'pass', failures: [] };
+  }
+  const failures: string[] = [];
+  for (const operation of corpusCase.expected.operations) {
+    if (!worker.executedOperations.includes(operation)) {
+      failures.push(`Expected operation was not executed: ${operation}`);
+    }
+  }
+  for (const [key, expected] of Object.entries(corpusCase.expected.metadata)) {
+    if (!Object.is(worker.metadata[key], expected)) {
+      failures.push(
+        `Metadata ${key} expected ${JSON.stringify(expected)}, received ${JSON.stringify(worker.metadata[key])}`,
+      );
+    }
+  }
+  if (corpusCase.expected.comparison.method === 'exact') {
+    if (worker.canonical !== corpusCase.expected.comparison.canonical) {
+      failures.push(
+        `Canonical output expected ${corpusCase.expected.comparison.canonical}, received ${worker.canonical ?? '(missing)'}`,
+      );
+    }
+    if (worker.outputSha256 !== corpusCase.expected.comparison.sha256) {
+      failures.push('Canonical output SHA-256 does not match');
+    }
+  } else if (corpusCase.expected.comparison.method === 'tolerance') {
+    failures.push('Tolerance comparison requires an independent reference output');
+  }
+  return { verdict: failures.length === 0 ? 'pass' : 'fail', failures };
+}
+
 export function verdictFor(
   corpusCase: CorpusCase,
   worker: PureJsImageWorkerResult,
 ): PureJsImageVerdict {
-  if (worker.kind === 'success') {
-    return corpusCase.expected.outcome === 'reject' ? 'fail' : 'pass';
-  }
-  if (corpusCase.expected.outcome === 'reject') return 'pass';
-  return isUnsupported(worker) ? 'unsupported' : 'fail';
+  return evaluateResult(corpusCase, worker).verdict;
 }
 
 export function summarizeResults(results: PureJsImageCaseResult[], durationMs: number) {
@@ -54,12 +123,18 @@ function markdownCell(value: string): string {
 
 function resultMessage(result: PureJsImageCaseResult): string {
   if (result.worker?.kind === 'error') {
-    return `${result.worker.error.code ? `${result.worker.error.code}: ` : ''}${result.worker.error.message}`;
+    const failures = result.expectationFailures?.length
+      ? `; expectation failures: ${result.expectationFailures.join('; ')}`
+      : '';
+    return `${result.worker.error.code ? `${result.worker.error.code}: ` : ''}${result.worker.error.message}${failures}`;
   }
   if (result.error)
     return `${result.error.code ? `${result.error.code}: ` : ''}${result.error.message}`;
   if (result.worker?.kind === 'success') {
-    return `${result.worker.implementation}; ${result.worker.operation}; ${result.worker.outputBytes} output bytes`;
+    const failures = result.expectationFailures?.length
+      ? `; expectation failures: ${result.expectationFailures.join('; ')}`
+      : '';
+    return `${result.worker.implementation}; ${result.worker.operation}; ${result.worker.outputBytes} output bytes${failures}`;
   }
   return '';
 }

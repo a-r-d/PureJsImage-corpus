@@ -1,5 +1,6 @@
 import { createHash } from 'node:crypto';
-import { readFile, stat } from 'node:fs/promises';
+import { createReadStream } from 'node:fs';
+import { stat } from 'node:fs/promises';
 import { isAbsolute, win32 } from 'node:path';
 import type { Catalog, CorpusCase } from '../catalog/types.js';
 import { selectCollection } from '../catalog/load.js';
@@ -23,12 +24,45 @@ export function isSafeRelativePath(path: string): boolean {
   );
 }
 
-function hasExplicitDuplicateRelationship(candidate: CorpusCase, other: CorpusCase): boolean {
-  return Boolean(
-    candidate.relationships?.length ||
-      other.relationships?.length ||
-      candidate.relationships?.some((relationship) => relationship.caseId === other.id) ||
-      other.relationships?.some((relationship) => relationship.caseId === candidate.id),
+function hasExplicitDuplicateRelationship(
+  candidate: CorpusCase,
+  other: CorpusCase,
+  hash: string,
+  casesById: ReadonlyMap<string, CorpusCase>,
+): boolean {
+  if (
+    candidate.relationships?.some((relationship) => relationship.caseId === other.id) ||
+    other.relationships?.some((relationship) => relationship.caseId === candidate.id)
+  ) {
+    return true;
+  }
+  const otherParents = new Set(
+    (other.relationships ?? [])
+      .filter((relationship) => relationship.type === 'mutated-from')
+      .map((relationship) => relationship.caseId),
+  );
+  return (candidate.relationships ?? []).some(
+    (relationship) =>
+      relationship.type === 'mutated-from' &&
+      otherParents.has(relationship.caseId) &&
+      casesById.get(relationship.caseId)?.assets.some((asset) => asset.sha256 === hash),
+  );
+}
+
+function githubAssetIsPinned(value: string): boolean {
+  const url = new URL(value);
+  const parts = url.pathname.split('/').filter(Boolean);
+  if (url.hostname === 'raw.githubusercontent.com') return /^[0-9a-f]{40}$/u.test(parts[2] ?? '');
+  if (url.hostname === 'github.com' && (parts[2] === 'blob' || parts[2] === 'tree')) {
+    return /^[0-9a-f]{40}$/u.test(parts[3] ?? '');
+  }
+  return true;
+}
+
+function contradictoryUnknown(features: Set<string>, prefix: string): boolean {
+  return (
+    features.has(`${prefix}unknown`) &&
+    [...features].some((feature) => feature.startsWith(prefix) && feature !== `${prefix}unknown`)
   );
 }
 
@@ -46,8 +80,9 @@ async function validateBlob(
     if (info.size !== asset.bytes) {
       return [issue(location, `byte-size mismatch: catalog=${asset.bytes}, file=${info.size}`)];
     }
-    const bytes = await readFile(path);
-    const actual = createHash('sha256').update(bytes).digest('hex');
+    const hash = createHash('sha256');
+    for await (const chunk of createReadStream(path)) hash.update(chunk as Buffer);
+    const actual = hash.digest('hex');
     return actual === asset.sha256
       ? []
       : [issue(location, `checksum mismatch: catalog=${asset.sha256}, file=${actual}`)];
@@ -74,12 +109,16 @@ export async function validateSemantics(
     collectionIds.add(collection.id);
   }
   const caseIds = new Set<string>();
+  const casesById = new Map(catalog.cases.map((corpusCase) => [corpusCase.id, corpusCase]));
   const hashes = new Map<string, CorpusCase>();
   const taxonomy = new Set(catalog.features);
   for (const corpusCase of catalog.cases) {
     if (caseIds.has(corpusCase.id)) issues.push(issue(corpusCase.id, 'duplicate case ID'));
     caseIds.add(corpusCase.id);
     const paths = new Set(corpusCase.assets.map((asset) => asset.path));
+    if (!catalog.formats.includes(corpusCase.format.family)) {
+      issues.push(issue(corpusCase.id, `unknown format family: ${corpusCase.format.family}`));
+    }
     if (!paths.has(corpusCase.layout.entrypoint)) {
       issues.push(
         issue(corpusCase.id, `entrypoint is not an asset: ${corpusCase.layout.entrypoint}`),
@@ -98,16 +137,64 @@ export async function validateSemantics(
         issue(corpusCase.id, `unknown provenance source: ${corpusCase.provenance.sourceId}`),
       );
     }
-    for (const collection of corpusCase.collections) {
-      if (!collectionIds.has(collection))
-        issues.push(issue(corpusCase.id, `unknown collection: ${collection}`));
-    }
-    for (const feature of new Set([
+    const claimedFeatures = new Set([
       ...corpusCase.format.features,
       ...corpusCase.coverage.features,
-    ])) {
+    ]);
+    for (const feature of claimedFeatures) {
       if (!taxonomy.has(feature))
         issues.push(issue(corpusCase.id, `unknown feature claim: ${feature}`));
+    }
+    for (const prefix of ['image.bit-depth.', 'image.sample.', 'image.color.', 'compression.']) {
+      if (contradictoryUnknown(claimedFeatures, prefix)) {
+        issues.push(
+          issue(corpusCase.id, `known and unknown feature claims conflict for ${prefix}`),
+        );
+      }
+    }
+    for (const feature of corpusCase.format.features) {
+      if (!corpusCase.coverage.features.includes(feature)) {
+        issues.push(issue(corpusCase.id, `format feature is missing from coverage: ${feature}`));
+      }
+    }
+    if (corpusCase.expected.outcome === 'reject' && !corpusCase.expected.error) {
+      issues.push(issue(corpusCase.id, 'expected rejection lacks an explicit error contract'));
+    }
+    if (corpusCase.expected.outcome !== 'reject' && corpusCase.expected.error) {
+      issues.push(issue(corpusCase.id, 'non-rejection case has an error contract'));
+    }
+    const certification = corpusCase.certification;
+    if (
+      certification.status !== 'uncertified' &&
+      certification.status !== 'generator-reviewed' &&
+      certification.evidence.length === 0
+    ) {
+      issues.push(issue(corpusCase.id, `${certification.status} certification lacks evidence`));
+    }
+    if (certification.status === 'multi-oracle') {
+      const implementations = new Set(
+        certification.evidence.map((entry) => `${entry.implementation}@${entry.version}`),
+      );
+      if (implementations.size < 2) {
+        issues.push(
+          issue(corpusCase.id, 'multi-oracle certification requires two implementations'),
+        );
+      }
+    }
+    if (corpusCase.expected.comparison.method === 'exact') {
+      const expectedHash = corpusCase.expected.comparison.sha256;
+      const supported = certification.evidence.some(
+        (entry) => entry.canonicalOutputSha256 === expectedHash,
+      );
+      if (!supported) {
+        issues.push(issue(corpusCase.id, 'exact comparison lacks matching certification evidence'));
+      }
+    }
+    if (
+      corpusCase.expected.operations.includes('range-read') ||
+      corpusCase.coverage.features.includes('http.range')
+    ) {
+      issues.push(issue(corpusCase.id, 'HTTP Range claims require an implemented execution plan'));
     }
     for (const [assetIndex, asset] of corpusCase.assets.entries()) {
       if (!sourceIds.has(asset.sourceId))
@@ -118,8 +205,8 @@ export async function validateSemantics(
         issues.push(issue(corpusCase.id, `external asset lacks resolvedUrl: ${asset.path}`));
       }
       for (const url of [asset.resolvedUrl, ...(asset.mirrors ?? [])]) {
-        if (url && /github(?:usercontent)?\.com\/.*\/(?:main|master)\//i.test(url)) {
-          issues.push(issue(corpusCase.id, `floating GitHub asset URL: ${url}`));
+        if (url && !githubAssetIsPinned(url)) {
+          issues.push(issue(corpusCase.id, `unpinned GitHub asset URL: ${url}`));
         }
       }
       if (asset.storage !== 'external' && corpusCase.rights.redistribution !== 'allowed') {
@@ -134,7 +221,7 @@ export async function validateSemantics(
       if (
         previous &&
         previous.id !== corpusCase.id &&
-        !hasExplicitDuplicateRelationship(corpusCase, previous)
+        !hasExplicitDuplicateRelationship(corpusCase, previous, asset.sha256, casesById)
       ) {
         issues.push(
           issue(corpusCase.id, `duplicate blob ${asset.sha256} also used by ${previous.id}`),
@@ -144,13 +231,19 @@ export async function validateSemantics(
       }
       issues.push(...(await validateBlob(root, corpusCase, assetIndex)));
     }
-    const isMedical = corpusCase.format.family === 'dicom' || corpusCase.privacy.containsHumanData;
-    if (isMedical && corpusCase.privacy.reviewStatus === 'pending') {
-      if (corpusCase.assets.some((asset) => asset.storage !== 'external')) {
-        issues.push(
-          issue(corpusCase.id, 'medical data pending privacy review must remain external'),
-        );
-      }
+    const requiresPrivacyReview =
+      corpusCase.format.family === 'dicom' || corpusCase.privacy.containsHumanData;
+    const hasLocalAsset = corpusCase.assets.some((asset) => asset.storage !== 'external');
+    if (
+      hasLocalAsset &&
+      (corpusCase.privacy.reviewStatus === 'pending' ||
+        corpusCase.privacy.reviewStatus === 'failed' ||
+        corpusCase.privacy.phi === 'present' ||
+        (requiresPrivacyReview && corpusCase.privacy.reviewStatus !== 'passed'))
+    ) {
+      issues.push(
+        issue(corpusCase.id, 'privacy-sensitive or unreviewed data must remain external'),
+      );
     }
   }
   for (const corpusCase of catalog.cases) {
@@ -165,7 +258,15 @@ export async function validateSemantics(
     }
     const vendoredHashes = new Set<string>();
     let bytes = 0;
-    for (const corpusCase of selectCollection(catalog, collection.id)) {
+    const selectedCases = selectCollection(catalog, collection.id);
+    if (collection.id === 'smoke' || collection.id.endsWith('-smoke')) {
+      for (const corpusCase of selectedCases) {
+        if (corpusCase.certification.status === 'uncertified') {
+          issues.push(issue(collection.id, `uncertified case in strict smoke: ${corpusCase.id}`));
+        }
+      }
+    }
+    for (const corpusCase of selectedCases) {
       for (const asset of corpusCase.assets) {
         if (asset.storage !== 'external' && !vendoredHashes.has(asset.sha256)) {
           vendoredHashes.add(asset.sha256);

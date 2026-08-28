@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "negative/meta-image/mismatched-dimensions",
-  "caseRevision": 1,
+  "caseRevision": 2,
   "title": "Change MHD dimensions without changing the RAW payload.",
   "description": "Change MHD dimensions without changing the RAW payload.",
   "domain": "negative",
@@ -13,17 +13,12 @@
       "axes.xy",
       "companion-files",
       "compression.none",
-      "compression.unknown",
       "endian.little",
       "format.meta-image",
       "frames.single",
-      "http.range",
       "image.bit-depth.16",
-      "image.bit-depth.unknown",
       "image.color.gray",
-      "image.color.unknown",
       "image.sample.signed",
-      "image.sample.unknown",
       "layout.companion-set",
       "purejsimage.reader.meta-image"
     ]
@@ -41,7 +36,7 @@
       "sourceId": "purejsimage-corpus-generated",
       "sourcePath": "recipes/mutations/negative-meta-image-mismatched-dimensions.json",
       "bytes": 122,
-      "sha256": "7260085e8ad2770a691da5f1751e6b12f1ee60931886e1c7901f8067b432abeb",
+      "sha256": "9d822c7bdd1c83356c99cbe318263d4056fcc4cd32ff1e90fffb2c3fea949237",
       "mediaType": "application/octet-stream",
       "derivedFrom": "f9292b77dd7de79a6d89ceb33f42b3c310495675eec5a19a337d1544df51c416"
     },
@@ -80,22 +75,30 @@
     "deidentified": "not-applicable",
     "notes": ["No human-derived medical data."]
   },
+  "certification": {
+    "status": "generator-reviewed",
+    "evidence": []
+  },
   "expected": {
     "classification": "invalid",
     "outcome": "reject",
-    "operations": ["metadata", "full-decode", "range-read"],
+    "operations": ["metadata", "full-decode"],
     "comparison": {
       "method": "structural"
     },
-    "metadata": {
-      "target": "negative.mismatched-companion-dimensions"
-    },
+    "metadata": {},
     "resourceLimits": {
       "timeoutMs": 5000,
       "maxInputBytes": 134,
       "maxDecodedPixels": 100000000,
       "maxFrames": 1000,
       "maxHeapMiB": 512
+    },
+    "error": {
+      "allowedOperations": ["open"],
+      "allowedCodes": ["INVALID_INPUT", "TRUNCATED_INPUT"],
+      "mustRecognizeFormat": true,
+      "messageIncludes": ["DimSize"]
     }
   },
   "coverage": {
@@ -103,17 +106,12 @@
       "axes.xy",
       "companion-files",
       "compression.none",
-      "compression.unknown",
       "endian.little",
       "format.meta-image",
       "frames.single",
-      "http.range",
       "image.bit-depth.16",
-      "image.bit-depth.unknown",
       "image.color.gray",
-      "image.color.unknown",
       "image.sample.signed",
-      "image.sample.unknown",
       "layout.companion-set",
       "negative.graceful-rejection",
       "negative.mismatched-companion-dimensions",
@@ -122,7 +120,6 @@
     "selectionReason": "Requires bounded graceful rejection for negative.mismatched-companion-dimensions.",
     "priority": "critical"
   },
-  "collections": ["negative", "fuzz-regressions"],
   "notes": [
     "Change MHD dimensions without changing the RAW payload.",
     "A crash, hang, panic, or unbounded allocation is a failure."

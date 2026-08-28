@@ -1,14 +1,16 @@
 import { createHash } from 'node:crypto';
-import { mkdtemp, readdir, readFile, rm } from 'node:fs/promises';
+import { mkdtemp, readdir, readFile, rm, stat, writeFile } from 'node:fs/promises';
 import { createServer } from 'node:http';
 import { tmpdir } from 'node:os';
 import type { AddressInfo } from 'node:net';
 import { afterEach, describe, expect, it } from 'vitest';
+import { zipSync } from 'fflate';
 import type { CaseAsset } from '../src/catalog/types.js';
 import { fetchAsset } from '../src/download/fetch.js';
 import { loadCatalog } from '../src/catalog/load.js';
 import { fromRoot } from '../src/catalog/paths.js';
-import { validateArchiveMember } from '../src/materialize/archive.js';
+import { extractAllowedZip, validateArchiveMember } from '../src/materialize/archive.js';
+import { materializeCase } from '../src/materialize/index.js';
 import { createCorpusServer } from '../src/server/index.js';
 
 const cleanup: Array<() => Promise<void>> = [];
@@ -69,6 +71,35 @@ describe('downloading, archives, and range serving', () => {
     expect(() => validateArchiveMember('../escape.bin')).toThrow('Unsafe archive member');
     expect(() => validateArchiveMember('/absolute.bin')).toThrow('Unsafe archive member');
     expect(() => validateArchiveMember('safe/file.bin')).not.toThrow();
+  });
+
+  it('bounds archive expansion while streaming', async () => {
+    const destination = await mkdtemp(`${tmpdir()}/corpus-archive-`);
+    cleanup.push(async () => rm(destination, { recursive: true }));
+    const archive = zipSync({ 'large.bin': new Uint8Array(1024 * 1024) });
+    await expect(extractAllowedZip(archive, destination, ['large.bin'], 1024)).rejects.toThrow(
+      'configured limit',
+    );
+  });
+
+  it('materializes copies that cannot mutate canonical blobs', async () => {
+    const catalog = await loadCatalog();
+    const corpusCase = catalog.cases.find((candidate) => candidate.id === 'ordinary/qoi/rgba-2x2');
+    const asset = corpusCase?.assets[0];
+    if (!corpusCase || !asset) throw new Error('QOI materialization fixture is missing');
+    const cacheRoot = await mkdtemp(`${tmpdir()}/corpus-materialize-`);
+    cleanup.push(async () => rm(cacheRoot, { recursive: true }));
+    const directory = await materializeCase(corpusCase, {
+      root: fromRoot(),
+      cacheRoot,
+      offline: true,
+    });
+    const source = `${fromRoot()}/assets/vendored/sha256/${asset.sha256.slice(0, 2)}/${asset.sha256}`;
+    const output = `${directory}/${asset.path}`;
+    expect((await stat(output)).ino).not.toBe((await stat(source)).ino);
+    const canonical = await readFile(source);
+    await writeFile(output, new Uint8Array(canonical.byteLength));
+    expect(await readFile(source)).toEqual(canonical);
   });
 
   it('serves GET, HEAD, 206, 304, and 416 with SHA-256 ETags and CORS', async () => {
