@@ -7,7 +7,7 @@ import { fromRoot } from '../src/catalog/paths.js';
 import { generateFixture, sha256 } from '../src/generators/fixtures.js';
 import { inspectLegacyManifest } from '../src/migration/purejsimage.js';
 import { applyMutations, type MutationOperation } from '../src/mutations/apply.js';
-import { generatedFiles } from '../src/reporting/index.js';
+import { formatInventoryTable, generatedFiles, renderReadme } from '../src/reporting/index.js';
 
 interface GeneratedRecipe {
   kind: 'generated';
@@ -66,6 +66,23 @@ describe('deterministic artifacts', () => {
   it('builds indexes deterministically', async () => {
     const catalog = await loadCatalog();
     expect(generatedFiles(catalog)).toEqual(generatedFiles(catalog));
+  });
+
+  it('renders every catalog format and live file count into the README template', async () => {
+    const catalog = await loadCatalog();
+    const template = await readFile(fromRoot('README.template.md'), 'utf8');
+    const table = formatInventoryTable(catalog);
+    const readme = renderReadme(template, catalog);
+    expect(readme).not.toContain('{{FORMAT_TABLE}}');
+    expect(readme).not.toContain('{{CASE_COUNT}}');
+    expect(readme).not.toContain('{{FORMAT_COUNT}}');
+    expect(readme).toContain(`test_cases-${catalog.cases.length}-6b57e8`);
+    expect(readme).toContain(`formats-${catalog.formats.length}-3f7f12`);
+    expect(readme).toContain(table);
+    for (const format of catalog.formats) expect(table).toContain(`**\`${format}\`**`);
+    expect(table).toContain(
+      `| **Total: ${catalog.formats.length} formats** | Logical files, including shared references | **${catalog.cases.length}** |`,
+    );
   });
 
   it('migrates the sibling PureJsImage manifest without missing fields or duplicate bytes', async () => {

@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { createWriteStream } from 'node:fs';
+import { createWriteStream, type Dirent } from 'node:fs';
 import { mkdir, open, readFile, rename, rm, stat } from 'node:fs/promises';
 import { dirname } from 'node:path';
 import { pipeline } from 'node:stream/promises';
@@ -150,7 +150,7 @@ export async function cleanTemporaryFiles(cacheRoot: string, olderThanMs: number
   const base = `${cacheRoot}/blobs/sha256`;
   let removed = 0;
   async function visit(directory: string): Promise<void> {
-    let entries;
+    let entries: Dirent[];
     try {
       entries = await import('node:fs/promises').then(({ readdir }) =>
         readdir(directory, { withFileTypes: true }),

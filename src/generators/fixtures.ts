@@ -120,7 +120,9 @@ function pfm(littleEndian: boolean): Uint8Array {
   const pixels = new Uint8Array(12 * 4);
   const view = new DataView(pixels.buffer);
   const values = [0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0];
-  values.forEach((value, index) => view.setFloat32(index * 4, value, littleEndian));
+  values.forEach((value, index) => {
+    view.setFloat32(index * 4, value, littleEndian);
+  });
   return concat(header, pixels);
 }
 
@@ -136,7 +138,9 @@ function envi(interleave: 'bil' | 'bip' | 'bsq', offset = 0): GeneratedFile[] {
         : [1, 101, 2, 102, 3, 103, 4, 104, 5, 105, 6, 106];
   const payload = new Uint8Array(values.length * 2);
   const view = new DataView(payload.buffer);
-  values.forEach((value, index) => view.setInt16(index * 2, value + offset, true));
+  values.forEach((value, index) => {
+    view.setInt16(index * 2, value + offset, true);
+  });
   return [
     { path: `tiny-${interleave}.hdr`, bytes: header },
     { path: `tiny-${interleave}.bin`, bytes: payload },
@@ -146,7 +150,9 @@ function envi(interleave: 'bil' | 'bip' | 'bsq', offset = 0): GeneratedFile[] {
 function metaImage(): GeneratedFile[] {
   const raw = new Uint8Array(12);
   const view = new DataView(raw.buffer);
-  [0, 1, -1, 32767, -32768, 42].forEach((value, index) => view.setInt16(index * 2, value, true));
+  [0, 1, -1, 32767, -32768, 42].forEach((value, index) => {
+    view.setInt16(index * 2, value, true);
+  });
   return [
     {
       path: 'tiny.mhd',
@@ -161,7 +167,9 @@ function metaImage(): GeneratedFile[] {
 function ripple(): GeneratedFile[] {
   const raw = new Uint8Array(12);
   const view = new DataView(raw.buffer);
-  [1, 2, 3, 4, 5, 6].forEach((value, index) => view.setUint16(index * 2, value, true));
+  [1, 2, 3, 4, 5, 6].forEach((value, index) => {
+    view.setUint16(index * 2, value, true);
+  });
   return [
     {
       path: 'tiny.rpl',
@@ -186,7 +194,9 @@ function fits(): Uint8Array {
   const header = text(cards.join('').padEnd(2880, ' '));
   const data = new Uint8Array(2880);
   const view = new DataView(data.buffer);
-  [0, 1, -1, 32767, -32768, 42].forEach((value, index) => view.setInt16(index * 2, value, false));
+  [0, 1, -1, 32767, -32768, 42].forEach((value, index) => {
+    view.setInt16(index * 2, value, false);
+  });
   return concat(header, data);
 }
 
@@ -200,7 +210,9 @@ function npy(): Uint8Array {
   new DataView(prefix.buffer).setUint16(8, headerLength, true);
   const data = new Uint8Array(12);
   const view = new DataView(data.buffer);
-  [0, 1, -1, 32767, -32768, 42].forEach((value, index) => view.setInt16(index * 2, value, true));
+  [0, 1, -1, 32767, -32768, 42].forEach((value, index) => {
+    view.setInt16(index * 2, value, true);
+  });
   return concat(prefix, header, data);
 }
 
@@ -232,9 +244,9 @@ function mrc(): Uint8Array {
   view.setInt32(72, 3, true);
   output.set(text('MAP '), 208);
   output.set([0x44, 0x41, 0, 0], 212);
-  [0, 1, -1, 32767, -32768, 42].forEach((value, index) =>
-    view.setInt16(1024 + index * 2, value, true),
-  );
+  [0, 1, -1, 32767, -32768, 42].forEach((value, index) => {
+    view.setInt16(1024 + index * 2, value, true);
+  });
   return output;
 }
 
@@ -260,9 +272,9 @@ function nifti(version: 1 | 2): Uint8Array {
     view.setBigInt64(32, 2n, true);
     view.setBigInt64(168, 544n, true);
   }
-  [0, 1, -1, 32767, -32768, 42].forEach((value, index) =>
-    view.setInt16(headerSize + index * 2, value, true),
-  );
+  [0, 1, -1, 32767, -32768, 42].forEach((value, index) => {
+    view.setInt16(headerSize + index * 2, value, true);
+  });
   return output;
 }
 
@@ -273,7 +285,9 @@ function gsf(): Uint8Array {
   const padding = new Uint8Array(((4 - ((rawHeader.byteLength + 1) % 4)) % 4) + 1);
   const values = new Uint8Array(24);
   const view = new DataView(values.buffer);
-  [0, 1, -1, 3.5, -2.25, 42].forEach((value, index) => view.setFloat32(index * 4, value, true));
+  [0, 1, -1, 3.5, -2.25, 42].forEach((value, index) => {
+    view.setFloat32(index * 4, value, true);
+  });
   return concat(rawHeader, padding, values);
 }
 
@@ -283,7 +297,9 @@ function sxm(): Uint8Array {
   );
   const values = new Uint8Array(24);
   const view = new DataView(values.buffer);
-  [0, 1, -1, 3.5, -2.25, 42].forEach((value, index) => view.setFloat32(index * 4, value, false));
+  [0, 1, -1, 3.5, -2.25, 42].forEach((value, index) => {
+    view.setFloat32(index * 4, value, false);
+  });
   return concat(header, values);
 }
 
@@ -302,7 +318,9 @@ function x3p(): Uint8Array {
   const main = `<?xml version="1.0" encoding="UTF-8"?><ISO5436_2><Record1><Revision>ISO5436-2:2000</Revision><FeatureType>SUR</FeatureType><Axes><CX><AxisType>I</AxisType><Increment>1</Increment></CX><CY><AxisType>I</AxisType><Increment>1</Increment></CY><CZ><AxisType>A</AxisType><DataType>F</DataType></CZ></Axes></Record1><Record3><MatrixDimension><SizeX>3</SizeX><SizeY>2</SizeY><SizeZ>1</SizeZ></MatrixDimension><DataLink><PointDataLink>bindata/data.bin</PointDataLink></DataLink></Record3></ISO5436_2>`;
   const data = new Uint8Array(24);
   const view = new DataView(data.buffer);
-  [0, 1, -1, 3.5, -2.25, 42].forEach((value, index) => view.setFloat32(index * 4, value, true));
+  [0, 1, -1, 3.5, -2.25, 42].forEach((value, index) => {
+    view.setFloat32(index * 4, value, true);
+  });
   return zipSync(
     { 'main.xml': strToU8(main), 'bindata/data.bin': data },
     { level: 0, mtime: new Date('1980-01-02T00:00:00.000Z') },
@@ -335,9 +353,9 @@ function zarr(geo: boolean): GeneratedFile[] {
   };
   const data = new Uint8Array(12);
   const view = new DataView(data.buffer);
-  [geo ? 7 : 8, 1, -1, 32767, -32768, 42].forEach((value, index) =>
-    view.setInt16(index * 2, value, true),
-  );
+  [geo ? 7 : 8, 1, -1, 32767, -32768, 42].forEach((value, index) => {
+    view.setInt16(index * 2, value, true);
+  });
   return [
     { path: 'zarr.json', bytes: text(`${JSON.stringify(metadata, null, 2)}\n`) },
     { path: 'c/0/0', bytes: data },
@@ -371,7 +389,9 @@ function classicNetcdf(): Uint8Array {
   const begin = headerWithoutOffset.byteLength + 4;
   const data = new Uint8Array(12);
   const view = new DataView(data.buffer);
-  [0, 1, -1, 32767, -32768, 42].forEach((value, index) => view.setInt16(index * 2, value, false));
+  [0, 1, -1, 32767, -32768, 42].forEach((value, index) => {
+    view.setInt16(index * 2, value, false);
+  });
   return concat(headerWithoutOffset, u32(begin), data);
 }
 
@@ -449,10 +469,12 @@ function cfNetcdf(): Uint8Array {
   const elevationView = new DataView(elevation.buffer);
   latView.setFloat64(0, 44.75, false);
   latView.setFloat64(8, 44.25, false);
-  [-119.75, -119.25, -118.75].forEach((value, index) =>
-    lonView.setFloat64(index * 8, value, false),
-  );
-  [1, 2, 3, 4, -9999, 6].forEach((value, index) => elevationView.setInt16(index * 2, value, false));
+  [-119.75, -119.25, -118.75].forEach((value, index) => {
+    lonView.setFloat64(index * 8, value, false);
+  });
+  [1, 2, 3, 4, -9999, 6].forEach((value, index) => {
+    elevationView.setInt16(index * 2, value, false);
+  });
   return concat(header, lat, lon, elevation);
 }
 
@@ -500,17 +522,19 @@ function tiff(kind: 'plain' | 'geo' | 'ome'): Uint8Array {
   let extraCursor = extrasOffset;
   if (kind === 'geo') {
     entry(33550, 12, 3, extraCursor);
-    [0.5, 0.5, 0].forEach((value, index) => view.setFloat64(extraCursor + index * 8, value, true));
+    [0.5, 0.5, 0].forEach((value, index) => {
+      view.setFloat64(extraCursor + index * 8, value, true);
+    });
     extraCursor += scale;
     entry(33922, 12, 6, extraCursor);
-    [0, 0, 0, -120, 45, 0].forEach((value, index) =>
-      view.setFloat64(extraCursor + index * 8, value, true),
-    );
+    [0, 0, 0, -120, 45, 0].forEach((value, index) => {
+      view.setFloat64(extraCursor + index * 8, value, true);
+    });
     extraCursor += tie;
     entry(34735, 3, 8, extraCursor);
-    [1, 1, 0, 1, 2048, 0, 1, 4326].forEach((value, index) =>
-      view.setUint16(extraCursor + index * 2, value, true),
-    );
+    [1, 1, 0, 1, 2048, 0, 1, 4326].forEach((value, index) => {
+      view.setUint16(extraCursor + index * 2, value, true);
+    });
     extraCursor += key;
   }
   if (description) {

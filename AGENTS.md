@@ -7,8 +7,9 @@ privacy review, and independent expectations matter more than case count.
 # Canonical versus generated files
 
 Canonical records live under `catalog/`, `recipes/`, `schemas/`, `expectations/`, and `licenses/`.
-Files under `generated/` are deterministic views. Change canonical inputs, run
-`npm run corpus -- build-index`, and never hand-edit generated indexes or reports.
+Files under `generated/` are deterministic views. `README.md` is rendered from
+`README.template.md` and the catalog. Change canonical inputs or the template, run
+`npm run corpus -- build-index`, and never hand-edit generated indexes, reports, or `README.md`.
 
 # Non-negotiable corpus invariants
 

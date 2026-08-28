@@ -2228,8 +2228,12 @@ async function main(): Promise<void> {
   const featureSet = new Set<string>();
   const formatSet = new Set<string>();
   for (const corpusCase of cases) {
-    corpusCase.format.features.forEach((feature) => featureSet.add(feature));
-    corpusCase.coverage.features.forEach((feature) => featureSet.add(feature));
+    corpusCase.format.features.forEach((feature) => {
+      featureSet.add(feature);
+    });
+    corpusCase.coverage.features.forEach((feature) => {
+      featureSet.add(feature);
+    });
     formatSet.add(corpusCase.format.family);
   }
   await writeJson(join(root, 'catalog/taxonomy/features.json'), {

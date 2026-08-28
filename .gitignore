@@ -143,3 +143,8 @@ vite.config.ts.timestamp-*
 .vite/
 
 .DS_Store
+
+# Measured local output; CI uploads its reports as workflow artifacts.
+reports/purejsimage/*.json
+reports/purejsimage/*.md
+!reports/purejsimage/README.md

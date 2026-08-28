@@ -4,6 +4,66 @@ import type { Catalog, CorpusCase } from '../catalog/types.js';
 import { loadCatalog } from '../catalog/load.js';
 import { fromRoot } from '../catalog/paths.js';
 
+const README_FORMAT_TABLE_TOKEN = '{{FORMAT_TABLE}}';
+const README_CASE_COUNT_TOKEN = '{{CASE_COUNT}}';
+const README_FORMAT_COUNT_TOKEN = '{{FORMAT_COUNT}}';
+
+const FORMAT_DESCRIPTIONS: Record<string, string> = {
+  'aperio-svs': 'Aperio pyramidal whole-slide microscopy images.',
+  avif: 'AV1 Image File Format still images and metadata.',
+  blockfile: 'NanoMegas ASTAR microscopy block data.',
+  bmp: 'Windows and OS/2 bitmap variants, palettes, masks, and RLE.',
+  cbf: 'Crystallographic Binary Format detector arrays.',
+  dicom: 'Medical images and metadata in DICOM datasets.',
+  'digital-surf': 'Digital Surf surface-metrology measurements.',
+  dm3: 'Gatan DigitalMicrograph 3 microscopy data.',
+  dm4: 'Gatan DigitalMicrograph 4 microscopy data.',
+  emsa: 'EMSA/MAS spectroscopy text data.',
+  envi: 'ENVI scientific raster headers with binary payloads.',
+  'esri-ascii-grid': 'Text-based geospatial elevation or raster grids.',
+  fits: 'Astronomy images and arrays in FITS containers.',
+  'geo-envi': 'Georeferenced ENVI rasters in BIL, BIP, or BSQ layout.',
+  geotiff: 'TIFF rasters with CRS and affine geospatial metadata.',
+  geozarr: 'Chunked geospatial arrays stored as Zarr trees.',
+  gif: 'Palette images and animation using GIF/LZW.',
+  gsf: 'Gwyddion Simple Field surface data.',
+  heic: 'HEIF/HEIC image containers and Apple image samples.',
+  ico: 'Windows icon containers with bitmap or PNG images.',
+  'image-world-file': 'Ordinary images paired with affine world files.',
+  jp2: 'JPEG 2000 images in JP2 containers.',
+  jpeg: 'Baseline, progressive, metadata-rich, and color JPEG images.',
+  'jpeg-xl': 'JPEG XL images and JPEG reconstruction streams.',
+  'meta-image': 'MetaImage headers with embedded or detached arrays.',
+  mrc: 'MRC/CCP4 microscopy volumes and maps.',
+  'nanonis-sxm': 'Nanonis scanning-probe microscopy measurements.',
+  'ncem-emd': 'NCEM electron-microscopy data in HDF5.',
+  'netcdf-4': 'Grouped HDF5-backed NetCDF-4 datasets.',
+  'netcdf-cf': 'NetCDF datasets using Climate and Forecast metadata.',
+  'netcdf-classic': 'Classic NetCDF multidimensional arrays.',
+  nifti: 'NIfTI-1 and NIfTI-2 neuroimaging volumes.',
+  npy: 'NumPy array files with explicit shape and dtype.',
+  nrrd: 'Nearly Raw Raster Data images and volumes.',
+  'ome-tiff': 'OME-XML microscopy metadata embedded in TIFF.',
+  'ome-zarr': 'OME-NGFF multiscale microscopy stored as Zarr trees.',
+  pam: 'Netpbm arbitrary maps, including alpha channels.',
+  pbm: 'Netpbm monochrome bitmap images.',
+  pfm: 'Portable floating-point maps in either byte order.',
+  pgm: 'Netpbm grayscale images.',
+  png: 'Lossless portable images, palettes, alpha, and animation.',
+  ppm: 'Netpbm RGB images.',
+  qoi: 'Quite OK Image streams and bounded parser failures.',
+  'radiance-hdr': 'RGBE high-dynamic-range images.',
+  rpl: 'Raw Parameter List headers paired with scientific arrays.',
+  'srtm-hgt': 'SRTM elevation tiles encoded as signed big-endian samples.',
+  tga: 'Truevision TGA raster images.',
+  'tia-emi': 'FEI/TIA metadata paired with SER microscopy data.',
+  'tia-ser': 'FEI/TIA SER microscopy images and spectra.',
+  tiff: 'Tagged Image File Format strips, compression, and sample layouts.',
+  'velox-emd': 'Thermo Fisher Velox electron-microscopy containers.',
+  webp: 'Lossy, lossless, alpha, and animated WebP images.',
+  x3p: 'OpenGPS XML plus binary surface-metrology archives.',
+};
+
 function stableJson(value: unknown): string {
   return `${JSON.stringify(value, null, 2)}\n`;
 }
@@ -102,6 +162,63 @@ function notice(catalog: Catalog): string {
   return lines.join('\n');
 }
 
+function joinedValues(values: Iterable<string>): string {
+  return [...new Set(values)].sort().join(', ');
+}
+
+export function formatInventoryTable(catalog: Catalog): string {
+  const undescribed = catalog.formats.filter((format) => FORMAT_DESCRIPTIONS[format] === undefined);
+  const staleDescriptions = Object.keys(FORMAT_DESCRIPTIONS).filter(
+    (format) => !catalog.formats.includes(format),
+  );
+  if (undescribed.length > 0 || staleDescriptions.length > 0) {
+    throw new Error(
+      `Format descriptions do not match the taxonomy: missing=${undescribed.join(',') || 'none'} stale=${staleDescriptions.join(',') || 'none'}`,
+    );
+  }
+
+  const lines = [
+    '| Format | What it exercises | Cases | Files | 📦 Local | ☁️ External | Domains | Layouts |',
+    '| --- | --- | ---: | ---: | ---: | ---: | --- | --- |',
+  ];
+  let totalFiles = 0;
+  let totalLocal = 0;
+  let totalExternal = 0;
+  for (const format of catalog.formats) {
+    const cases = catalog.cases.filter((corpusCase) => corpusCase.format.family === format);
+    const assets = cases.flatMap((corpusCase) => corpusCase.assets);
+    const local = assets.filter((asset) => asset.storage !== 'external').length;
+    const external = assets.length - local;
+    totalFiles += assets.length;
+    totalLocal += local;
+    totalExternal += external;
+    lines.push(
+      `| **\`${format}\`** | ${FORMAT_DESCRIPTIONS[format]} | ${cases.length} | ${assets.length} | ${local} | ${external} | ${joinedValues(cases.map((item) => item.domain))} | ${joinedValues(cases.map((item) => item.layout.kind))} |`,
+    );
+  }
+  lines.push(
+    `| **Total: ${catalog.formats.length} formats** | Logical files, including shared references | **${catalog.cases.length}** | **${totalFiles}** | **${totalLocal}** | **${totalExternal}** | — | — |`,
+  );
+  return lines.join('\n');
+}
+
+export function renderReadme(template: string, catalog: Catalog): string {
+  const replacements = new Map([
+    [README_FORMAT_TABLE_TOKEN, formatInventoryTable(catalog)],
+    [README_CASE_COUNT_TOKEN, String(catalog.cases.length)],
+    [README_FORMAT_COUNT_TOKEN, String(catalog.formats.length)],
+  ]);
+  let readme = template;
+  for (const [token, value] of replacements) {
+    const parts = readme.split(token);
+    if (parts.length !== 2) {
+      throw new Error(`README.template.md must contain exactly one ${token}`);
+    }
+    readme = `${parts[0]}${value}${parts[1]}`;
+  }
+  return readme;
+}
+
 export function generatedFiles(catalog: Catalog): Record<string, string> {
   const catalogDocument = {
     schemaVersion: 1,
@@ -135,7 +252,8 @@ export function generatedFiles(catalog: Catalog): Record<string, string> {
 }
 
 export async function buildIndexes(root = fromRoot(), check = false): Promise<void> {
-  const files = generatedFiles(await loadCatalog(root));
+  const catalog = await loadCatalog(root);
+  const files = generatedFiles(catalog);
   for (const [name, content] of Object.entries(files)) {
     const path = join(root, 'generated', name);
     if (check) {
@@ -149,5 +267,18 @@ export async function buildIndexes(root = fromRoot(), check = false): Promise<vo
     } else {
       await writeFile(path, content);
     }
+  }
+  const readmePath = join(root, 'README.md');
+  const readme = renderReadme(await readFile(join(root, 'README.template.md'), 'utf8'), catalog);
+  if (check) {
+    let existing = '';
+    try {
+      existing = await readFile(readmePath, 'utf8');
+    } catch {
+      // A missing generated README is reported as a difference below.
+    }
+    if (existing !== readme) throw new Error('Generated file is stale: README.md');
+  } else {
+    await writeFile(readmePath, readme);
   }
 }

@@ -26,9 +26,9 @@ export function isSafeRelativePath(path: string): boolean {
 function hasExplicitDuplicateRelationship(candidate: CorpusCase, other: CorpusCase): boolean {
   return Boolean(
     candidate.relationships?.length ||
-    other.relationships?.length ||
-    candidate.relationships?.some((relationship) => relationship.caseId === other.id) ||
-    other.relationships?.some((relationship) => relationship.caseId === candidate.id),
+      other.relationships?.length ||
+      candidate.relationships?.some((relationship) => relationship.caseId === other.id) ||
+      other.relationships?.some((relationship) => relationship.caseId === candidate.id),
   );
 }
 

@@ -12,8 +12,8 @@
 
 <p>
   <a href="https://github.com/a-r-d/purejsimage-corpus/actions/workflows/ci.yml"><img alt="CI status" src="https://img.shields.io/github/actions/workflow/status/a-r-d/purejsimage-corpus/ci.yml?branch=main&amp;style=for-the-badge&amp;logo=githubactions&amp;logoColor=white&amp;label=CI"></a>
-  <a href="#format-table"><img alt="Test case count" src="https://img.shields.io/badge/test_cases-117-6b57e8?style=for-the-badge"></a>
-  <a href="#format-table"><img alt="Format count" src="https://img.shields.io/badge/formats-53-3f7f12?style=for-the-badge"></a>
+  <a href="#format-table"><img alt="Test case count" src="https://img.shields.io/badge/test_cases-{{CASE_COUNT}}-6b57e8?style=for-the-badge"></a>
+  <a href="#format-table"><img alt="Format count" src="https://img.shields.io/badge/formats-{{FORMAT_COUNT}}-3f7f12?style=for-the-badge"></a>
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-blue?style=for-the-badge"></a>
 </p>
 
@@ -116,62 +116,7 @@ This table is rebuilt from the catalog by `npm run corpus -- build-index`. “Fi
 reference, including companions and objects inside directory formats. Local files are vendored or
 generated; external files are checksum-checked downloads.
 
-| Format | What it exercises | Cases | Files | 📦 Local | ☁️ External | Domains | Layouts |
-| --- | --- | ---: | ---: | ---: | ---: | --- | --- |
-| **`aperio-svs`** | Aperio pyramidal whole-slide microscopy images. | 1 | 1 | 0 | 1 | scientific | single-file |
-| **`avif`** | AV1 Image File Format still images and metadata. | 1 | 1 | 0 | 1 | ordinary | single-file |
-| **`blockfile`** | NanoMegas ASTAR microscopy block data. | 1 | 1 | 0 | 1 | scientific | single-file |
-| **`bmp`** | Windows and OS/2 bitmap variants, palettes, masks, and RLE. | 14 | 14 | 0 | 14 | ordinary | single-file |
-| **`cbf`** | Crystallographic Binary Format detector arrays. | 1 | 1 | 1 | 0 | scientific | single-file |
-| **`dicom`** | Medical images and metadata in DICOM datasets. | 1 | 1 | 0 | 1 | scientific | single-file |
-| **`digital-surf`** | Digital Surf surface-metrology measurements. | 1 | 1 | 0 | 1 | scientific | single-file |
-| **`dm3`** | Gatan DigitalMicrograph 3 microscopy data. | 1 | 1 | 0 | 1 | scientific | single-file |
-| **`dm4`** | Gatan DigitalMicrograph 4 microscopy data. | 1 | 1 | 0 | 1 | scientific | single-file |
-| **`emsa`** | EMSA/MAS spectroscopy text data. | 1 | 1 | 0 | 1 | scientific | single-file |
-| **`envi`** | ENVI scientific raster headers with binary payloads. | 1 | 2 | 2 | 0 | scientific | companion-set |
-| **`esri-ascii-grid`** | Text-based geospatial elevation or raster grids. | 1 | 1 | 1 | 0 | geo | single-file |
-| **`fits`** | Astronomy images and arrays in FITS containers. | 1 | 1 | 1 | 0 | scientific | single-file |
-| **`geo-envi`** | Georeferenced ENVI rasters in BIL, BIP, or BSQ layout. | 3 | 6 | 6 | 0 | geo | companion-set |
-| **`geotiff`** | TIFF rasters with CRS and affine geospatial metadata. | 1 | 1 | 1 | 0 | geo | single-file |
-| **`geozarr`** | Chunked geospatial arrays stored as Zarr trees. | 2 | 4 | 4 | 0 | geo, negative | directory-tree |
-| **`gif`** | Palette images and animation using GIF/LZW. | 2 | 2 | 0 | 2 | ordinary | single-file |
-| **`gsf`** | Gwyddion Simple Field surface data. | 1 | 1 | 1 | 0 | scientific | single-file |
-| **`heic`** | HEIF/HEIC image containers and Apple image samples. | 4 | 4 | 0 | 4 | ordinary | single-file |
-| **`ico`** | Windows icon containers with bitmap or PNG images. | 1 | 1 | 1 | 0 | ordinary | single-file |
-| **`image-world-file`** | Ordinary images paired with affine world files. | 3 | 6 | 6 | 0 | geo, negative | companion-set |
-| **`jp2`** | JPEG 2000 images in JP2 containers. | 1 | 1 | 0 | 1 | ordinary | single-file |
-| **`jpeg`** | Baseline, progressive, metadata-rich, and color JPEG images. | 11 | 11 | 0 | 11 | ordinary | single-file |
-| **`jpeg-xl`** | JPEG XL images and JPEG reconstruction streams. | 1 | 1 | 0 | 1 | ordinary | single-file |
-| **`meta-image`** | MetaImage headers with embedded or detached arrays. | 3 | 5 | 5 | 0 | negative, scientific | companion-set |
-| **`mrc`** | MRC/CCP4 microscopy volumes and maps. | 2 | 2 | 1 | 1 | scientific | single-file |
-| **`nanonis-sxm`** | Nanonis scanning-probe microscopy measurements. | 1 | 1 | 1 | 0 | scientific | single-file |
-| **`ncem-emd`** | NCEM electron-microscopy data in HDF5. | 1 | 1 | 0 | 1 | scientific | single-file |
-| **`netcdf-4`** | Grouped HDF5-backed NetCDF-4 datasets. | 1 | 1 | 0 | 1 | geo | single-file |
-| **`netcdf-cf`** | NetCDF datasets using Climate and Forecast metadata. | 1 | 1 | 1 | 0 | geo | single-file |
-| **`netcdf-classic`** | Classic NetCDF multidimensional arrays. | 1 | 1 | 1 | 0 | geo | single-file |
-| **`nifti`** | NIfTI-1 and NIfTI-2 neuroimaging volumes. | 2 | 2 | 2 | 0 | scientific | single-file |
-| **`npy`** | NumPy array files with explicit shape and dtype. | 1 | 1 | 1 | 0 | scientific | single-file |
-| **`nrrd`** | Nearly Raw Raster Data images and volumes. | 1 | 1 | 1 | 0 | scientific | single-file |
-| **`ome-tiff`** | OME-XML microscopy metadata embedded in TIFF. | 1 | 1 | 1 | 0 | scientific | single-file |
-| **`ome-zarr`** | OME-NGFF multiscale microscopy stored as Zarr trees. | 1 | 2 | 2 | 0 | scientific | directory-tree |
-| **`pam`** | Netpbm arbitrary maps, including alpha channels. | 1 | 1 | 1 | 0 | ordinary | single-file |
-| **`pbm`** | Netpbm monochrome bitmap images. | 2 | 2 | 1 | 1 | ordinary | single-file |
-| **`pfm`** | Portable floating-point maps in either byte order. | 2 | 2 | 2 | 0 | ordinary | single-file |
-| **`pgm`** | Netpbm grayscale images. | 1 | 1 | 1 | 0 | ordinary | single-file |
-| **`png`** | Lossless portable images, palettes, alpha, and animation. | 3 | 3 | 0 | 3 | ordinary | single-file |
-| **`ppm`** | Netpbm RGB images. | 1 | 1 | 1 | 0 | ordinary | single-file |
-| **`qoi`** | Quite OK Image streams and bounded parser failures. | 8 | 8 | 8 | 0 | negative, ordinary | single-file |
-| **`radiance-hdr`** | RGBE high-dynamic-range images. | 1 | 1 | 1 | 0 | ordinary | single-file |
-| **`rpl`** | Raw Parameter List headers paired with scientific arrays. | 2 | 4 | 2 | 2 | scientific | companion-set |
-| **`srtm-hgt`** | SRTM elevation tiles encoded as signed big-endian samples. | 2 | 2 | 2 | 0 | geo, negative | single-file |
-| **`tga`** | Truevision TGA raster images. | 1 | 1 | 1 | 0 | ordinary | single-file |
-| **`tia-emi`** | FEI/TIA metadata paired with SER microscopy data. | 1 | 2 | 0 | 2 | scientific | companion-set |
-| **`tia-ser`** | FEI/TIA SER microscopy images and spectra. | 1 | 1 | 0 | 1 | scientific | single-file |
-| **`tiff`** | Tagged Image File Format strips, compression, and sample layouts. | 10 | 10 | 3 | 7 | negative, ordinary | single-file |
-| **`velox-emd`** | Thermo Fisher Velox electron-microscopy containers. | 1 | 1 | 0 | 1 | scientific | archive |
-| **`webp`** | Lossy, lossless, alpha, and animated WebP images. | 7 | 7 | 0 | 7 | ordinary | single-file |
-| **`x3p`** | OpenGPS XML plus binary surface-metrology archives. | 1 | 1 | 1 | 0 | scientific | archive |
-| **Total: 53 formats** | Logical files, including shared references | **117** | **132** | **64** | **68** | — | — |
+{{FORMAT_TABLE}}
 
 ## Use the catalog in another tool
 

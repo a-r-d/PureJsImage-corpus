@@ -13,10 +13,11 @@
   },
   "scripts": {
     "corpus": "node --import tsx src/cli.ts",
+    "report:purejsimage": "node --import tsx src/purejsimage/cli.ts",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint .",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
+    "lint": "biome lint .",
+    "format": "biome format --write .",
+    "format:check": "biome format .",
     "test": "vitest run",
     "check": "npm run typecheck && npm run lint && npm run format:check && npm test && npm run corpus -- validate && npm run corpus -- build-index --check && npm run corpus -- verify --collection smoke --offline"
   },
@@ -26,14 +27,10 @@
     "fflate": "0.8.3"
   },
   "devDependencies": {
-    "@eslint/js": "10.0.1",
-    "@types/node": "24.3.0",
-    "eslint": "10.9.1",
-    "eslint-config-prettier": "10.1.8",
-    "prettier": "3.9.6",
+    "@biomejs/biome": "2.5.11",
+    "@types/node": "26.4.0",
     "tsx": "4.23.12",
-    "typescript": "5.9.2",
-    "typescript-eslint": "8.68.0",
+    "typescript": "7.0.2",
     "vitest": "4.1.11"
   }
 }

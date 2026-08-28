@@ -10,6 +10,7 @@ permissions:
 
 jobs:
   check:
+    name: Repository checks
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -24,5 +25,43 @@ jobs:
       - run: npm test
       - run: npm run corpus -- validate
       - run: npm run corpus -- build-index
-      - run: git diff --exit-code -- generated
+      - run: git diff --exit-code -- generated README.md
       - run: npm run corpus -- verify --collection smoke --offline
+
+  purejsimage-smoke-report:
+    name: PureJsImage smoke report
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout corpus
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install corpus dependencies
+        run: npm ci
+      - name: Prepare PureJsImage package directory
+        run: mkdir -p .ci/purejsimage
+      - name: Download pinned PureJsImage package
+        run: npm pack purejsimage@0.17.0 --pack-destination .ci
+      - name: Extract pinned PureJsImage package
+        run: tar -xzf .ci/purejsimage-0.17.0.tgz --strip-components=1 -C .ci/purejsimage
+      - name: Run the offline smoke corpus
+        run: >-
+          npm run report:purejsimage --
+          --library .ci/purejsimage
+          --collection smoke
+          --offline
+          --allow-failures
+          --output "${RUNNER_TEMP}/purejsimage-smoke"
+      - name: Upload JSON and Markdown reports
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: purejsimage-smoke-report
+          path: ${{ runner.temp }}/purejsimage-smoke.*
+          if-no-files-found: error
+          retention-days: 30

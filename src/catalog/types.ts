@@ -1,7 +1,11 @@
 export type Domain = 'ordinary' | 'scientific' | 'geo' | 'negative';
 export type StorageMode = 'vendored' | 'external' | 'generated';
 export type LayoutKind =
-  'single-file' | 'companion-set' | 'multi-file' | 'directory-tree' | 'archive';
+  | 'single-file'
+  | 'companion-set'
+  | 'multi-file'
+  | 'directory-tree'
+  | 'archive';
 
 export interface SourceRecord {
   schemaVersion: 1;
