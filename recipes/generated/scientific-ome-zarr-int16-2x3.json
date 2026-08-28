@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "generated/scientific-ome-zarr-int16-2x3",
+  "kind": "generated",
+  "caseId": "scientific/ome-zarr/int16-2x3",
+  "description": "Deterministically generate OME-Zarr v3 directory array.",
+  "generator": "ome-zarr",
+  "parameters": {}
+}

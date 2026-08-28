@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "ordinary/libjpeg-turbo/testorig",
+  "caseRevision": 1,
+  "title": "libjpeg-turbo testorig reference image",
+  "description": "libjpeg-turbo testorig reference image, pinned by SHA-256 and exact upstream revision where available.",
+  "domain": "ordinary",
+  "format": {
+    "family": "jpeg",
+    "extensions": ["jpg"],
+    "mediaTypes": ["application/octet-stream"],
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.jpeg",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.jpeg"
+    ]
+  },
+  "layout": {
+    "kind": "single-file",
+    "entrypoint": "testorig.jpg",
+    "requiredPaths": ["testorig.jpg"]
+  },
+  "assets": [
+    {
+      "path": "testorig.jpg",
+      "role": "primary",
+      "storage": "external",
+      "sourceId": "libjpeg-turbo",
+      "sourcePath": "testimages/testorig.jpg",
+      "resolvedUrl": "https://raw.githubusercontent.com/libjpeg-turbo/libjpeg-turbo/1157d37cfab977f8f7f8344aededdfd951222c89/testimages/testorig.jpg",
+      "bytes": 5770,
+      "sha256": "acc6ec555d41d15b368320edaa3b20958ee6fa97cb6e4a18d1213d5ae8bec73b",
+      "mediaType": "application/octet-stream"
+    }
+  ],
+  "provenance": {
+    "sourceId": "libjpeg-turbo",
+    "originalUrl": "https://github.com/libjpeg-turbo/libjpeg-turbo/blob/1157d37cfab977f8f7f8344aededdfd951222c89/testimages/testorig.jpg",
+    "resolvedAt": "2026-08-28T00:00:00.000Z",
+    "method": "downloaded"
+  },
+  "rights": {
+    "licenseName": "Asset license not established",
+    "evidenceUrl": "https://github.com/libjpeg-turbo/libjpeg-turbo/tree/main/testimages",
+    "attribution": "See upstream source metadata.",
+    "redistribution": "unknown"
+  },
+  "privacy": {
+    "reviewStatus": "not-required",
+    "containsHumanData": false,
+    "phi": "none",
+    "burnedInText": "none",
+    "gps": "none",
+    "faces": "none",
+    "deidentified": "not-applicable",
+    "notes": ["No human-derived medical data."]
+  },
+  "expected": {
+    "classification": "valid",
+    "outcome": "success",
+    "operations": ["metadata", "full-decode", "range-read"],
+    "comparison": {
+      "method": "structural"
+    },
+    "metadata": {},
+    "resourceLimits": {
+      "timeoutMs": 5000,
+      "maxInputBytes": 5770,
+      "maxDecodedPixels": 100000000,
+      "maxFrames": 1000,
+      "maxHeapMiB": 512
+    }
+  },
+  "coverage": {
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.jpeg",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.jpeg"
+    ],
+    "selectionReason": "Exercises the real jpeg reader with independently hashed upstream bytes.",
+    "priority": "high"
+  },
+  "collections": ["ordinary-conformance", "large-range"],
+  "notes": ["External because asset-level redistribution rights are not established."]
+}

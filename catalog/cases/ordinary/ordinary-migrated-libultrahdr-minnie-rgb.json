@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "id": "ordinary/migrated/libultrahdr-minnie-rgb",
+  "caseRevision": 1,
+  "title": "libultrahdr minnie rgb",
+  "description": "Migrated without changing source bytes from PureJsImage benchmark/corpus/manifest.json.",
+  "domain": "ordinary",
+  "format": {
+    "family": "jpeg",
+    "extensions": ["jpg"],
+    "mediaTypes": ["application/octet-stream"],
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.jpeg",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.jpeg"
+    ]
+  },
+  "layout": {
+    "kind": "single-file",
+    "entrypoint": "libultrahdr-minnie-rgb.jpg",
+    "requiredPaths": ["libultrahdr-minnie-rgb.jpg"]
+  },
+  "assets": [
+    {
+      "path": "libultrahdr-minnie-rgb.jpg",
+      "role": "primary",
+      "storage": "external",
+      "sourceId": "purejsimage",
+      "sourcePath": "libultrahdr-minnie-rgb.jpg",
+      "resolvedUrl": "https://raw.githubusercontent.com/google/libultrahdr/418b6b361e252a91c435a56cf386afb37d7d1c9d/tests/data/minnie-320x240-rgb.jpg",
+      "bytes": 20200,
+      "sha256": "59550106c615fb2c614280ac0bde58846306131dc54ede751719f28f397fdd10",
+      "mediaType": "application/octet-stream"
+    }
+  ],
+  "provenance": {
+    "sourceId": "purejsimage",
+    "originalUrl": "https://raw.githubusercontent.com/google/libultrahdr/main/tests/data/minnie-320x240-rgb.jpg",
+    "resolvedAt": "2026-08-28T00:00:00.000Z",
+    "method": "migrated"
+  },
+  "rights": {
+    "licenseName": "Creative Commons Attribution 4.0 International",
+    "evidenceUrl": "https://github.com/google/libultrahdr/tree/main/tests/data",
+    "attribution": "libultrahdr contributors",
+    "redistribution": "allowed"
+  },
+  "privacy": {
+    "reviewStatus": "not-required",
+    "containsHumanData": false,
+    "phi": "none",
+    "burnedInText": "none",
+    "gps": "none",
+    "faces": "none",
+    "deidentified": "not-applicable",
+    "notes": ["No human-derived medical data."]
+  },
+  "expected": {
+    "classification": "valid",
+    "outcome": "success",
+    "operations": ["metadata", "full-decode", "range-read"],
+    "comparison": {
+      "method": "structural"
+    },
+    "metadata": {
+      "width": 320,
+      "height": 240
+    },
+    "resourceLimits": {
+      "timeoutMs": 5000,
+      "maxInputBytes": 20200,
+      "maxDecodedPixels": 100000000,
+      "maxFrames": 1000,
+      "maxHeapMiB": 512
+    }
+  },
+  "coverage": {
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.jpeg",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.jpeg"
+    ],
+    "selectionReason": "Preserves an existing PureJsImage benchmark and regression input.",
+    "priority": "medium"
+  },
+  "collections": ["ordinary-conformance", "benchmark-content"],
+  "notes": ["Original PureJsImage manifest ID: libultrahdr-minnie-rgb"]
+}

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "geo-small",
+  "title": "Small geospatial readers",
+  "description": "Small geospatial readers cases.",
+  "intendedUse": "Small geospatial readers",
+  "networkPolicy": "offline",
+  "maximumVendoredBytes": 26214400,
+  "caseIds": [],
+  "selectors": [
+    {
+      "domain": "geo"
+    }
+  ],
+  "exclusions": []
+}

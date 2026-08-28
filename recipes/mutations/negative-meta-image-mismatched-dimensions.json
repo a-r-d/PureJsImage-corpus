@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "mutation/negative-meta-image-mismatched-dimensions",
+  "kind": "mutation",
+  "caseId": "negative/meta-image/mismatched-dimensions",
+  "description": "Change MHD dimensions without changing the RAW payload.",
+  "parentSha256": "f9292b77dd7de79a6d89ceb33f42b3c310495675eec5a19a337d1544df51c416",
+  "target": "tiny.mhd",
+  "operations": [
+    {
+      "op": "overwrite-bytes",
+      "offset": 44,
+      "bytesHex": "392039"
+    }
+  ]
+}

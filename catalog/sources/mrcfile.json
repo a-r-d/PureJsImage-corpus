@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "mrcfile",
+  "project": "mrcfile test data",
+  "homepage": "https://github.com/ccpem/mrcfile/tree/master/tests/test_data",
+  "sourceType": "github-tree",
+  "trackingRef": "main",
+  "pinnedRevision": "a2a8c6b569a57b7f18b023b5056fa7a14f2f99c2",
+  "evidence": {
+    "sourceUrls": ["https://github.com/ccpem/mrcfile/tree/master/tests/test_data"],
+    "licenseUrls": [
+      "https://github.com/ccpem/mrcfile/blob/a2a8c6b569a57b7f18b023b5056fa7a14f2f99c2/LICENSE.txt"
+    ]
+  },
+  "defaultRedistribution": "unknown",
+  "expectedStability": "repository",
+  "updatePolicy": "Resolve explicitly, review license evidence, and accept changed bytes only by command.",
+  "notes": ["The source record does not grant rights to every third-party asset it may contain."]
+}

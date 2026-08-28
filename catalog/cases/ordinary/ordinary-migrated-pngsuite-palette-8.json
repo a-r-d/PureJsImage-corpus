@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "id": "ordinary/migrated/pngsuite-palette-8",
+  "caseRevision": 1,
+  "title": "pngsuite palette 8",
+  "description": "Migrated without changing source bytes from PureJsImage benchmark/corpus/manifest.json.",
+  "domain": "ordinary",
+  "format": {
+    "family": "png",
+    "extensions": ["png"],
+    "mediaTypes": ["image/png"],
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.png",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.png"
+    ]
+  },
+  "layout": {
+    "kind": "single-file",
+    "entrypoint": "pngsuite-palette-8.png",
+    "requiredPaths": ["pngsuite-palette-8.png"]
+  },
+  "assets": [
+    {
+      "path": "pngsuite-palette-8.png",
+      "role": "primary",
+      "storage": "external",
+      "sourceId": "purejsimage",
+      "sourcePath": "pngsuite-palette-8.png",
+      "resolvedUrl": "https://raw.githubusercontent.com/golang/go/go1.24.0/src/image/png/testdata/pngsuite/basn3p08.png",
+      "bytes": 1286,
+      "sha256": "eca1db90338a8481e4d3f2469befa06d7564534e9323b6a8040ed0cdd281d952",
+      "mediaType": "image/png"
+    }
+  ],
+  "provenance": {
+    "sourceId": "purejsimage",
+    "originalUrl": "https://raw.githubusercontent.com/golang/go/go1.24.0/src/image/png/testdata/pngsuite/basn3p08.png",
+    "resolvedAt": "2026-08-28T00:00:00.000Z",
+    "method": "migrated"
+  },
+  "rights": {
+    "licenseName": "Permission to use, copy, and distribute for any purpose and without fee",
+    "evidenceUrl": "https://go.googlesource.com/go/+/go1.24.0/src/image/png/testdata/pngsuite/README.original",
+    "attribution": "Willem van Schaik, PngSuite",
+    "redistribution": "allowed"
+  },
+  "privacy": {
+    "reviewStatus": "not-required",
+    "containsHumanData": false,
+    "phi": "none",
+    "burnedInText": "none",
+    "gps": "none",
+    "faces": "none",
+    "deidentified": "not-applicable",
+    "notes": ["No human-derived medical data."]
+  },
+  "expected": {
+    "classification": "valid",
+    "outcome": "success",
+    "operations": ["metadata", "full-decode", "range-read"],
+    "comparison": {
+      "method": "structural"
+    },
+    "metadata": {
+      "width": 32,
+      "height": 32
+    },
+    "resourceLimits": {
+      "timeoutMs": 5000,
+      "maxInputBytes": 1286,
+      "maxDecodedPixels": 100000000,
+      "maxFrames": 1000,
+      "maxHeapMiB": 512
+    }
+  },
+  "coverage": {
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.png",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.png"
+    ],
+    "selectionReason": "Preserves an existing PureJsImage benchmark and regression input.",
+    "priority": "medium"
+  },
+  "collections": ["ordinary-conformance", "benchmark-content"],
+  "notes": ["Original PureJsImage manifest ID: pngsuite-palette-8"]
+}

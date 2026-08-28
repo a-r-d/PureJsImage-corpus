@@ -1,0 +1,292 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://purejsimage.dev/corpus/schemas/case.schema.json",
+  "title": "Corpus case",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "caseRevision",
+    "title",
+    "description",
+    "domain",
+    "format",
+    "layout",
+    "assets",
+    "provenance",
+    "rights",
+    "privacy",
+    "expected",
+    "coverage",
+    "collections",
+    "notes"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*(?:/[a-z0-9]+(?:[.-][a-z0-9]+)*)+$"
+    },
+    "caseRevision": { "type": "integer", "minimum": 1 },
+    "title": { "type": "string", "minLength": 1 },
+    "description": { "type": "string", "minLength": 1 },
+    "domain": { "enum": ["ordinary", "scientific", "geo", "negative"] },
+    "format": { "$ref": "#/$defs/format" },
+    "layout": { "$ref": "#/$defs/layout" },
+    "assets": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/asset" } },
+    "provenance": { "$ref": "#/$defs/provenance" },
+    "rights": { "$ref": "#/$defs/rights" },
+    "privacy": { "$ref": "#/$defs/privacy" },
+    "expected": { "$ref": "#/$defs/expected" },
+    "coverage": { "$ref": "#/$defs/coverage" },
+    "collections": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" }
+    },
+    "relationships": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["type", "caseId"],
+        "properties": {
+          "type": {
+            "enum": [
+              "parent",
+              "derivative-of",
+              "mutated-from",
+              "equivalent-encoding",
+              "compressed-version-of",
+              "supersedes",
+              "alias"
+            ]
+          },
+          "caseId": { "type": "string", "minLength": 3 }
+        }
+      }
+    },
+    "notes": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+  },
+  "$defs": {
+    "format": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["family", "extensions", "mediaTypes", "features"],
+      "properties": {
+        "family": { "type": "string", "minLength": 1 },
+        "container": { "type": "string", "minLength": 1 },
+        "dialect": { "type": "string", "minLength": 1 },
+        "profile": { "type": "string", "minLength": 1 },
+        "level": { "type": "string", "minLength": 1 },
+        "embeddedCodecs": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+        "extensions": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "pattern": "^[a-z0-9]+$" }
+        },
+        "mediaTypes": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+        "features": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 3 }
+        }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "entrypoint", "requiredPaths"],
+      "properties": {
+        "kind": {
+          "enum": ["single-file", "companion-set", "multi-file", "directory-tree", "archive"]
+        },
+        "entrypoint": { "type": "string", "minLength": 1 },
+        "requiredPaths": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "asset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "role", "storage", "sourceId", "bytes", "sha256"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "role": {
+          "enum": [
+            "primary",
+            "header",
+            "payload",
+            "sidecar",
+            "world-file",
+            "directory-object",
+            "archive",
+            "label",
+            "expected-output"
+          ]
+        },
+        "storage": { "enum": ["vendored", "external", "generated"] },
+        "sourceId": { "type": "string", "minLength": 1 },
+        "sourcePath": { "type": "string", "minLength": 1 },
+        "resolvedUrl": { "type": "string", "format": "uri" },
+        "mirrors": { "type": "array", "items": { "type": "string", "format": "uri" } },
+        "bytes": { "type": "integer", "minimum": 0 },
+        "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "mediaType": { "type": "string", "minLength": 1 },
+        "derivedFrom": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sourceId", "originalUrl", "resolvedAt", "method"],
+      "properties": {
+        "sourceId": { "type": "string", "minLength": 1 },
+        "originalUrl": { "type": "string", "format": "uri" },
+        "resolvedAt": { "type": "string", "format": "date-time" },
+        "method": { "enum": ["migrated", "downloaded", "generated", "mutated", "indexed"] },
+        "parentSha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+      }
+    },
+    "rights": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["licenseName", "evidenceUrl", "attribution", "redistribution"],
+      "properties": {
+        "spdx": { "type": "string", "minLength": 1 },
+        "licenseName": { "type": "string", "minLength": 1 },
+        "evidenceUrl": { "type": "string", "format": "uri" },
+        "attribution": { "type": "string" },
+        "redistribution": { "enum": ["allowed", "download-only", "unknown", "forbidden"] }
+      }
+    },
+    "privacy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reviewStatus",
+        "containsHumanData",
+        "phi",
+        "burnedInText",
+        "gps",
+        "faces",
+        "deidentified",
+        "notes"
+      ],
+      "properties": {
+        "reviewStatus": { "enum": ["passed", "not-required", "pending", "failed"] },
+        "containsHumanData": { "type": "boolean" },
+        "phi": { "enum": ["none", "unknown", "present"] },
+        "burnedInText": { "enum": ["none", "unknown", "present"] },
+        "gps": { "enum": ["none", "unknown", "present"] },
+        "faces": { "enum": ["none", "unknown", "present"] },
+        "deidentified": { "enum": ["yes", "no", "unknown", "not-applicable"] },
+        "notes": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+      }
+    },
+    "expected": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "classification",
+        "outcome",
+        "operations",
+        "comparison",
+        "metadata",
+        "resourceLimits"
+      ],
+      "properties": {
+        "classification": { "enum": ["valid", "invalid", "nonconformant", "crash-regression"] },
+        "outcome": { "enum": ["success", "reject", "implementation-defined"] },
+        "operations": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "metadata",
+              "thumbnail",
+              "first-frame",
+              "all-frames",
+              "full-decode",
+              "region-read",
+              "range-read"
+            ]
+          }
+        },
+        "comparison": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["method"],
+              "properties": { "method": { "const": "structural" } }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["method", "canonical", "sha256"],
+              "properties": {
+                "method": { "const": "exact" },
+                "canonical": { "enum": ["rgba8-srgb-v1", "ndarray-v1", "metadata-json-v1"] },
+                "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["method", "maxAbsoluteError", "rmse", "alphaExact"],
+              "properties": {
+                "method": { "const": "tolerance" },
+                "maxAbsoluteError": { "type": "number", "minimum": 0 },
+                "rmse": { "type": "number", "minimum": 0 },
+                "channelTolerance": {
+                  "type": "array",
+                  "items": { "type": "number", "minimum": 0 }
+                },
+                "alphaExact": { "type": "boolean" }
+              }
+            }
+          ]
+        },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": { "type": ["string", "number", "integer", "boolean", "null"] }
+        },
+        "resourceLimits": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["timeoutMs", "maxInputBytes", "maxDecodedPixels", "maxFrames", "maxHeapMiB"],
+          "properties": {
+            "timeoutMs": { "type": "integer", "minimum": 1 },
+            "maxInputBytes": { "type": "integer", "minimum": 0 },
+            "maxDecodedPixels": { "type": "integer", "minimum": 0 },
+            "maxFrames": { "type": "integer", "minimum": 1 },
+            "maxHeapMiB": { "type": "integer", "minimum": 1 }
+          }
+        }
+      }
+    },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["features", "selectionReason", "priority"],
+      "properties": {
+        "features": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 3 }
+        },
+        "selectionReason": { "type": "string", "minLength": 1 },
+        "priority": { "enum": ["critical", "high", "medium", "low"] },
+        "redundancyGroup": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

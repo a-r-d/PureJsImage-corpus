@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "directory-formats",
+  "title": "Companion and directory layouts",
+  "description": "Companion and directory layouts cases.",
+  "intendedUse": "Companion and directory layouts",
+  "networkPolicy": "optional",
+  "maximumVendoredBytes": 26214400,
+  "caseIds": [],
+  "selectors": [
+    {
+      "layoutKind": "companion-set"
+    },
+    {
+      "layoutKind": "directory-tree"
+    },
+    {
+      "layoutKind": "archive"
+    }
+  ],
+  "exclusions": []
+}

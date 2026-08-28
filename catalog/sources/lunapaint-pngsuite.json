@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "lunapaint-pngsuite",
+  "project": "LunaPaint PNGSuite",
+  "homepage": "https://github.com/lunapaint/pngsuite",
+  "sourceType": "github-repository",
+  "trackingRef": "main",
+  "pinnedRevision": "8cd768dd0d0063195174d0d01cacbd5a7d1e5605",
+  "evidence": {
+    "sourceUrls": ["https://github.com/lunapaint/pngsuite"],
+    "licenseUrls": [
+      "https://github.com/lunapaint/pngsuite/tree/8cd768dd0d0063195174d0d01cacbd5a7d1e5605"
+    ]
+  },
+  "defaultRedistribution": "unknown",
+  "expectedStability": "repository",
+  "updatePolicy": "Resolve explicitly, review license evidence, and accept changed bytes only by command.",
+  "notes": ["The source record does not grant rights to every third-party asset it may contain."]
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "generated/geo-srtm-hgt-n00e000-1201",
+  "kind": "generated",
+  "caseId": "geo/srtm-hgt/n00e000-1201",
+  "description": "Deterministically generate SRTM HGT 1201 by 1201 tile.",
+  "generator": "srtm-hgt",
+  "parameters": {}
+}

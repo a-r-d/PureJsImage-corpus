@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "generated/scientific-envi-bsq-int16",
+  "kind": "generated",
+  "caseId": "scientific/envi/bsq-int16",
+  "description": "Deterministically generate Scientific ENVI BSQ companion pair.",
+  "generator": "envi",
+  "parameters": {
+    "interleave": "bsq",
+    "offset": 1000
+  }
+}

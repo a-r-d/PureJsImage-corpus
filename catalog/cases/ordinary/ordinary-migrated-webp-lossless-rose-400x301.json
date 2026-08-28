@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "id": "ordinary/migrated/webp-lossless-rose-400x301",
+  "caseRevision": 1,
+  "title": "webp lossless rose 400x301",
+  "description": "Migrated without changing source bytes from PureJsImage benchmark/corpus/manifest.json.",
+  "domain": "ordinary",
+  "format": {
+    "family": "webp",
+    "extensions": ["webp"],
+    "mediaTypes": ["application/octet-stream"],
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.webp",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.webp"
+    ]
+  },
+  "layout": {
+    "kind": "single-file",
+    "entrypoint": "webp-lossless-rose-400x301.webp",
+    "requiredPaths": ["webp-lossless-rose-400x301.webp"]
+  },
+  "assets": [
+    {
+      "path": "webp-lossless-rose-400x301.webp",
+      "role": "primary",
+      "storage": "external",
+      "sourceId": "purejsimage",
+      "sourcePath": "webp-lossless-rose-400x301.webp",
+      "resolvedUrl": "https://www.gstatic.com/webp/gallery3/1_webp_ll.webp",
+      "bytes": 81836,
+      "sha256": "49a902b9c35bd2031bf26234c59ff369dd3ae18a3b58247285104a23346ba2d4",
+      "mediaType": "application/octet-stream"
+    }
+  ],
+  "provenance": {
+    "sourceId": "purejsimage",
+    "originalUrl": "https://www.gstatic.com/webp/gallery3/1_webp_ll.webp",
+    "resolvedAt": "2026-08-28T00:00:00.000Z",
+    "method": "migrated"
+  },
+  "rights": {
+    "licenseName": "Public domain",
+    "evidenceUrl": "https://developers.google.com/speed/webp/gallery2",
+    "attribution": "Jon Sullivan",
+    "redistribution": "allowed"
+  },
+  "privacy": {
+    "reviewStatus": "not-required",
+    "containsHumanData": false,
+    "phi": "none",
+    "burnedInText": "none",
+    "gps": "none",
+    "faces": "none",
+    "deidentified": "not-applicable",
+    "notes": ["No human-derived medical data."]
+  },
+  "expected": {
+    "classification": "valid",
+    "outcome": "success",
+    "operations": ["metadata", "full-decode", "range-read"],
+    "comparison": {
+      "method": "structural"
+    },
+    "metadata": {
+      "width": 400,
+      "height": 301
+    },
+    "resourceLimits": {
+      "timeoutMs": 5000,
+      "maxInputBytes": 81836,
+      "maxDecodedPixels": 100000000,
+      "maxFrames": 1000,
+      "maxHeapMiB": 512
+    }
+  },
+  "coverage": {
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.webp",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.webp"
+    ],
+    "selectionReason": "Preserves an existing PureJsImage benchmark and regression input.",
+    "priority": "medium"
+  },
+  "collections": ["ordinary-conformance", "benchmark-content"],
+  "notes": ["Original PureJsImage manifest ID: webp-lossless-rose-400x301"]
+}

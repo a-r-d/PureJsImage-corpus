@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "generated/scientific-ome-tiff-uint8-2x2",
+  "kind": "generated",
+  "caseId": "scientific/ome-tiff/uint8-2x2",
+  "description": "Deterministically generate OME-TIFF uint8 image.",
+  "generator": "ome-tiff",
+  "parameters": {}
+}

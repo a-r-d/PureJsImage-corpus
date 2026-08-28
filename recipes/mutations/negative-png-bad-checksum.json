@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "mutation/negative-png-bad-checksum",
+  "kind": "mutation",
+  "caseId": "negative/png/bad-checksum",
+  "description": "Flip a bit in the PNG IHDR CRC.",
+  "parentSha256": "8e546007599fa6df13786602a501cc2933ae498bb8ed8ff0fa4664f551cad2be",
+  "target": "map.png",
+  "operations": [
+    {
+      "op": "flip-bit",
+      "offset": 29,
+      "bit": 0
+    }
+  ]
+}

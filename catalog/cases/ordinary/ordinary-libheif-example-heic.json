@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "ordinary/libheif/example-heic",
+  "caseRevision": 1,
+  "title": "libheif example HEIC",
+  "description": "libheif example HEIC, pinned by SHA-256 and exact upstream revision where available.",
+  "domain": "ordinary",
+  "format": {
+    "family": "heic",
+    "extensions": ["heic"],
+    "mediaTypes": ["application/octet-stream"],
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.heic",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.heic"
+    ]
+  },
+  "layout": {
+    "kind": "single-file",
+    "entrypoint": "example.heic",
+    "requiredPaths": ["example.heic"]
+  },
+  "assets": [
+    {
+      "path": "example.heic",
+      "role": "primary",
+      "storage": "external",
+      "sourceId": "libheif",
+      "sourcePath": "examples/example.heic",
+      "resolvedUrl": "https://raw.githubusercontent.com/strukturag/libheif/2bc82b493dd8896fab3226f01977c7ac9d2ea3b8/examples/example.heic",
+      "bytes": 718114,
+      "sha256": "7f8b363e4936c0666a25f64f3a92fda10bd8e5453be4592530b65a55dd98f3f2",
+      "mediaType": "application/octet-stream"
+    }
+  ],
+  "provenance": {
+    "sourceId": "libheif",
+    "originalUrl": "https://github.com/strukturag/libheif/blob/2bc82b493dd8896fab3226f01977c7ac9d2ea3b8/examples/example.heic",
+    "resolvedAt": "2026-08-28T00:00:00.000Z",
+    "method": "downloaded"
+  },
+  "rights": {
+    "licenseName": "Asset license not established",
+    "evidenceUrl": "https://github.com/strukturag/libheif",
+    "attribution": "See upstream source metadata.",
+    "redistribution": "unknown"
+  },
+  "privacy": {
+    "reviewStatus": "not-required",
+    "containsHumanData": false,
+    "phi": "none",
+    "burnedInText": "none",
+    "gps": "none",
+    "faces": "none",
+    "deidentified": "not-applicable",
+    "notes": ["No human-derived medical data."]
+  },
+  "expected": {
+    "classification": "valid",
+    "outcome": "success",
+    "operations": ["metadata", "full-decode", "range-read"],
+    "comparison": {
+      "method": "structural"
+    },
+    "metadata": {},
+    "resourceLimits": {
+      "timeoutMs": 5000,
+      "maxInputBytes": 718114,
+      "maxDecodedPixels": 100000000,
+      "maxFrames": 1000,
+      "maxHeapMiB": 512
+    }
+  },
+  "coverage": {
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.heic",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.heic"
+    ],
+    "selectionReason": "Exercises the real heic reader with independently hashed upstream bytes.",
+    "priority": "high"
+  },
+  "collections": ["ordinary-conformance", "large-range"],
+  "notes": ["External because asset-level redistribution rights are not established."]
+}

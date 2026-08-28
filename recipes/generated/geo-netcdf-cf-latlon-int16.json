@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "generated/geo-netcdf-cf-latlon-int16",
+  "kind": "generated",
+  "caseId": "geo/netcdf/cf-latlon-int16",
+  "description": "Deterministically generate CF 1.8 latitude-longitude grid.",
+  "generator": "cf-netcdf",
+  "parameters": {}
+}

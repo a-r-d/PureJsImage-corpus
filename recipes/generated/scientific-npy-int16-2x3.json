@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "generated/scientific-npy-int16-2x3",
+  "kind": "generated",
+  "caseId": "scientific/npy/int16-2x3",
+  "description": "Deterministically generate NPY version 1 int16 array.",
+  "generator": "npy",
+  "parameters": {}
+}

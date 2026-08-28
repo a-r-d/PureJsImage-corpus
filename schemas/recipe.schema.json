@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://purejsimage.dev/corpus/schemas/recipe.schema.json",
+  "title": "Deterministic corpus recipe",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "id", "kind", "caseId", "description"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(?:[/-][a-z0-9]+)*$" },
+    "kind": { "enum": ["generated", "mutation"] },
+    "caseId": { "type": "string", "minLength": 3 },
+    "description": { "type": "string", "minLength": 1 },
+    "generator": { "type": "string", "minLength": 1 },
+    "parameters": { "type": "object" },
+    "parentSha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "target": { "type": "string", "minLength": 1 },
+    "operations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["op"],
+        "properties": {
+          "op": {
+            "enum": [
+              "truncate",
+              "overwrite-bytes",
+              "insert-bytes",
+              "delete-range",
+              "duplicate-range",
+              "flip-bit",
+              "patch-u32-le",
+              "patch-u32-be"
+            ]
+          },
+          "offset": { "type": "integer", "minimum": 0 },
+          "length": { "type": "integer", "minimum": 0 },
+          "bytesHex": { "type": "string", "pattern": "^(?:[0-9a-f]{2})*$" },
+          "bit": { "type": "integer", "minimum": 0, "maximum": 7 },
+          "value": { "type": "integer", "minimum": 0, "maximum": 4294967295 }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "kind": { "const": "generated" } } },
+      "then": { "required": ["generator", "parameters"] }
+    },
+    {
+      "if": { "properties": { "kind": { "const": "mutation" } } },
+      "then": { "required": ["parentSha256", "target", "operations"] }
+    }
+  ]
+}

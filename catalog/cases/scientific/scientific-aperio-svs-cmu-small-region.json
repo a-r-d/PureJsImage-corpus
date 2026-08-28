@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "scientific/aperio-svs/cmu-small-region",
+  "caseRevision": 1,
+  "title": "Aperio CMU small region slide",
+  "description": "Aperio CMU small region slide, pinned by SHA-256 and exact upstream revision where available.",
+  "domain": "scientific",
+  "format": {
+    "family": "aperio-svs",
+    "extensions": ["svs"],
+    "mediaTypes": ["application/octet-stream"],
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.aperio-svs",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.aperio-svs"
+    ]
+  },
+  "layout": {
+    "kind": "single-file",
+    "entrypoint": "CMU-1-Small-Region.svs",
+    "requiredPaths": ["CMU-1-Small-Region.svs"]
+  },
+  "assets": [
+    {
+      "path": "CMU-1-Small-Region.svs",
+      "role": "primary",
+      "storage": "external",
+      "sourceId": "openslide-testdata",
+      "sourcePath": "CMU-1-Small-Region.svs",
+      "resolvedUrl": "https://openslide.cs.cmu.edu/download/openslide-testdata/Aperio/CMU-1-Small-Region.svs",
+      "bytes": 1938955,
+      "sha256": "ed92d5a9f2e86df67640d6f92ce3e231419ce127131697fbbce42ad5e002c8a7",
+      "mediaType": "application/octet-stream"
+    }
+  ],
+  "provenance": {
+    "sourceId": "openslide-testdata",
+    "originalUrl": "https://openslide.cs.cmu.edu/download/openslide-testdata/Aperio/CMU-1-Small-Region.svs",
+    "resolvedAt": "2026-08-28T00:00:00.000Z",
+    "method": "downloaded"
+  },
+  "rights": {
+    "licenseName": "Asset license not established",
+    "evidenceUrl": "https://openslide.cs.cmu.edu/download/openslide-testdata/",
+    "attribution": "See upstream source metadata.",
+    "redistribution": "unknown"
+  },
+  "privacy": {
+    "reviewStatus": "pending",
+    "containsHumanData": true,
+    "phi": "unknown",
+    "burnedInText": "unknown",
+    "gps": "none",
+    "faces": "none",
+    "deidentified": "unknown",
+    "notes": ["Kept external until specimen provenance and slide-label privacy are reviewed."]
+  },
+  "expected": {
+    "classification": "valid",
+    "outcome": "success",
+    "operations": ["metadata", "full-decode", "range-read"],
+    "comparison": {
+      "method": "structural"
+    },
+    "metadata": {},
+    "resourceLimits": {
+      "timeoutMs": 5000,
+      "maxInputBytes": 1938955,
+      "maxDecodedPixels": 100000000,
+      "maxFrames": 1000,
+      "maxHeapMiB": 512
+    }
+  },
+  "coverage": {
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.aperio-svs",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.aperio-svs"
+    ],
+    "selectionReason": "Exercises the real aperio-svs reader with independently hashed upstream bytes.",
+    "priority": "high"
+  },
+  "collections": ["scientific-small", "large-range"],
+  "notes": ["External because asset-level redistribution rights are not established."]
+}

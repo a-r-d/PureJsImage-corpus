@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "pydicom-data",
+  "project": "pydicom-data",
+  "homepage": "https://github.com/pydicom/pydicom-data/tree/master/data_store/data",
+  "sourceType": "github-tree",
+  "trackingRef": "main",
+  "pinnedRevision": "abc42b90985fb6cf385aa4af766d2c9c94a257a4",
+  "evidence": {
+    "sourceUrls": ["https://github.com/pydicom/pydicom-data/tree/master/data_store/data"],
+    "licenseUrls": [
+      "https://github.com/pydicom/pydicom-data/tree/abc42b90985fb6cf385aa4af766d2c9c94a257a4"
+    ]
+  },
+  "defaultRedistribution": "unknown",
+  "expectedStability": "repository",
+  "updatePolicy": "Resolve explicitly, review license evidence, and accept changed bytes only by command.",
+  "notes": ["The source record does not grant rights to every third-party asset it may contain."]
+}

@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "generated/ordinary-pfm-rgb-little-endian",
+  "kind": "generated",
+  "caseId": "ordinary/pfm/rgb-little-endian",
+  "description": "Deterministically generate PFM RGB little-endian.",
+  "generator": "pfm",
+  "parameters": {
+    "endian": "little"
+  }
+}

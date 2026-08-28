@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "mutation/negative-qoi-zero-dimensions",
+  "kind": "mutation",
+  "caseId": "negative/qoi/zero-dimensions",
+  "description": "Set both QOI dimensions to zero.",
+  "parentSha256": "de75cd612126474634e37aea8010595e8a75f1855cb220ff58c82b553d6f302e",
+  "target": "rgba-2x2.qoi",
+  "operations": [
+    {
+      "op": "overwrite-bytes",
+      "offset": 4,
+      "bytesHex": "0000000000000000"
+    }
+  ]
+}

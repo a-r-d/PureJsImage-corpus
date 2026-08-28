@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "id": "scientific/rpl/rosetta-float32",
+  "caseRevision": 1,
+  "title": "RosettaSciIO RPL plus RAW float32",
+  "description": "RosettaSciIO RPL plus RAW float32, pinned by SHA-256 and exact upstream revision where available.",
+  "domain": "scientific",
+  "format": {
+    "family": "rpl",
+    "extensions": ["raw", "rpl"],
+    "mediaTypes": ["application/octet-stream"],
+    "features": [
+      "axes.xy",
+      "companion-files",
+      "compression.unknown",
+      "format.rpl",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.companion-set",
+      "purejsimage.reader.rpl"
+    ]
+  },
+  "layout": {
+    "kind": "companion-set",
+    "entrypoint": "float32.rpl",
+    "requiredPaths": ["float32.raw", "float32.rpl"]
+  },
+  "assets": [
+    {
+      "path": "float32.rpl",
+      "role": "header",
+      "storage": "external",
+      "sourceId": "rosettasciio",
+      "sourcePath": "ripple/test_ripple_sdim-1_ndim-0_float32.rpl",
+      "resolvedUrl": "https://raw.githubusercontent.com/hyperspy/rosettasciio/bc254db14cd7d4d23169b11aeb622a0a7eac1fbe/rsciio/tests/data/ripple/test_ripple_sdim-1_ndim-0_float32.rpl",
+      "bytes": 352,
+      "sha256": "d3501a261506fa49f362effe44397ed2f3e1e4f18ba203fbf0e80239b0437082",
+      "mediaType": "application/octet-stream"
+    },
+    {
+      "path": "float32.raw",
+      "role": "payload",
+      "storage": "external",
+      "sourceId": "rosettasciio",
+      "sourcePath": "ripple/test_ripple_sdim-1_ndim-0_float32.raw",
+      "resolvedUrl": "https://raw.githubusercontent.com/hyperspy/rosettasciio/bc254db14cd7d4d23169b11aeb622a0a7eac1fbe/rsciio/tests/data/ripple/test_ripple_sdim-1_ndim-0_float32.raw",
+      "bytes": 12,
+      "sha256": "75664b4da1c08de9e8fad52303cc458b3e420edde6591e58761e138cc5e3f163",
+      "mediaType": "application/octet-stream"
+    }
+  ],
+  "provenance": {
+    "sourceId": "rosettasciio",
+    "originalUrl": "https://raw.githubusercontent.com/hyperspy/rosettasciio/bc254db14cd7d4d23169b11aeb622a0a7eac1fbe/rsciio/tests/data/ripple/test_ripple_sdim-1_ndim-0_float32.rpl",
+    "resolvedAt": "2026-08-28T00:00:00.000Z",
+    "method": "downloaded"
+  },
+  "rights": {
+    "licenseName": "Asset license not established",
+    "evidenceUrl": "https://github.com/hyperspy/rosettasciio",
+    "attribution": "See upstream source metadata.",
+    "redistribution": "unknown"
+  },
+  "privacy": {
+    "reviewStatus": "not-required",
+    "containsHumanData": false,
+    "phi": "none",
+    "burnedInText": "none",
+    "gps": "none",
+    "faces": "none",
+    "deidentified": "not-applicable",
+    "notes": ["No human-derived medical data."]
+  },
+  "expected": {
+    "classification": "valid",
+    "outcome": "success",
+    "operations": ["metadata", "full-decode", "range-read"],
+    "comparison": {
+      "method": "structural"
+    },
+    "metadata": {},
+    "resourceLimits": {
+      "timeoutMs": 5000,
+      "maxInputBytes": 364,
+      "maxDecodedPixels": 100000000,
+      "maxFrames": 1000,
+      "maxHeapMiB": 512
+    }
+  },
+  "coverage": {
+    "features": [
+      "axes.xy",
+      "companion-files",
+      "compression.unknown",
+      "format.rpl",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.companion-set",
+      "purejsimage.reader.rpl"
+    ],
+    "selectionReason": "Exercises the real rpl reader with independently hashed upstream bytes.",
+    "priority": "high"
+  },
+  "collections": ["scientific-small", "large-range", "directory-formats"],
+  "notes": ["External because asset-level redistribution rights are not established."]
+}

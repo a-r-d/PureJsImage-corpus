@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "mutation/negative-qoi-truncated-payload",
+  "kind": "mutation",
+  "caseId": "negative/qoi/truncated-payload",
+  "description": "Truncate after the first QOI pixel.",
+  "parentSha256": "de75cd612126474634e37aea8010595e8a75f1855cb220ff58c82b553d6f302e",
+  "target": "rgba-2x2.qoi",
+  "operations": [
+    {
+      "op": "truncate",
+      "length": 19
+    }
+  ]
+}

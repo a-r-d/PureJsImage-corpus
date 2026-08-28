@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "bmpsuite",
+  "project": "BMP Suite",
+  "homepage": "https://entropymine.com/jason/bmpsuite/",
+  "sourceType": "http-index",
+  "trackingRef": "website",
+  "pinnedRevision": "bmpsuite-2.8",
+  "evidence": {
+    "sourceUrls": ["https://entropymine.com/jason/bmpsuite/"],
+    "licenseUrls": ["https://entropymine.com/jason/bmpsuite/"]
+  },
+  "defaultRedistribution": "allowed",
+  "expectedStability": "unstable",
+  "updatePolicy": "Resolve explicitly, review license evidence, and accept changed bytes only by command.",
+  "notes": ["The source record does not grant rights to every third-party asset it may contain."]
+}

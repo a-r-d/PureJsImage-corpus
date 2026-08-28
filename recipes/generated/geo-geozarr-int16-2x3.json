@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "generated/geo-geozarr-int16-2x3",
+  "kind": "generated",
+  "caseId": "geo/geozarr/int16-2x3",
+  "description": "Deterministically generate GeoZarr v3 directory array.",
+  "generator": "geozarr",
+  "parameters": {}
+}

@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "geo/netcdf/netcdf4-grouped",
+  "caseRevision": 1,
+  "title": "Grouped NetCDF-4 reference file",
+  "description": "Grouped NetCDF-4 reference file, pinned by SHA-256 and exact upstream revision where available.",
+  "domain": "geo",
+  "format": {
+    "family": "netcdf-4",
+    "extensions": ["nc"],
+    "mediaTypes": ["application/x-netcdf"],
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.netcdf-4",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.netcdf-cf"
+    ]
+  },
+  "layout": {
+    "kind": "single-file",
+    "entrypoint": "grouped-netcdf4.nc",
+    "requiredPaths": ["grouped-netcdf4.nc"]
+  },
+  "assets": [
+    {
+      "path": "grouped-netcdf4.nc",
+      "role": "primary",
+      "storage": "external",
+      "sourceId": "unidata-netcdf-c",
+      "sourcePath": "ncdump/ref_nc_test_netcdf4_4_0.nc",
+      "resolvedUrl": "https://raw.githubusercontent.com/Unidata/netcdf-c/2ed1b285b9c9dbac7de2c7d330e576be16dcade8/ncdump/ref_nc_test_netcdf4_4_0.nc",
+      "bytes": 162812,
+      "sha256": "e26bf7b74caee704c7420b4b983d27c3717e739652e5a8ac0c8f2a52c16d073e",
+      "mediaType": "application/x-netcdf"
+    }
+  ],
+  "provenance": {
+    "sourceId": "unidata-netcdf-c",
+    "originalUrl": "https://github.com/Unidata/netcdf-c/blob/2ed1b285b9c9dbac7de2c7d330e576be16dcade8/ncdump/ref_nc_test_netcdf4_4_0.nc",
+    "resolvedAt": "2026-08-28T00:00:00.000Z",
+    "method": "downloaded"
+  },
+  "rights": {
+    "licenseName": "Asset license not established",
+    "evidenceUrl": "https://github.com/Unidata/netcdf-c",
+    "attribution": "See upstream source metadata.",
+    "redistribution": "unknown"
+  },
+  "privacy": {
+    "reviewStatus": "not-required",
+    "containsHumanData": false,
+    "phi": "none",
+    "burnedInText": "none",
+    "gps": "none",
+    "faces": "none",
+    "deidentified": "not-applicable",
+    "notes": ["No human-derived medical data."]
+  },
+  "expected": {
+    "classification": "valid",
+    "outcome": "success",
+    "operations": ["metadata", "full-decode", "range-read"],
+    "comparison": {
+      "method": "structural"
+    },
+    "metadata": {},
+    "resourceLimits": {
+      "timeoutMs": 5000,
+      "maxInputBytes": 162812,
+      "maxDecodedPixels": 100000000,
+      "maxFrames": 1000,
+      "maxHeapMiB": 512
+    }
+  },
+  "coverage": {
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.netcdf-4",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.netcdf-cf"
+    ],
+    "selectionReason": "Exercises the real netcdf-cf reader with independently hashed upstream bytes.",
+    "priority": "high"
+  },
+  "collections": ["geo-small", "large-range"],
+  "notes": ["External because asset-level redistribution rights are not established."]
+}

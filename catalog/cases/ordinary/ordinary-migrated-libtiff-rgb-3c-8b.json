@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "id": "ordinary/migrated/libtiff-rgb-3c-8b",
+  "caseRevision": 1,
+  "title": "libtiff rgb 3c 8b",
+  "description": "Migrated without changing source bytes from PureJsImage benchmark/corpus/manifest.json.",
+  "domain": "ordinary",
+  "format": {
+    "family": "tiff",
+    "extensions": ["tiff"],
+    "mediaTypes": ["image/tiff"],
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.tiff",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.tiff"
+    ]
+  },
+  "layout": {
+    "kind": "single-file",
+    "entrypoint": "libtiff-rgb-3c-8b.tiff",
+    "requiredPaths": ["libtiff-rgb-3c-8b.tiff"]
+  },
+  "assets": [
+    {
+      "path": "libtiff-rgb-3c-8b.tiff",
+      "role": "primary",
+      "storage": "external",
+      "sourceId": "purejsimage",
+      "sourcePath": "libtiff-rgb-3c-8b.tiff",
+      "resolvedUrl": "https://gitlab.com/libtiff/libtiff/-/raw/v4.7.1/test/images/rgb-3c-8b.tiff",
+      "bytes": 71470,
+      "sha256": "21a751d4d6cad3903e4833db726c1b645fc88a1161efffcabaf9ce9c8c8f7084",
+      "mediaType": "image/tiff"
+    }
+  ],
+  "provenance": {
+    "sourceId": "purejsimage",
+    "originalUrl": "https://gitlab.com/libtiff/libtiff/-/raw/v4.7.1/test/images/rgb-3c-8b.tiff",
+    "resolvedAt": "2026-08-28T00:00:00.000Z",
+    "method": "migrated"
+  },
+  "rights": {
+    "licenseName": "libtiff BSD-style license",
+    "evidenceUrl": "https://gitlab.com/libtiff/libtiff/-/blob/v4.7.1/test/images/rgb-3c-8b.tiff",
+    "attribution": "LibTIFF contributors",
+    "redistribution": "allowed"
+  },
+  "privacy": {
+    "reviewStatus": "not-required",
+    "containsHumanData": false,
+    "phi": "none",
+    "burnedInText": "none",
+    "gps": "none",
+    "faces": "none",
+    "deidentified": "not-applicable",
+    "notes": ["No human-derived medical data."]
+  },
+  "expected": {
+    "classification": "valid",
+    "outcome": "success",
+    "operations": ["metadata", "full-decode", "range-read"],
+    "comparison": {
+      "method": "structural"
+    },
+    "metadata": {
+      "width": 157,
+      "height": 151
+    },
+    "resourceLimits": {
+      "timeoutMs": 5000,
+      "maxInputBytes": 71470,
+      "maxDecodedPixels": 100000000,
+      "maxFrames": 1000,
+      "maxHeapMiB": 512
+    }
+  },
+  "coverage": {
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.tiff",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.tiff"
+    ],
+    "selectionReason": "Preserves an existing PureJsImage benchmark and regression input.",
+    "priority": "medium"
+  },
+  "collections": ["ordinary-conformance", "benchmark-content"],
+  "notes": ["Original PureJsImage manifest ID: libtiff-rgb-3c-8b"]
+}

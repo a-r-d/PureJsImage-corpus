@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "generated/scientific-nanonis-sxm-float32-3x2",
+  "kind": "generated",
+  "caseId": "scientific/nanonis-sxm/float32-3x2",
+  "description": "Deterministically generate Nanonis SXM float32 scan.",
+  "generator": "nanonis-sxm",
+  "parameters": {}
+}

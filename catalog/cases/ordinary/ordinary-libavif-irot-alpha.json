@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "ordinary/libavif/irot-alpha",
+  "caseRevision": 1,
+  "title": "libavif rotation and alpha case",
+  "description": "libavif rotation and alpha case, pinned by SHA-256 and exact upstream revision where available.",
+  "domain": "ordinary",
+  "format": {
+    "family": "avif",
+    "extensions": ["avif"],
+    "mediaTypes": ["application/octet-stream"],
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.avif",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.avif"
+    ]
+  },
+  "layout": {
+    "kind": "single-file",
+    "entrypoint": "abc_color_irot_alpha_irot.avif",
+    "requiredPaths": ["abc_color_irot_alpha_irot.avif"]
+  },
+  "assets": [
+    {
+      "path": "abc_color_irot_alpha_irot.avif",
+      "role": "primary",
+      "storage": "external",
+      "sourceId": "libavif",
+      "sourcePath": "tests/data/abc_color_irot_alpha_irot.avif",
+      "resolvedUrl": "https://raw.githubusercontent.com/AOMediaCodec/libavif/eb673097950e0b0ec77f696958091ef0244a45a9/tests/data/abc_color_irot_alpha_irot.avif",
+      "bytes": 10597,
+      "sha256": "b371cc88244a873131e4d10ff9363d71ce4f41cf333bd4a491b38d970d9abd3b",
+      "mediaType": "application/octet-stream"
+    }
+  ],
+  "provenance": {
+    "sourceId": "libavif",
+    "originalUrl": "https://github.com/AOMediaCodec/libavif/blob/eb673097950e0b0ec77f696958091ef0244a45a9/tests/data/abc_color_irot_alpha_irot.avif",
+    "resolvedAt": "2026-08-28T00:00:00.000Z",
+    "method": "downloaded"
+  },
+  "rights": {
+    "licenseName": "Asset license not established",
+    "evidenceUrl": "https://github.com/AOMediaCodec/libavif/tree/main/tests/data",
+    "attribution": "See upstream source metadata.",
+    "redistribution": "unknown"
+  },
+  "privacy": {
+    "reviewStatus": "not-required",
+    "containsHumanData": false,
+    "phi": "none",
+    "burnedInText": "none",
+    "gps": "none",
+    "faces": "none",
+    "deidentified": "not-applicable",
+    "notes": ["No human-derived medical data."]
+  },
+  "expected": {
+    "classification": "valid",
+    "outcome": "success",
+    "operations": ["metadata", "full-decode", "range-read"],
+    "comparison": {
+      "method": "structural"
+    },
+    "metadata": {},
+    "resourceLimits": {
+      "timeoutMs": 5000,
+      "maxInputBytes": 10597,
+      "maxDecodedPixels": 100000000,
+      "maxFrames": 1000,
+      "maxHeapMiB": 512
+    }
+  },
+  "coverage": {
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.avif",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.avif"
+    ],
+    "selectionReason": "Exercises the real avif reader with independently hashed upstream bytes.",
+    "priority": "high"
+  },
+  "collections": ["ordinary-conformance", "large-range"],
+  "notes": ["External because asset-level redistribution rights are not established."]
+}

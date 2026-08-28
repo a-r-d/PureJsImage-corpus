@@ -1,0 +1,9 @@
+key	value
+width	3
+height	2
+depth	1
+offset	0
+data-length	2
+data-type	unsigned
+byte-order	little-endian
+record-by	dont-care

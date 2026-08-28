@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "id": "ordinary/migrated/libultrahdr-apple-gainmap-new",
+  "caseRevision": 1,
+  "title": "libultrahdr apple gainmap new",
+  "description": "Migrated without changing source bytes from PureJsImage benchmark/corpus/manifest.json.",
+  "domain": "ordinary",
+  "format": {
+    "family": "jpeg",
+    "extensions": ["jpg"],
+    "mediaTypes": ["application/octet-stream"],
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.jpeg",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.jpeg"
+    ]
+  },
+  "layout": {
+    "kind": "single-file",
+    "entrypoint": "libultrahdr-apple-gainmap-new.jpg",
+    "requiredPaths": ["libultrahdr-apple-gainmap-new.jpg"]
+  },
+  "assets": [
+    {
+      "path": "libultrahdr-apple-gainmap-new.jpg",
+      "role": "primary",
+      "storage": "external",
+      "sourceId": "purejsimage",
+      "sourcePath": "libultrahdr-apple-gainmap-new.jpg",
+      "resolvedUrl": "https://raw.githubusercontent.com/google/libultrahdr/418b6b361e252a91c435a56cf386afb37d7d1c9d/tests/data/apple_gainmap_new.jpg",
+      "bytes": 50824,
+      "sha256": "492a94bd0636bcf15b3f560c68142a7783936c1597e78b0d0461d8be7fddc078",
+      "mediaType": "application/octet-stream"
+    }
+  ],
+  "provenance": {
+    "sourceId": "purejsimage",
+    "originalUrl": "https://raw.githubusercontent.com/google/libultrahdr/main/tests/data/apple_gainmap_new.jpg",
+    "resolvedAt": "2026-08-28T00:00:00.000Z",
+    "method": "migrated"
+  },
+  "rights": {
+    "licenseName": "Creative Commons Attribution 4.0 International",
+    "evidenceUrl": "https://github.com/google/libultrahdr/tree/main/tests/data",
+    "attribution": "libultrahdr contributors; Apple iPhone 13 mini camera fixture",
+    "redistribution": "allowed"
+  },
+  "privacy": {
+    "reviewStatus": "not-required",
+    "containsHumanData": false,
+    "phi": "none",
+    "burnedInText": "none",
+    "gps": "none",
+    "faces": "none",
+    "deidentified": "not-applicable",
+    "notes": ["No human-derived medical data."]
+  },
+  "expected": {
+    "classification": "valid",
+    "outcome": "success",
+    "operations": ["metadata", "full-decode", "range-read"],
+    "comparison": {
+      "method": "structural"
+    },
+    "metadata": {
+      "width": 384,
+      "height": 512
+    },
+    "resourceLimits": {
+      "timeoutMs": 5000,
+      "maxInputBytes": 50824,
+      "maxDecodedPixels": 100000000,
+      "maxFrames": 1000,
+      "maxHeapMiB": 512
+    }
+  },
+  "coverage": {
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.jpeg",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.jpeg"
+    ],
+    "selectionReason": "Preserves an existing PureJsImage benchmark and regression input.",
+    "priority": "medium"
+  },
+  "collections": ["ordinary-conformance", "benchmark-content"],
+  "notes": ["Original PureJsImage manifest ID: libultrahdr-apple-gainmap-new"]
+}

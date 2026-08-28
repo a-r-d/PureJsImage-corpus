@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "ordinary/openjpeg/file1-jp2",
+  "caseRevision": 1,
+  "title": "OpenJPEG conformance file1 JP2",
+  "description": "OpenJPEG conformance file1 JP2, pinned by SHA-256 and exact upstream revision where available.",
+  "domain": "ordinary",
+  "format": {
+    "family": "jp2",
+    "extensions": ["jp2"],
+    "mediaTypes": ["application/octet-stream"],
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.jp2",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.jp2"
+    ]
+  },
+  "layout": {
+    "kind": "single-file",
+    "entrypoint": "file1.jp2",
+    "requiredPaths": ["file1.jp2"]
+  },
+  "assets": [
+    {
+      "path": "file1.jp2",
+      "role": "primary",
+      "storage": "external",
+      "sourceId": "openjpeg-data",
+      "sourcePath": "input/conformance/file1.jp2",
+      "resolvedUrl": "https://raw.githubusercontent.com/uclouvain/openjpeg-data/39524bd3a601d90ed8e0177559400d23945f96a9/input/conformance/file1.jp2",
+      "bytes": 650678,
+      "sha256": "4e3d51df7bc66cf367162acfff88b0889d2b2c79ea8d99d93b2d2bd165398deb",
+      "mediaType": "application/octet-stream"
+    }
+  ],
+  "provenance": {
+    "sourceId": "openjpeg-data",
+    "originalUrl": "https://github.com/uclouvain/openjpeg-data/blob/39524bd3a601d90ed8e0177559400d23945f96a9/input/conformance/file1.jp2",
+    "resolvedAt": "2026-08-28T00:00:00.000Z",
+    "method": "downloaded"
+  },
+  "rights": {
+    "licenseName": "Asset license not established",
+    "evidenceUrl": "https://github.com/uclouvain/openjpeg-data",
+    "attribution": "See upstream source metadata.",
+    "redistribution": "unknown"
+  },
+  "privacy": {
+    "reviewStatus": "not-required",
+    "containsHumanData": false,
+    "phi": "none",
+    "burnedInText": "none",
+    "gps": "none",
+    "faces": "none",
+    "deidentified": "not-applicable",
+    "notes": ["No human-derived medical data."]
+  },
+  "expected": {
+    "classification": "valid",
+    "outcome": "success",
+    "operations": ["metadata", "full-decode", "range-read"],
+    "comparison": {
+      "method": "structural"
+    },
+    "metadata": {},
+    "resourceLimits": {
+      "timeoutMs": 5000,
+      "maxInputBytes": 650678,
+      "maxDecodedPixels": 100000000,
+      "maxFrames": 1000,
+      "maxHeapMiB": 512
+    }
+  },
+  "coverage": {
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.jp2",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.jp2"
+    ],
+    "selectionReason": "Exercises the real jp2 reader with independently hashed upstream bytes.",
+    "priority": "high"
+  },
+  "collections": ["ordinary-conformance", "large-range"],
+  "notes": ["External because asset-level redistribution rights are not established."]
+}

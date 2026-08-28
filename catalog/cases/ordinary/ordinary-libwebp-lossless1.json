@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "ordinary/libwebp/lossless1",
+  "caseRevision": 1,
+  "title": "libwebp lossless reference image",
+  "description": "libwebp lossless reference image, pinned by SHA-256 and exact upstream revision where available.",
+  "domain": "ordinary",
+  "format": {
+    "family": "webp",
+    "extensions": ["webp"],
+    "mediaTypes": ["application/octet-stream"],
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.webp",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.webp"
+    ]
+  },
+  "layout": {
+    "kind": "single-file",
+    "entrypoint": "lossless1.webp",
+    "requiredPaths": ["lossless1.webp"]
+  },
+  "assets": [
+    {
+      "path": "lossless1.webp",
+      "role": "primary",
+      "storage": "external",
+      "sourceId": "libwebp-test-data",
+      "sourcePath": "lossless1.webp",
+      "resolvedUrl": "https://raw.githubusercontent.com/webmproject/libwebp-test-data/06ddd96e276c2c638a72d39d3c0f340afd61978c/lossless1.webp",
+      "bytes": 15368,
+      "sha256": "5eaf3d3e7f7a38487afa8d3f91062167eb061cd6a5dfa455d24a9a2004860311",
+      "mediaType": "application/octet-stream"
+    }
+  ],
+  "provenance": {
+    "sourceId": "libwebp-test-data",
+    "originalUrl": "https://github.com/webmproject/libwebp-test-data/blob/06ddd96e276c2c638a72d39d3c0f340afd61978c/lossless1.webp",
+    "resolvedAt": "2026-08-28T00:00:00.000Z",
+    "method": "downloaded"
+  },
+  "rights": {
+    "licenseName": "Asset license not established",
+    "evidenceUrl": "https://github.com/webmproject/libwebp-test-data",
+    "attribution": "See upstream source metadata.",
+    "redistribution": "unknown"
+  },
+  "privacy": {
+    "reviewStatus": "not-required",
+    "containsHumanData": false,
+    "phi": "none",
+    "burnedInText": "none",
+    "gps": "none",
+    "faces": "none",
+    "deidentified": "not-applicable",
+    "notes": ["No human-derived medical data."]
+  },
+  "expected": {
+    "classification": "valid",
+    "outcome": "success",
+    "operations": ["metadata", "full-decode", "range-read"],
+    "comparison": {
+      "method": "structural"
+    },
+    "metadata": {},
+    "resourceLimits": {
+      "timeoutMs": 5000,
+      "maxInputBytes": 15368,
+      "maxDecodedPixels": 100000000,
+      "maxFrames": 1000,
+      "maxHeapMiB": 512
+    }
+  },
+  "coverage": {
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.webp",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.webp"
+    ],
+    "selectionReason": "Exercises the real webp reader with independently hashed upstream bytes.",
+    "priority": "high"
+  },
+  "collections": ["ordinary-conformance", "large-range"],
+  "notes": ["External because asset-level redistribution rights are not established."]
+}

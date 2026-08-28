@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "generated/ordinary-netpbm-pam-rgba",
+  "kind": "generated",
+  "caseId": "ordinary/netpbm/pam-rgba",
+  "description": "Deterministically generate PAM RGBA alpha boundary.",
+  "generator": "pam-rgba",
+  "parameters": {}
+}

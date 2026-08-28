@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "id": "ordinary/migrated/bmpsuite-pal8-padding-125",
+  "caseRevision": 1,
+  "title": "bmpsuite pal8 padding 125",
+  "description": "Migrated without changing source bytes from PureJsImage benchmark/corpus/manifest.json.",
+  "domain": "ordinary",
+  "format": {
+    "family": "bmp",
+    "extensions": ["bmp"],
+    "mediaTypes": ["application/octet-stream"],
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.bmp",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.bmp"
+    ]
+  },
+  "layout": {
+    "kind": "single-file",
+    "entrypoint": "bmpsuite-pal8-padding-125.bmp",
+    "requiredPaths": ["bmpsuite-pal8-padding-125.bmp"]
+  },
+  "assets": [
+    {
+      "path": "bmpsuite-pal8-padding-125.bmp",
+      "role": "primary",
+      "storage": "external",
+      "sourceId": "purejsimage",
+      "sourcePath": "bmpsuite-pal8-padding-125.bmp",
+      "resolvedUrl": "https://entropymine.com/jason/bmpsuite/bmpsuite/g/pal8w125.bmp",
+      "bytes": 8998,
+      "sha256": "bc13d701c7df4f6b8968dfe0c07f7624874c826aa80d9ad6d20994479c1d1c2c",
+      "mediaType": "application/octet-stream"
+    }
+  ],
+  "provenance": {
+    "sourceId": "purejsimage",
+    "originalUrl": "https://entropymine.com/jason/bmpsuite/bmpsuite/g/pal8w125.bmp",
+    "resolvedAt": "2026-08-28T00:00:00.000Z",
+    "method": "migrated"
+  },
+  "rights": {
+    "licenseName": "Public domain generated image file",
+    "evidenceUrl": "https://entropymine.com/jason/bmpsuite/bmpsuite/html/bmpsuite.html",
+    "attribution": "Jason Summers and BMP Suite contributors",
+    "redistribution": "allowed"
+  },
+  "privacy": {
+    "reviewStatus": "not-required",
+    "containsHumanData": false,
+    "phi": "none",
+    "burnedInText": "none",
+    "gps": "none",
+    "faces": "none",
+    "deidentified": "not-applicable",
+    "notes": ["No human-derived medical data."]
+  },
+  "expected": {
+    "classification": "valid",
+    "outcome": "success",
+    "operations": ["metadata", "full-decode", "range-read"],
+    "comparison": {
+      "method": "structural"
+    },
+    "metadata": {
+      "width": 125,
+      "height": 62
+    },
+    "resourceLimits": {
+      "timeoutMs": 5000,
+      "maxInputBytes": 8998,
+      "maxDecodedPixels": 100000000,
+      "maxFrames": 1000,
+      "maxHeapMiB": 512
+    }
+  },
+  "coverage": {
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.bmp",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.bmp"
+    ],
+    "selectionReason": "Preserves an existing PureJsImage benchmark and regression input.",
+    "priority": "medium"
+  },
+  "collections": ["ordinary-conformance", "benchmark-content"],
+  "notes": ["Original PureJsImage manifest ID: bmpsuite-pal8-padding-125"]
+}

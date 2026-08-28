@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "generated/scientific-cbf-uint8-3x2",
+  "kind": "generated",
+  "caseId": "scientific/cbf/uint8-3x2",
+  "description": "Deterministically generate CBF uncompressed uint8 array.",
+  "generator": "cbf",
+  "parameters": {}
+}

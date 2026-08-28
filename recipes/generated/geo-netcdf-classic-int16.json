@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "generated/geo-netcdf-classic-int16",
+  "kind": "generated",
+  "caseId": "geo/netcdf/classic-int16",
+  "description": "Deterministically generate Classic NetCDF int16 grid.",
+  "generator": "classic-netcdf",
+  "parameters": {}
+}

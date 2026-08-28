@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "libjxl",
+  "project": "libjxl",
+  "homepage": "https://github.com/libjxl/libjxl/tree/main/testdata",
+  "sourceType": "github-tree",
+  "trackingRef": "main",
+  "pinnedRevision": "aea3a06e281fdee13e04815bfbf4f4132e7f59ea",
+  "evidence": {
+    "sourceUrls": ["https://github.com/libjxl/libjxl/tree/main/testdata"],
+    "licenseUrls": [
+      "https://github.com/libjxl/libjxl/blob/aea3a06e281fdee13e04815bfbf4f4132e7f59ea/LICENSE"
+    ]
+  },
+  "defaultRedistribution": "unknown",
+  "expectedStability": "repository",
+  "updatePolicy": "Resolve explicitly, review license evidence, and accept changed bytes only by command.",
+  "notes": ["The source record does not grant rights to every third-party asset it may contain."]
+}

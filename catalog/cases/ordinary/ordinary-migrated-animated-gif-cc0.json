@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "id": "ordinary/migrated/animated-gif-cc0",
+  "caseRevision": 1,
+  "title": "animated gif cc0",
+  "description": "Migrated without changing source bytes from PureJsImage benchmark/corpus/manifest.json.",
+  "domain": "ordinary",
+  "format": {
+    "family": "gif",
+    "extensions": ["gif"],
+    "mediaTypes": ["application/octet-stream"],
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.gif",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.gif"
+    ]
+  },
+  "layout": {
+    "kind": "single-file",
+    "entrypoint": "animated-gif-cc0.gif",
+    "requiredPaths": ["animated-gif-cc0.gif"]
+  },
+  "assets": [
+    {
+      "path": "animated-gif-cc0.gif",
+      "role": "primary",
+      "storage": "external",
+      "sourceId": "purejsimage",
+      "sourcePath": "animated-gif-cc0.gif",
+      "resolvedUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Square_box_accelerating_trial_animation_2.gif",
+      "bytes": 95166,
+      "sha256": "cac50c006181509f3b7662284c024d60bc3bccdfabc3db20ad41831a448bb43e",
+      "mediaType": "application/octet-stream"
+    }
+  ],
+  "provenance": {
+    "sourceId": "purejsimage",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Square_box_accelerating_trial_animation_2.gif",
+    "resolvedAt": "2026-08-28T00:00:00.000Z",
+    "method": "migrated"
+  },
+  "rights": {
+    "licenseName": "CC0 1.0 Universal",
+    "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Square_box_accelerating_trial_animation_2.gif",
+    "attribution": "Maschen",
+    "redistribution": "allowed"
+  },
+  "privacy": {
+    "reviewStatus": "not-required",
+    "containsHumanData": false,
+    "phi": "none",
+    "burnedInText": "none",
+    "gps": "none",
+    "faces": "none",
+    "deidentified": "not-applicable",
+    "notes": ["No human-derived medical data."]
+  },
+  "expected": {
+    "classification": "valid",
+    "outcome": "success",
+    "operations": ["metadata", "full-decode", "range-read"],
+    "comparison": {
+      "method": "structural"
+    },
+    "metadata": {
+      "width": 200,
+      "height": 200,
+      "frames": 70
+    },
+    "resourceLimits": {
+      "timeoutMs": 5000,
+      "maxInputBytes": 95166,
+      "maxDecodedPixels": 100000000,
+      "maxFrames": 1000,
+      "maxHeapMiB": 512
+    }
+  },
+  "coverage": {
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.gif",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.gif"
+    ],
+    "selectionReason": "Preserves an existing PureJsImage benchmark and regression input.",
+    "priority": "medium"
+  },
+  "collections": ["ordinary-conformance", "benchmark-content"],
+  "notes": ["Original PureJsImage manifest ID: animated-gif-cc0"]
+}

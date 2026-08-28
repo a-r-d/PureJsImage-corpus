@@ -1,0 +1,37 @@
+name: Network audit
+
+on:
+  schedule:
+    - cron: '23 7 * * 2'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Check source and license links
+        run: npm run corpus -- audit-links | tee network-audit.log
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+      - name: Verify selected pinned remote bytes
+        run: |
+          npm run corpus -- sync --case scientific/emsa/example1
+          npm run corpus -- sync --case scientific/mrc/rosetta-int16
+          npm run corpus -- verify --case scientific/emsa/example1 --offline
+          npm run corpus -- verify --case scientific/mrc/rosetta-int16 --offline
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: network-audit
+          path: network-audit.log
+          if-no-files-found: warn

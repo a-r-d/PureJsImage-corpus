@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "generated/geo-world-file-png-affine",
+  "kind": "generated",
+  "caseId": "geo/world-file/png-affine",
+  "description": "Deterministically generate PNG plus world file affine transform.",
+  "generator": "png-world",
+  "parameters": {}
+}

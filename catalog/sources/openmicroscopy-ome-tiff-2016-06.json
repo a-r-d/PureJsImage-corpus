@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "openmicroscopy-ome-tiff-2016-06",
+  "project": "OME-TIFF 2016-06 samples",
+  "homepage": "https://downloads.openmicroscopy.org/images/OME-TIFF/2016-06/",
+  "sourceType": "http-index",
+  "trackingRef": "release",
+  "pinnedRevision": "2016-06",
+  "evidence": {
+    "sourceUrls": ["https://downloads.openmicroscopy.org/images/OME-TIFF/2016-06/"],
+    "licenseUrls": ["https://downloads.openmicroscopy.org/images/OME-TIFF/2016-06/"]
+  },
+  "defaultRedistribution": "unknown",
+  "expectedStability": "unstable",
+  "updatePolicy": "Resolve explicitly, review license evidence, and accept changed bytes only by command.",
+  "notes": ["The source record does not grant rights to every third-party asset it may contain."]
+}

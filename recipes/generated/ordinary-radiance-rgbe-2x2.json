@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "generated/ordinary-radiance-rgbe-2x2",
+  "kind": "generated",
+  "caseId": "ordinary/radiance/rgbe-2x2",
+  "description": "Deterministically generate Radiance RGBE 2 by 2.",
+  "generator": "radiance-rgbe",
+  "parameters": {}
+}

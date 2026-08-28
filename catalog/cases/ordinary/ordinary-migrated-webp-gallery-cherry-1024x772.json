@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "id": "ordinary/migrated/webp-gallery-cherry-1024x772",
+  "caseRevision": 1,
+  "title": "webp gallery cherry 1024x772",
+  "description": "Migrated without changing source bytes from PureJsImage benchmark/corpus/manifest.json.",
+  "domain": "ordinary",
+  "format": {
+    "family": "webp",
+    "extensions": ["webp"],
+    "mediaTypes": ["application/octet-stream"],
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.webp",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.webp"
+    ]
+  },
+  "layout": {
+    "kind": "single-file",
+    "entrypoint": "webp-gallery-cherry-1024x772.webp",
+    "requiredPaths": ["webp-gallery-cherry-1024x772.webp"]
+  },
+  "assets": [
+    {
+      "path": "webp-gallery-cherry-1024x772.webp",
+      "role": "primary",
+      "storage": "external",
+      "sourceId": "purejsimage",
+      "sourcePath": "webp-gallery-cherry-1024x772.webp",
+      "resolvedUrl": "https://www.gstatic.com/webp/gallery/4.webp",
+      "bytes": 176972,
+      "sha256": "0858d0afcb2921ded36b05586204f2459d965feb7db54cb083e3cfa059589dd9",
+      "mediaType": "application/octet-stream"
+    }
+  ],
+  "provenance": {
+    "sourceId": "purejsimage",
+    "originalUrl": "https://www.gstatic.com/webp/gallery/4.webp",
+    "resolvedAt": "2026-08-28T00:00:00.000Z",
+    "method": "migrated"
+  },
+  "rights": {
+    "licenseName": "Creative Commons Attribution-ShareAlike 3.0 Unported",
+    "evidenceUrl": "https://developers.google.com/speed/webp/gallery1",
+    "attribution": "Benjamin Gimmel",
+    "redistribution": "allowed"
+  },
+  "privacy": {
+    "reviewStatus": "not-required",
+    "containsHumanData": false,
+    "phi": "none",
+    "burnedInText": "none",
+    "gps": "none",
+    "faces": "none",
+    "deidentified": "not-applicable",
+    "notes": ["No human-derived medical data."]
+  },
+  "expected": {
+    "classification": "valid",
+    "outcome": "success",
+    "operations": ["metadata", "full-decode", "range-read"],
+    "comparison": {
+      "method": "structural"
+    },
+    "metadata": {
+      "width": 1024,
+      "height": 772
+    },
+    "resourceLimits": {
+      "timeoutMs": 5000,
+      "maxInputBytes": 176972,
+      "maxDecodedPixels": 100000000,
+      "maxFrames": 1000,
+      "maxHeapMiB": 512
+    }
+  },
+  "coverage": {
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.webp",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.webp"
+    ],
+    "selectionReason": "Preserves an existing PureJsImage benchmark and regression input.",
+    "priority": "medium"
+  },
+  "collections": ["ordinary-conformance", "benchmark-content"],
+  "notes": ["Original PureJsImage manifest ID: webp-gallery-cherry-1024x772"]
+}

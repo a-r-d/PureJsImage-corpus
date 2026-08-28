@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "mutation/negative-srtm-hgt-wrong-size",
+  "kind": "mutation",
+  "caseId": "negative/srtm-hgt/wrong-size",
+  "description": "Truncate an HGT tile to a nonstandard byte size.",
+  "parentSha256": "0d8aa6171800b042e67cfb982f5b51a96380dd3b48319533ef58d83767f72b20",
+  "target": "N00E000.hgt",
+  "operations": [
+    {
+      "op": "truncate",
+      "length": 1000
+    }
+  ]
+}

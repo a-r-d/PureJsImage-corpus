@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "generated/ordinary-qoi-rgba-2x2",
+  "kind": "generated",
+  "caseId": "ordinary/qoi/rgba-2x2",
+  "description": "Deterministically generate QOI RGBA 2 by 2.",
+  "generator": "qoi-rgba",
+  "parameters": {}
+}

@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "openjpeg-data",
+  "project": "OpenJPEG data",
+  "homepage": "https://github.com/uclouvain/openjpeg-data",
+  "sourceType": "github-repository",
+  "trackingRef": "main",
+  "pinnedRevision": "39524bd3a601d90ed8e0177559400d23945f96a9",
+  "evidence": {
+    "sourceUrls": ["https://github.com/uclouvain/openjpeg-data"],
+    "licenseUrls": [
+      "https://github.com/uclouvain/openjpeg-data/tree/39524bd3a601d90ed8e0177559400d23945f96a9"
+    ]
+  },
+  "defaultRedistribution": "unknown",
+  "expectedStability": "repository",
+  "updatePolicy": "Resolve explicitly, review license evidence, and accept changed bytes only by command.",
+  "notes": ["The source record does not grant rights to every third-party asset it may contain."]
+}

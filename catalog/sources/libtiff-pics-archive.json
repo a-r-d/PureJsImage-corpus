@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "libtiff-pics-archive",
+  "project": "libtiff pics 3.8.0 archive",
+  "homepage": "https://download.osgeo.org/libtiff/pics-3.8.0.tar.gz",
+  "sourceType": "archive",
+  "trackingRef": "release",
+  "pinnedRevision": "pics-3.8.0",
+  "evidence": {
+    "sourceUrls": ["https://download.osgeo.org/libtiff/pics-3.8.0.tar.gz"],
+    "licenseUrls": ["https://gitlab.com/libtiff/libtiff"]
+  },
+  "defaultRedistribution": "unknown",
+  "expectedStability": "unstable",
+  "updatePolicy": "Resolve explicitly, review license evidence, and accept changed bytes only by command.",
+  "notes": ["The source record does not grant rights to every third-party asset it may contain."]
+}

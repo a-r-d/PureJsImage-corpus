@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "id": "ordinary/migrated/webp-fbi-portrait-1600x2000",
+  "caseRevision": 1,
+  "title": "webp fbi portrait 1600x2000",
+  "description": "Migrated without changing source bytes from PureJsImage benchmark/corpus/manifest.json.",
+  "domain": "ordinary",
+  "format": {
+    "family": "webp",
+    "extensions": ["webp"],
+    "mediaTypes": ["application/octet-stream"],
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.webp",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.webp"
+    ]
+  },
+  "layout": {
+    "kind": "single-file",
+    "entrypoint": "webp-fbi-portrait-1600x2000.webp",
+    "requiredPaths": ["webp-fbi-portrait-1600x2000.webp"]
+  },
+  "assets": [
+    {
+      "path": "webp-fbi-portrait-1600x2000.webp",
+      "role": "primary",
+      "storage": "external",
+      "sourceId": "purejsimage",
+      "sourcePath": "webp-fbi-portrait-1600x2000.webp",
+      "resolvedUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Acting_FBI_Director_Brian_Driscoll.webp",
+      "bytes": 649032,
+      "sha256": "50b2aad522622443c9ecbba41353360dd144127b3248a96cd814b1f8691e44b7",
+      "mediaType": "application/octet-stream"
+    }
+  ],
+  "provenance": {
+    "sourceId": "purejsimage",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Acting_FBI_Director_Brian_Driscoll.webp",
+    "resolvedAt": "2026-08-28T00:00:00.000Z",
+    "method": "migrated"
+  },
+  "rights": {
+    "licenseName": "Public domain, United States government",
+    "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Acting_FBI_Director_Brian_Driscoll.webp",
+    "attribution": "Federal Bureau of Investigation",
+    "redistribution": "allowed"
+  },
+  "privacy": {
+    "reviewStatus": "passed",
+    "containsHumanData": true,
+    "phi": "none",
+    "burnedInText": "none",
+    "gps": "unknown",
+    "faces": "present",
+    "deidentified": "not-applicable",
+    "notes": ["Public ordinary photograph, not medical data."]
+  },
+  "expected": {
+    "classification": "valid",
+    "outcome": "success",
+    "operations": ["metadata", "full-decode", "range-read"],
+    "comparison": {
+      "method": "structural"
+    },
+    "metadata": {
+      "width": 1600,
+      "height": 2000
+    },
+    "resourceLimits": {
+      "timeoutMs": 5000,
+      "maxInputBytes": 649032,
+      "maxDecodedPixels": 100000000,
+      "maxFrames": 1000,
+      "maxHeapMiB": 512
+    }
+  },
+  "coverage": {
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.webp",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.webp"
+    ],
+    "selectionReason": "Preserves an existing PureJsImage benchmark and regression input.",
+    "priority": "medium"
+  },
+  "collections": ["ordinary-conformance", "benchmark-content"],
+  "notes": ["Original PureJsImage manifest ID: webp-fbi-portrait-1600x2000"]
+}

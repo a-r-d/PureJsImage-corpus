@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "fuzz-regressions",
+  "title": "Promoted fuzz regressions",
+  "description": "Promoted fuzz regressions cases.",
+  "intendedUse": "Promoted fuzz regressions",
+  "networkPolicy": "offline",
+  "maximumVendoredBytes": 26214400,
+  "caseIds": [],
+  "selectors": [
+    {
+      "classification": "crash-regression"
+    }
+  ],
+  "exclusions": []
+}

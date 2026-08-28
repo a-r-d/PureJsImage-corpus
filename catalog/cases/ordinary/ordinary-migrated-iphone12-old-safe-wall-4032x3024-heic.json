@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "id": "ordinary/migrated/iphone12-old-safe-wall-4032x3024-heic",
+  "caseRevision": 1,
+  "title": "iphone12 old safe wall 4032x3024 heic",
+  "description": "Migrated without changing source bytes from PureJsImage benchmark/corpus/manifest.json.",
+  "domain": "ordinary",
+  "format": {
+    "family": "heic",
+    "extensions": ["heic"],
+    "mediaTypes": ["application/octet-stream"],
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.heic",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.heic"
+    ]
+  },
+  "layout": {
+    "kind": "single-file",
+    "entrypoint": "iphone12-old-safe-wall-4032x3024.heic",
+    "requiredPaths": ["iphone12-old-safe-wall-4032x3024.heic"]
+  },
+  "assets": [
+    {
+      "path": "iphone12-old-safe-wall-4032x3024.heic",
+      "role": "primary",
+      "storage": "external",
+      "sourceId": "purejsimage",
+      "sourcePath": "iphone12-old-safe-wall-4032x3024.heic",
+      "resolvedUrl": "https://heic.digital/download-sample/old-safe-wall.heic",
+      "bytes": 2832865,
+      "sha256": "9fbec4990572aebe765b9c1bd4094d94ea9de98c790edb9b7c5d0077095a0087",
+      "mediaType": "application/octet-stream"
+    }
+  ],
+  "provenance": {
+    "sourceId": "purejsimage",
+    "originalUrl": "https://heic.digital/download-sample/old-safe-wall.heic",
+    "resolvedAt": "2026-08-28T00:00:00.000Z",
+    "method": "migrated"
+  },
+  "rights": {
+    "licenseName": "Download and use without restrictions per source page",
+    "evidenceUrl": "https://heic.digital/samples/",
+    "attribution": "HEIC Digital sample gallery; original iPhone 12 Pro camera file",
+    "redistribution": "allowed"
+  },
+  "privacy": {
+    "reviewStatus": "not-required",
+    "containsHumanData": false,
+    "phi": "none",
+    "burnedInText": "none",
+    "gps": "none",
+    "faces": "none",
+    "deidentified": "not-applicable",
+    "notes": ["No human-derived medical data."]
+  },
+  "expected": {
+    "classification": "valid",
+    "outcome": "success",
+    "operations": ["metadata", "full-decode", "range-read"],
+    "comparison": {
+      "method": "structural"
+    },
+    "metadata": {
+      "width": 4032,
+      "height": 3024
+    },
+    "resourceLimits": {
+      "timeoutMs": 5000,
+      "maxInputBytes": 2832865,
+      "maxDecodedPixels": 100000000,
+      "maxFrames": 1000,
+      "maxHeapMiB": 512
+    }
+  },
+  "coverage": {
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.heic",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.heic"
+    ],
+    "selectionReason": "Preserves an existing PureJsImage benchmark and regression input.",
+    "priority": "medium"
+  },
+  "collections": ["ordinary-conformance", "benchmark-content"],
+  "notes": ["Original PureJsImage manifest ID: iphone12-old-safe-wall-4032x3024-heic"]
+}

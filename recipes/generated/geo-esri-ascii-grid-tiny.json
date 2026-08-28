@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "generated/geo-esri-ascii-grid-tiny",
+  "kind": "generated",
+  "caseId": "geo/esri-ascii-grid/tiny",
+  "description": "Deterministically generate Esri ASCII Grid with NODATA.",
+  "generator": "esri-ascii-grid",
+  "parameters": {}
+}

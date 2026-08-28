@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "purejsimage-corpus-generated",
+  "project": "purejsimage-corpus deterministic generators",
+  "homepage": "https://github.com/a-r-d/purejsimage-corpus",
+  "sourceType": "generated",
+  "pinnedRevision": "generator-v1",
+  "evidence": {
+    "sourceUrls": ["https://github.com/a-r-d/purejsimage-corpus"],
+    "licenseUrls": ["https://creativecommons.org/publicdomain/zero/1.0/"]
+  },
+  "defaultRedistribution": "allowed",
+  "expectedStability": "immutable",
+  "updatePolicy": "A changed generator output requires a caseRevision bump and explicit review.",
+  "notes": ["Byte layouts are written directly from public format specifications."]
+}

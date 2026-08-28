@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "generated/geo-envi-bip-int16",
+  "kind": "generated",
+  "caseId": "geo/envi/bip-int16",
+  "description": "Deterministically generate Geo-ENVI BIP companion pair.",
+  "generator": "envi",
+  "parameters": {
+    "interleave": "bip"
+  }
+}

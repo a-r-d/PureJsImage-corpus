@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "pngsuite",
+  "project": "PNGSuite",
+  "homepage": "https://www.libpng.org/pub/png/pngsuite.html",
+  "sourceType": "http-index",
+  "trackingRef": "website",
+  "pinnedRevision": "snapshot-2026-08-28",
+  "evidence": {
+    "sourceUrls": ["https://www.libpng.org/pub/png/pngsuite.html"],
+    "licenseUrls": ["https://www.libpng.org/pub/png/pngsuite.html"]
+  },
+  "defaultRedistribution": "allowed",
+  "expectedStability": "unstable",
+  "updatePolicy": "Resolve explicitly, review license evidence, and accept changed bytes only by command.",
+  "notes": ["The source record does not grant rights to every third-party asset it may contain."]
+}

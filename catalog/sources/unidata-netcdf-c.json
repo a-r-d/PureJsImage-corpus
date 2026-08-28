@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "unidata-netcdf-c",
+  "project": "Unidata netcdf-c test data",
+  "homepage": "https://github.com/Unidata/netcdf-c",
+  "sourceType": "github-tree",
+  "trackingRef": "main",
+  "pinnedRevision": "2ed1b285b9c9dbac7de2c7d330e576be16dcade8",
+  "evidence": {
+    "sourceUrls": ["https://github.com/Unidata/netcdf-c"],
+    "licenseUrls": [
+      "https://github.com/Unidata/netcdf-c/blob/2ed1b285b9c9dbac7de2c7d330e576be16dcade8/COPYRIGHT"
+    ]
+  },
+  "defaultRedistribution": "unknown",
+  "expectedStability": "repository",
+  "updatePolicy": "Resolve explicitly, review license evidence, and accept changed bytes only by command.",
+  "notes": ["The source record does not grant rights to every third-party asset it may contain."]
+}

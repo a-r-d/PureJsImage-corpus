@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "id": "scientific/tia-emi/tem-search-pair",
+  "caseRevision": 1,
+  "title": "TIA EMI plus SER companion set",
+  "description": "TIA EMI plus SER companion set, pinned by SHA-256 and exact upstream revision where available.",
+  "domain": "scientific",
+  "format": {
+    "family": "tia-emi",
+    "extensions": ["emi", "ser"],
+    "mediaTypes": ["application/octet-stream"],
+    "features": [
+      "axes.xy",
+      "companion-files",
+      "compression.unknown",
+      "format.tia-emi",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.companion-set",
+      "purejsimage.reader.tia-emi"
+    ]
+  },
+  "layout": {
+    "kind": "companion-set",
+    "entrypoint": "128x128-TEM_search.emi",
+    "requiredPaths": ["128x128-TEM_search.emi", "128x128-TEM_search_1.ser"]
+  },
+  "assets": [
+    {
+      "path": "128x128-TEM_search.emi",
+      "role": "header",
+      "storage": "external",
+      "sourceId": "rosettasciio",
+      "sourcePath": "tia/new/128x128-TEM_search.emi",
+      "resolvedUrl": "https://raw.githubusercontent.com/hyperspy/rosettasciio/bc254db14cd7d4d23169b11aeb622a0a7eac1fbe/rsciio/tests/data/tia/new/128x128-TEM_search.emi",
+      "bytes": 73562,
+      "sha256": "0b0a18b5b6eeb166e0b363f5f7737003b6308f5c523b2d063c3f38bd66235f89",
+      "mediaType": "application/octet-stream"
+    },
+    {
+      "path": "128x128-TEM_search_1.ser",
+      "role": "payload",
+      "storage": "external",
+      "sourceId": "rosettasciio",
+      "sourcePath": "tia/new/128x128-TEM_search_1.ser",
+      "resolvedUrl": "https://raw.githubusercontent.com/hyperspy/rosettasciio/bc254db14cd7d4d23169b11aeb622a0a7eac1fbe/rsciio/tests/data/tia/new/128x128-TEM_search_1.ser",
+      "bytes": 65682,
+      "sha256": "8b79f81363d41f759ecda84fb91d50463e2a828f532d5b8f9378960e57fc3ae7",
+      "mediaType": "application/octet-stream"
+    }
+  ],
+  "provenance": {
+    "sourceId": "rosettasciio",
+    "originalUrl": "https://raw.githubusercontent.com/hyperspy/rosettasciio/bc254db14cd7d4d23169b11aeb622a0a7eac1fbe/rsciio/tests/data/tia/new/128x128-TEM_search.emi",
+    "resolvedAt": "2026-08-28T00:00:00.000Z",
+    "method": "downloaded"
+  },
+  "rights": {
+    "licenseName": "Asset license not established",
+    "evidenceUrl": "https://github.com/hyperspy/rosettasciio",
+    "attribution": "See upstream source metadata.",
+    "redistribution": "unknown"
+  },
+  "privacy": {
+    "reviewStatus": "not-required",
+    "containsHumanData": false,
+    "phi": "none",
+    "burnedInText": "none",
+    "gps": "none",
+    "faces": "none",
+    "deidentified": "not-applicable",
+    "notes": ["No human-derived medical data."]
+  },
+  "expected": {
+    "classification": "valid",
+    "outcome": "success",
+    "operations": ["metadata", "full-decode", "range-read"],
+    "comparison": {
+      "method": "structural"
+    },
+    "metadata": {},
+    "resourceLimits": {
+      "timeoutMs": 5000,
+      "maxInputBytes": 139244,
+      "maxDecodedPixels": 100000000,
+      "maxFrames": 1000,
+      "maxHeapMiB": 512
+    }
+  },
+  "coverage": {
+    "features": [
+      "axes.xy",
+      "companion-files",
+      "compression.unknown",
+      "format.tia-emi",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.companion-set",
+      "purejsimage.reader.tia-emi"
+    ],
+    "selectionReason": "Exercises the real tia-emi reader with independently hashed upstream bytes.",
+    "priority": "high"
+  },
+  "collections": ["scientific-small", "large-range", "directory-formats"],
+  "notes": ["External because asset-level redistribution rights are not established."],
+  "relationships": [
+    {
+      "type": "parent",
+      "caseId": "scientific/tia-ser/tem-search"
+    }
+  ]
+}

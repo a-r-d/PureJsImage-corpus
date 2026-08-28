@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "id": "ordinary/migrated/wpt-webcodecs-mozjpeg-rgb",
+  "caseRevision": 1,
+  "title": "wpt webcodecs mozjpeg rgb",
+  "description": "Migrated without changing source bytes from PureJsImage benchmark/corpus/manifest.json.",
+  "domain": "ordinary",
+  "format": {
+    "family": "jpeg",
+    "extensions": ["jpg"],
+    "mediaTypes": ["application/octet-stream"],
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.jpeg",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.jpeg"
+    ]
+  },
+  "layout": {
+    "kind": "single-file",
+    "entrypoint": "wpt-webcodecs-mozjpeg-rgb.jpg",
+    "requiredPaths": ["wpt-webcodecs-mozjpeg-rgb.jpg"]
+  },
+  "assets": [
+    {
+      "path": "wpt-webcodecs-mozjpeg-rgb.jpg",
+      "role": "primary",
+      "storage": "external",
+      "sourceId": "purejsimage",
+      "sourcePath": "wpt-webcodecs-mozjpeg-rgb.jpg",
+      "resolvedUrl": "https://raw.githubusercontent.com/web-platform-tests/wpt/5f8cfdc18b18b1619c9fe431eab72f2831823327/webcodecs/four-colors.jpg",
+      "bytes": 1242,
+      "sha256": "b941a2bf2aa4d29aeca018f7ac02abb6ef8be5c1a782147a8638355a22826e65",
+      "mediaType": "application/octet-stream"
+    }
+  ],
+  "provenance": {
+    "sourceId": "purejsimage",
+    "originalUrl": "https://raw.githubusercontent.com/web-platform-tests/wpt/master/webcodecs/four-colors.jpg",
+    "resolvedAt": "2026-08-28T00:00:00.000Z",
+    "method": "migrated"
+  },
+  "rights": {
+    "licenseName": "BSD 3-Clause",
+    "evidenceUrl": "https://github.com/web-platform-tests/wpt/blob/master/webcodecs/README.md",
+    "attribution": "web-platform-tests contributors; generated with Squoosh MozJPEG",
+    "redistribution": "allowed"
+  },
+  "privacy": {
+    "reviewStatus": "not-required",
+    "containsHumanData": false,
+    "phi": "none",
+    "burnedInText": "none",
+    "gps": "none",
+    "faces": "none",
+    "deidentified": "not-applicable",
+    "notes": ["No human-derived medical data."]
+  },
+  "expected": {
+    "classification": "valid",
+    "outcome": "success",
+    "operations": ["metadata", "full-decode", "range-read"],
+    "comparison": {
+      "method": "structural"
+    },
+    "metadata": {
+      "width": 320,
+      "height": 240,
+      "orientation": 1
+    },
+    "resourceLimits": {
+      "timeoutMs": 5000,
+      "maxInputBytes": 1242,
+      "maxDecodedPixels": 100000000,
+      "maxFrames": 1000,
+      "maxHeapMiB": 512
+    }
+  },
+  "coverage": {
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.jpeg",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.jpeg"
+    ],
+    "selectionReason": "Preserves an existing PureJsImage benchmark and regression input.",
+    "priority": "medium"
+  },
+  "collections": ["ordinary-conformance", "benchmark-content"],
+  "notes": ["Original PureJsImage manifest ID: wpt-webcodecs-mozjpeg-rgb"]
+}

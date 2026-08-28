@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "generated/ordinary-netpbm-pgm-binary",
+  "kind": "generated",
+  "caseId": "ordinary/netpbm/pgm-binary",
+  "description": "Deterministically generate PGM binary boundary values.",
+  "generator": "pgm-binary",
+  "parameters": {}
+}

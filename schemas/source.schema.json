@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://purejsimage.dev/corpus/schemas/source.schema.json",
+  "title": "Corpus source",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "project",
+    "homepage",
+    "sourceType",
+    "pinnedRevision",
+    "evidence",
+    "defaultRedistribution",
+    "expectedStability",
+    "updatePolicy",
+    "notes"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "id": { "$ref": "#/$defs/id" },
+    "project": { "type": "string", "minLength": 1 },
+    "homepage": { "type": "string", "format": "uri" },
+    "sourceType": {
+      "enum": [
+        "github-repository",
+        "github-tree",
+        "http-file",
+        "http-index",
+        "archive",
+        "object-tree",
+        "generated"
+      ]
+    },
+    "trackingRef": { "type": "string", "minLength": 1 },
+    "pinnedRevision": { "type": "string", "minLength": 1 },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sourceUrls", "licenseUrls"],
+      "properties": {
+        "sourceUrls": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "format": "uri" }
+        },
+        "licenseUrls": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "format": "uri" }
+        }
+      }
+    },
+    "defaultRedistribution": {
+      "enum": ["allowed", "download-only", "unknown", "forbidden"]
+    },
+    "expectedStability": { "enum": ["immutable", "release", "repository", "unstable"] },
+    "updatePolicy": { "type": "string", "minLength": 1 },
+    "notes": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$" }
+  }
+}

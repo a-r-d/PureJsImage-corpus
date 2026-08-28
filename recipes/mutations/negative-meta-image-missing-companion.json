@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "mutation/negative-meta-image-missing-companion",
+  "kind": "mutation",
+  "caseId": "negative/meta-image/missing-companion",
+  "description": "Omit the RAW file named by the MHD header.",
+  "parentSha256": "376f79775f83dc877a318747ef4eb0cf425368c0ba29eeea9249cac299d80bf7",
+  "target": "tiny.raw",
+  "operations": [
+    {
+      "op": "truncate",
+      "length": 0
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "generated/geo-envi-bsq-int16",
+  "kind": "generated",
+  "caseId": "geo/envi/bsq-int16",
+  "description": "Deterministically generate Geo-ENVI BSQ companion pair.",
+  "generator": "envi",
+  "parameters": {
+    "interleave": "bsq"
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "id": "ordinary/migrated/libtiff-deflate-extra-strip-data",
+  "caseRevision": 1,
+  "title": "libtiff deflate extra strip data",
+  "description": "Migrated without changing source bytes from PureJsImage benchmark/corpus/manifest.json.",
+  "domain": "ordinary",
+  "format": {
+    "family": "tiff",
+    "extensions": ["tiff"],
+    "mediaTypes": ["image/tiff"],
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.tiff",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.tiff"
+    ]
+  },
+  "layout": {
+    "kind": "single-file",
+    "entrypoint": "libtiff-deflate-extra-strip-data.tiff",
+    "requiredPaths": ["libtiff-deflate-extra-strip-data.tiff"]
+  },
+  "assets": [
+    {
+      "path": "libtiff-deflate-extra-strip-data.tiff",
+      "role": "primary",
+      "storage": "external",
+      "sourceId": "purejsimage",
+      "sourcePath": "libtiff-deflate-extra-strip-data.tiff",
+      "resolvedUrl": "https://gitlab.com/libtiff/libtiff/-/raw/v4.7.1/test/images/deflate-last-strip-extra-data.tiff",
+      "bytes": 12789,
+      "sha256": "031aa7e15c2dfb21fe2fdd89eff88c4505c306f641be8b98f3666707d698b5ae",
+      "mediaType": "image/tiff"
+    }
+  ],
+  "provenance": {
+    "sourceId": "purejsimage",
+    "originalUrl": "https://gitlab.com/libtiff/libtiff/-/raw/v4.7.1/test/images/deflate-last-strip-extra-data.tiff",
+    "resolvedAt": "2026-08-28T00:00:00.000Z",
+    "method": "migrated"
+  },
+  "rights": {
+    "licenseName": "libtiff BSD-style test fixture",
+    "evidenceUrl": "https://gitlab.com/libtiff/libtiff/-/blob/v4.7.1/test/images/deflate-last-strip-extra-data.tiff",
+    "attribution": "LibTIFF and GDAL contributors",
+    "redistribution": "allowed"
+  },
+  "privacy": {
+    "reviewStatus": "not-required",
+    "containsHumanData": false,
+    "phi": "none",
+    "burnedInText": "none",
+    "gps": "none",
+    "faces": "none",
+    "deidentified": "not-applicable",
+    "notes": ["No human-derived medical data."]
+  },
+  "expected": {
+    "classification": "valid",
+    "outcome": "success",
+    "operations": ["metadata", "full-decode", "range-read"],
+    "comparison": {
+      "method": "structural"
+    },
+    "metadata": {
+      "width": 500,
+      "height": 500
+    },
+    "resourceLimits": {
+      "timeoutMs": 5000,
+      "maxInputBytes": 12789,
+      "maxDecodedPixels": 100000000,
+      "maxFrames": 1000,
+      "maxHeapMiB": 512
+    }
+  },
+  "coverage": {
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.tiff",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.tiff"
+    ],
+    "selectionReason": "Preserves an existing PureJsImage benchmark and regression input.",
+    "priority": "medium"
+  },
+  "collections": ["ordinary-conformance", "benchmark-content"],
+  "notes": ["Original PureJsImage manifest ID: libtiff-deflate-extra-strip-data"]
+}

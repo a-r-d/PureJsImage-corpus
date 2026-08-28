@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "generated/scientific-nifti-nifti-2-int16",
+  "kind": "generated",
+  "caseId": "scientific/nifti/nifti-2-int16",
+  "description": "Deterministically generate NIfTI-2 single-file int16.",
+  "generator": "nifti",
+  "parameters": {
+    "version": 2
+  }
+}

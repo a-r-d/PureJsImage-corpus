@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "generated/scientific-x3p-float32-3x2",
+  "kind": "generated",
+  "caseId": "scientific/x3p/float32-3x2",
+  "description": "Deterministically generate X3P archive float32 surface.",
+  "generator": "x3p",
+  "parameters": {}
+}

@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "id": "ordinary/migrated/libtiff-packbits-gray-alpha",
+  "caseRevision": 1,
+  "title": "libtiff packbits gray alpha",
+  "description": "Migrated without changing source bytes from PureJsImage benchmark/corpus/manifest.json.",
+  "domain": "ordinary",
+  "format": {
+    "family": "tiff",
+    "extensions": ["tiff"],
+    "mediaTypes": ["image/tiff"],
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.tiff",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.tiff"
+    ]
+  },
+  "layout": {
+    "kind": "single-file",
+    "entrypoint": "libtiff-packbits-gray-alpha.tiff",
+    "requiredPaths": ["libtiff-packbits-gray-alpha.tiff"]
+  },
+  "assets": [
+    {
+      "path": "libtiff-packbits-gray-alpha.tiff",
+      "role": "primary",
+      "storage": "external",
+      "sourceId": "purejsimage",
+      "sourcePath": "libtiff-packbits-gray-alpha.tiff",
+      "resolvedUrl": "https://gitlab.com/libtiff/libtiff/-/raw/v4.7.1/test/images/minisblack-2c-8b-alpha.tiff",
+      "bytes": 4068,
+      "sha256": "6fcb5238fb9bd583cd78b27c51b16492d17d4768032f9ee1ed10f2d2f45730c9",
+      "mediaType": "image/tiff"
+    }
+  ],
+  "provenance": {
+    "sourceId": "purejsimage",
+    "originalUrl": "https://gitlab.com/libtiff/libtiff/-/raw/v4.7.1/test/images/minisblack-2c-8b-alpha.tiff",
+    "resolvedAt": "2026-08-28T00:00:00.000Z",
+    "method": "migrated"
+  },
+  "rights": {
+    "licenseName": "libtiff BSD-style license",
+    "evidenceUrl": "https://gitlab.com/libtiff/libtiff/-/blob/v4.7.1/test/images/minisblack-2c-8b-alpha.tiff",
+    "attribution": "LibTIFF contributors",
+    "redistribution": "allowed"
+  },
+  "privacy": {
+    "reviewStatus": "not-required",
+    "containsHumanData": false,
+    "phi": "none",
+    "burnedInText": "none",
+    "gps": "none",
+    "faces": "none",
+    "deidentified": "not-applicable",
+    "notes": ["No human-derived medical data."]
+  },
+  "expected": {
+    "classification": "valid",
+    "outcome": "success",
+    "operations": ["metadata", "full-decode", "range-read"],
+    "comparison": {
+      "method": "structural"
+    },
+    "metadata": {
+      "width": 64,
+      "height": 64
+    },
+    "resourceLimits": {
+      "timeoutMs": 5000,
+      "maxInputBytes": 4068,
+      "maxDecodedPixels": 100000000,
+      "maxFrames": 1000,
+      "maxHeapMiB": 512
+    }
+  },
+  "coverage": {
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.tiff",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.tiff"
+    ],
+    "selectionReason": "Preserves an existing PureJsImage benchmark and regression input.",
+    "priority": "medium"
+  },
+  "collections": ["ordinary-conformance", "benchmark-content"],
+  "notes": ["Original PureJsImage manifest ID: libtiff-packbits-gray-alpha"]
+}

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "libtiff-pics",
+  "project": "libtiff pics",
+  "homepage": "https://gitlab.com/libtiff/libtiff-pics",
+  "sourceType": "github-repository",
+  "trackingRef": "default",
+  "pinnedRevision": "pics-3.8.0",
+  "evidence": {
+    "sourceUrls": ["https://gitlab.com/libtiff/libtiff-pics"],
+    "licenseUrls": ["https://gitlab.com/libtiff/libtiff-pics"]
+  },
+  "defaultRedistribution": "unknown",
+  "expectedStability": "repository",
+  "updatePolicy": "Resolve explicitly, review license evidence, and accept changed bytes only by command.",
+  "notes": ["The source record does not grant rights to every third-party asset it may contain."]
+}

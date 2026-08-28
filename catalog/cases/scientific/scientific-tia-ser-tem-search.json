@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "scientific/tia-ser/tem-search",
+  "caseRevision": 1,
+  "title": "TIA SER TEM search image",
+  "description": "TIA SER TEM search image, pinned by SHA-256 and exact upstream revision where available.",
+  "domain": "scientific",
+  "format": {
+    "family": "tia-ser",
+    "extensions": ["ser"],
+    "mediaTypes": ["application/octet-stream"],
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.tia-ser",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.tia-ser"
+    ]
+  },
+  "layout": {
+    "kind": "single-file",
+    "entrypoint": "128x128-TEM_search_1.ser",
+    "requiredPaths": ["128x128-TEM_search_1.ser"]
+  },
+  "assets": [
+    {
+      "path": "128x128-TEM_search_1.ser",
+      "role": "primary",
+      "storage": "external",
+      "sourceId": "rosettasciio",
+      "sourcePath": "tia/new/128x128-TEM_search_1.ser",
+      "resolvedUrl": "https://raw.githubusercontent.com/hyperspy/rosettasciio/bc254db14cd7d4d23169b11aeb622a0a7eac1fbe/rsciio/tests/data/tia/new/128x128-TEM_search_1.ser",
+      "bytes": 65682,
+      "sha256": "8b79f81363d41f759ecda84fb91d50463e2a828f532d5b8f9378960e57fc3ae7",
+      "mediaType": "application/octet-stream"
+    }
+  ],
+  "provenance": {
+    "sourceId": "rosettasciio",
+    "originalUrl": "https://raw.githubusercontent.com/hyperspy/rosettasciio/bc254db14cd7d4d23169b11aeb622a0a7eac1fbe/rsciio/tests/data/tia/new/128x128-TEM_search_1.ser",
+    "resolvedAt": "2026-08-28T00:00:00.000Z",
+    "method": "downloaded"
+  },
+  "rights": {
+    "licenseName": "Asset license not established",
+    "evidenceUrl": "https://github.com/hyperspy/rosettasciio",
+    "attribution": "See upstream source metadata.",
+    "redistribution": "unknown"
+  },
+  "privacy": {
+    "reviewStatus": "not-required",
+    "containsHumanData": false,
+    "phi": "none",
+    "burnedInText": "none",
+    "gps": "none",
+    "faces": "none",
+    "deidentified": "not-applicable",
+    "notes": ["No human-derived medical data."]
+  },
+  "expected": {
+    "classification": "valid",
+    "outcome": "success",
+    "operations": ["metadata", "full-decode", "range-read"],
+    "comparison": {
+      "method": "structural"
+    },
+    "metadata": {},
+    "resourceLimits": {
+      "timeoutMs": 5000,
+      "maxInputBytes": 65682,
+      "maxDecodedPixels": 100000000,
+      "maxFrames": 1000,
+      "maxHeapMiB": 512
+    }
+  },
+  "coverage": {
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.tia-ser",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.tia-ser"
+    ],
+    "selectionReason": "Exercises the real tia-ser reader with independently hashed upstream bytes.",
+    "priority": "high"
+  },
+  "collections": ["scientific-small", "large-range"],
+  "notes": ["External because asset-level redistribution rights are not established."]
+}

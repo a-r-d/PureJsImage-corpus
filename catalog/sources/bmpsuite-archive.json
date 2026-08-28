@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "bmpsuite-archive",
+  "project": "BMP Suite 2.8",
+  "homepage": "https://entropymine.com/jason/bmpsuite/releases/bmpsuite-2.8.zip",
+  "sourceType": "archive",
+  "trackingRef": "release",
+  "pinnedRevision": "2.8",
+  "evidence": {
+    "sourceUrls": ["https://entropymine.com/jason/bmpsuite/releases/bmpsuite-2.8.zip"],
+    "licenseUrls": ["https://entropymine.com/jason/bmpsuite/"]
+  },
+  "defaultRedistribution": "allowed",
+  "expectedStability": "unstable",
+  "updatePolicy": "Resolve explicitly, review license evidence, and accept changed bytes only by command.",
+  "notes": ["The source record does not grant rights to every third-party asset it may contain."]
+}

@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "qoi",
+  "project": "QOI",
+  "homepage": "https://github.com/phoboslab/qoi",
+  "sourceType": "github-repository",
+  "trackingRef": "main",
+  "pinnedRevision": "97bacc86a9c4abf5a2d452102dc26546c4c670b9",
+  "evidence": {
+    "sourceUrls": ["https://github.com/phoboslab/qoi"],
+    "licenseUrls": [
+      "https://github.com/phoboslab/qoi/blob/97bacc86a9c4abf5a2d452102dc26546c4c670b9/LICENSE"
+    ]
+  },
+  "defaultRedistribution": "allowed",
+  "expectedStability": "repository",
+  "updatePolicy": "Resolve explicitly, review license evidence, and accept changed bytes only by command.",
+  "notes": ["The source record does not grant rights to every third-party asset it may contain."]
+}

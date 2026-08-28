@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "generated/scientific-mrc-int16-3x2",
+  "kind": "generated",
+  "caseId": "scientific/mrc/int16-3x2",
+  "description": "Deterministically generate MRC mode 1 int16 volume.",
+  "generator": "mrc",
+  "parameters": {}
+}

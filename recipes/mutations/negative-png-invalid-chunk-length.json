@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "mutation/negative-png-invalid-chunk-length",
+  "kind": "mutation",
+  "caseId": "negative/png/invalid-chunk-length",
+  "description": "Declare an impossible PNG IHDR chunk length.",
+  "parentSha256": "8e546007599fa6df13786602a501cc2933ae498bb8ed8ff0fa4664f551cad2be",
+  "target": "map.png",
+  "operations": [
+    {
+      "op": "patch-u32-be",
+      "offset": 8,
+      "value": 4294967295
+    }
+  ]
+}

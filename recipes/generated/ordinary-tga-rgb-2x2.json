@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "generated/ordinary-tga-rgb-2x2",
+  "kind": "generated",
+  "caseId": "ordinary/tga/rgb-2x2",
+  "description": "Deterministically generate TGA RGB 2 by 2.",
+  "generator": "tga-rgb",
+  "parameters": {}
+}

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "mutation/negative-geozarr-invalid-metadata",
+  "kind": "mutation",
+  "caseId": "negative/geozarr/invalid-metadata",
+  "description": "Replace the root JSON object delimiter.",
+  "parentSha256": "02557da131229eb4352499e3009aa638e2b755b9fdc876610c903b6d780e5b96",
+  "target": "zarr.json",
+  "operations": [
+    {
+      "op": "overwrite-bytes",
+      "offset": 0,
+      "bytesHex": "5b"
+    }
+  ]
+}

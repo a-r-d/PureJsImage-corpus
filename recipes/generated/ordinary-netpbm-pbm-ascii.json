@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "generated/ordinary-netpbm-pbm-ascii",
+  "kind": "generated",
+  "caseId": "ordinary/netpbm/pbm-ascii",
+  "description": "Deterministically generate PBM ASCII comments and whitespace.",
+  "generator": "pbm-ascii",
+  "parameters": {}
+}

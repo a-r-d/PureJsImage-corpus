@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "generated/scientific-fits-int16-3x2",
+  "kind": "generated",
+  "caseId": "scientific/fits/int16-3x2",
+  "description": "Deterministically generate FITS int16 primary array.",
+  "generator": "fits",
+  "parameters": {}
+}

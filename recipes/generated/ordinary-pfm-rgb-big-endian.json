@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "generated/ordinary-pfm-rgb-big-endian",
+  "kind": "generated",
+  "caseId": "ordinary/pfm/rgb-big-endian",
+  "description": "Deterministically generate PFM RGB big-endian.",
+  "generator": "pfm",
+  "parameters": {
+    "endian": "big"
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "ordinary/libjxl/jpeg-reconstruction-1x1",
+  "caseRevision": 1,
+  "title": "libjxl 1 by 1 JPEG reconstruction case",
+  "description": "libjxl 1 by 1 JPEG reconstruction case, pinned by SHA-256 and exact upstream revision where available.",
+  "domain": "ordinary",
+  "format": {
+    "family": "jpeg-xl",
+    "extensions": ["jxl"],
+    "mediaTypes": ["application/octet-stream"],
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.jpeg-xl",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.jpeg-xl"
+    ]
+  },
+  "layout": {
+    "kind": "single-file",
+    "entrypoint": "1x1_exif_xmp.jxl",
+    "requiredPaths": ["1x1_exif_xmp.jxl"]
+  },
+  "assets": [
+    {
+      "path": "1x1_exif_xmp.jxl",
+      "role": "primary",
+      "storage": "external",
+      "sourceId": "libjxl-testdata",
+      "sourcePath": "jxl/jpeg_reconstruction/1x1_exif_xmp.jxl",
+      "resolvedUrl": "https://raw.githubusercontent.com/libjxl/testdata/73695d303670c90e4d506ea89d9901b081385089/jxl/jpeg_reconstruction/1x1_exif_xmp.jxl",
+      "bytes": 4104,
+      "sha256": "30966de3d58f38a4b9f29a26483f5839b32c283c69552cf5d6aa1ec18e5f77b2",
+      "mediaType": "application/octet-stream"
+    }
+  ],
+  "provenance": {
+    "sourceId": "libjxl-testdata",
+    "originalUrl": "https://github.com/libjxl/testdata/blob/73695d303670c90e4d506ea89d9901b081385089/jxl/jpeg_reconstruction/1x1_exif_xmp.jxl",
+    "resolvedAt": "2026-08-28T00:00:00.000Z",
+    "method": "downloaded"
+  },
+  "rights": {
+    "licenseName": "Asset license not established",
+    "evidenceUrl": "https://github.com/libjxl/testdata",
+    "attribution": "See upstream source metadata.",
+    "redistribution": "unknown"
+  },
+  "privacy": {
+    "reviewStatus": "not-required",
+    "containsHumanData": false,
+    "phi": "none",
+    "burnedInText": "none",
+    "gps": "none",
+    "faces": "none",
+    "deidentified": "not-applicable",
+    "notes": ["No human-derived medical data."]
+  },
+  "expected": {
+    "classification": "valid",
+    "outcome": "success",
+    "operations": ["metadata", "full-decode", "range-read"],
+    "comparison": {
+      "method": "structural"
+    },
+    "metadata": {},
+    "resourceLimits": {
+      "timeoutMs": 5000,
+      "maxInputBytes": 4104,
+      "maxDecodedPixels": 100000000,
+      "maxFrames": 1000,
+      "maxHeapMiB": 512
+    }
+  },
+  "coverage": {
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.jpeg-xl",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.jpeg-xl"
+    ],
+    "selectionReason": "Exercises the real jpeg-xl reader with independently hashed upstream bytes.",
+    "priority": "high"
+  },
+  "collections": ["ordinary-conformance", "large-range"],
+  "notes": ["External because asset-level redistribution rights are not established."]
+}

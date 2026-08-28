@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "ome-ngff-validator",
+  "project": "OME-NGFF validator samples",
+  "homepage": "https://ome.github.io/ome-ngff-validator/samples",
+  "sourceType": "github-tree",
+  "trackingRef": "main",
+  "pinnedRevision": "5b28b6bf14fb2fbb8c11b8d4f6008838ba589912",
+  "evidence": {
+    "sourceUrls": ["https://ome.github.io/ome-ngff-validator/samples"],
+    "licenseUrls": [
+      "https://github.com/ome/ome-ngff-validator/blob/5b28b6bf14fb2fbb8c11b8d4f6008838ba589912/LICENSE"
+    ]
+  },
+  "defaultRedistribution": "unknown",
+  "expectedStability": "repository",
+  "updatePolicy": "Resolve explicitly, review license evidence, and accept changed bytes only by command.",
+  "notes": ["The source record does not grant rights to every third-party asset it may contain."]
+}

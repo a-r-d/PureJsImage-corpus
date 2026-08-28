@@ -1,0 +1,7 @@
+{
+  "schemaVersion": 1,
+  "pureJsImageRevision": "3a1b9936037b308181840a8db65cf4476e70e737",
+  "caseId": "geo/netcdf/netcdf4-grouped",
+  "status": "known-unsupported",
+  "reason": "The registered reader is for classic NetCDF/CF and does not claim NetCDF-4 HDF5 groups."
+}

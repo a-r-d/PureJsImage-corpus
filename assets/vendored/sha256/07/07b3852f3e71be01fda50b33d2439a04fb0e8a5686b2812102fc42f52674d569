@@ -1,0 +1,11 @@
+ENVI
+description = {deterministic values offset 0}
+samples = 3
+lines = 2
+bands = 2
+header offset = 0
+file type = ENVI Standard
+data type = 2
+interleave = bip
+byte order = 0
+map info = {Geographic Lat/Lon, 1, 1, -120, 45, 0.01, 0.01, WGS-84}

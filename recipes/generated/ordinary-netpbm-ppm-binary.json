@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "generated/ordinary-netpbm-ppm-binary",
+  "kind": "generated",
+  "caseId": "ordinary/netpbm/ppm-binary",
+  "description": "Deterministically generate PPM binary primary colors.",
+  "generator": "ppm-binary",
+  "parameters": {}
+}

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "negative",
+  "title": "Negative and bounded-rejection cases",
+  "description": "Negative and bounded-rejection cases cases.",
+  "intendedUse": "Negative and bounded-rejection cases",
+  "networkPolicy": "offline",
+  "maximumVendoredBytes": 26214400,
+  "caseIds": [],
+  "selectors": [
+    {
+      "domain": "negative"
+    }
+  ],
+  "exclusions": []
+}

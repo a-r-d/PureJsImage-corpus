@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "scientific/blockfile/test1",
+  "caseRevision": 1,
+  "title": "RosettaSciIO blockfile test1",
+  "description": "RosettaSciIO blockfile test1, pinned by SHA-256 and exact upstream revision where available.",
+  "domain": "scientific",
+  "format": {
+    "family": "blockfile",
+    "extensions": ["blo"],
+    "mediaTypes": ["application/octet-stream"],
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.blockfile",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.blockfile"
+    ]
+  },
+  "layout": {
+    "kind": "single-file",
+    "entrypoint": "test1.blo",
+    "requiredPaths": ["test1.blo"]
+  },
+  "assets": [
+    {
+      "path": "test1.blo",
+      "role": "primary",
+      "storage": "external",
+      "sourceId": "rosettasciio",
+      "sourcePath": "blockfile/test1.blo",
+      "resolvedUrl": "https://raw.githubusercontent.com/hyperspy/rosettasciio/bc254db14cd7d4d23169b11aeb622a0a7eac1fbe/rsciio/tests/data/blockfile/test1.blo",
+      "bytes": 128564,
+      "sha256": "df2c77ba0957f186a7681b6af07493a5cee01d08662db39200112909fefe745e",
+      "mediaType": "application/octet-stream"
+    }
+  ],
+  "provenance": {
+    "sourceId": "rosettasciio",
+    "originalUrl": "https://raw.githubusercontent.com/hyperspy/rosettasciio/bc254db14cd7d4d23169b11aeb622a0a7eac1fbe/rsciio/tests/data/blockfile/test1.blo",
+    "resolvedAt": "2026-08-28T00:00:00.000Z",
+    "method": "downloaded"
+  },
+  "rights": {
+    "licenseName": "Asset license not established",
+    "evidenceUrl": "https://github.com/hyperspy/rosettasciio",
+    "attribution": "See upstream source metadata.",
+    "redistribution": "unknown"
+  },
+  "privacy": {
+    "reviewStatus": "not-required",
+    "containsHumanData": false,
+    "phi": "none",
+    "burnedInText": "none",
+    "gps": "none",
+    "faces": "none",
+    "deidentified": "not-applicable",
+    "notes": ["No human-derived medical data."]
+  },
+  "expected": {
+    "classification": "valid",
+    "outcome": "success",
+    "operations": ["metadata", "full-decode", "range-read"],
+    "comparison": {
+      "method": "structural"
+    },
+    "metadata": {},
+    "resourceLimits": {
+      "timeoutMs": 5000,
+      "maxInputBytes": 128564,
+      "maxDecodedPixels": 100000000,
+      "maxFrames": 1000,
+      "maxHeapMiB": 512
+    }
+  },
+  "coverage": {
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.blockfile",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.blockfile"
+    ],
+    "selectionReason": "Exercises the real blockfile reader with independently hashed upstream bytes.",
+    "priority": "high"
+  },
+  "collections": ["scientific-small", "large-range"],
+  "notes": ["External because asset-level redistribution rights are not established."]
+}

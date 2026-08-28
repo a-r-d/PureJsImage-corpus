@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "generated/scientific-rpl-uint16-3x2",
+  "kind": "generated",
+  "caseId": "scientific/rpl/uint16-3x2",
+  "description": "Deterministically generate RPL plus RAW unsigned data.",
+  "generator": "ripple",
+  "parameters": {}
+}

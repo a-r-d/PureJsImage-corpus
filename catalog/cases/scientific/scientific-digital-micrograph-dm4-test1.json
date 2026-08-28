@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "scientific/digital-micrograph/dm4-test1",
+  "caseRevision": 1,
+  "title": "DigitalMicrograph DM4 test1",
+  "description": "DigitalMicrograph DM4 test1, pinned by SHA-256 and exact upstream revision where available.",
+  "domain": "scientific",
+  "format": {
+    "family": "dm4",
+    "extensions": ["dm4"],
+    "mediaTypes": ["application/octet-stream"],
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.dm4",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.digital-micrograph"
+    ]
+  },
+  "layout": {
+    "kind": "single-file",
+    "entrypoint": "test-1.dm4",
+    "requiredPaths": ["test-1.dm4"]
+  },
+  "assets": [
+    {
+      "path": "test-1.dm4",
+      "role": "primary",
+      "storage": "external",
+      "sourceId": "rosettasciio",
+      "sourcePath": "digitalmicrograph/1D/test-1.dm4",
+      "resolvedUrl": "https://raw.githubusercontent.com/hyperspy/rosettasciio/bc254db14cd7d4d23169b11aeb622a0a7eac1fbe/rsciio/tests/data/digitalmicrograph/1D/test-1.dm4",
+      "bytes": 306306,
+      "sha256": "ba470b29e4406d697179914a661b2c7bc58d0d7b9fe8825290f29b4fdfcf57c8",
+      "mediaType": "application/octet-stream"
+    }
+  ],
+  "provenance": {
+    "sourceId": "rosettasciio",
+    "originalUrl": "https://raw.githubusercontent.com/hyperspy/rosettasciio/bc254db14cd7d4d23169b11aeb622a0a7eac1fbe/rsciio/tests/data/digitalmicrograph/1D/test-1.dm4",
+    "resolvedAt": "2026-08-28T00:00:00.000Z",
+    "method": "downloaded"
+  },
+  "rights": {
+    "licenseName": "Asset license not established",
+    "evidenceUrl": "https://github.com/hyperspy/rosettasciio",
+    "attribution": "See upstream source metadata.",
+    "redistribution": "unknown"
+  },
+  "privacy": {
+    "reviewStatus": "not-required",
+    "containsHumanData": false,
+    "phi": "none",
+    "burnedInText": "none",
+    "gps": "none",
+    "faces": "none",
+    "deidentified": "not-applicable",
+    "notes": ["No human-derived medical data."]
+  },
+  "expected": {
+    "classification": "valid",
+    "outcome": "success",
+    "operations": ["metadata", "full-decode", "range-read"],
+    "comparison": {
+      "method": "structural"
+    },
+    "metadata": {},
+    "resourceLimits": {
+      "timeoutMs": 5000,
+      "maxInputBytes": 306306,
+      "maxDecodedPixels": 100000000,
+      "maxFrames": 1000,
+      "maxHeapMiB": 512
+    }
+  },
+  "coverage": {
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.dm4",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.digital-micrograph"
+    ],
+    "selectionReason": "Exercises the real digital-micrograph reader with independently hashed upstream bytes.",
+    "priority": "high"
+  },
+  "collections": ["scientific-small", "large-range"],
+  "notes": ["External because asset-level redistribution rights are not established."]
+}

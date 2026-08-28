@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "unidata-netcdf-examples",
+  "project": "Unidata NetCDF examples",
+  "homepage": "https://archive.unidata.ucar.edu/software/netcdf/examples/files.html",
+  "sourceType": "http-index",
+  "trackingRef": "website",
+  "pinnedRevision": "snapshot-2026-08-28",
+  "evidence": {
+    "sourceUrls": ["https://archive.unidata.ucar.edu/software/netcdf/examples/files.html"],
+    "licenseUrls": ["https://www.unidata.ucar.edu/about/legal/"]
+  },
+  "defaultRedistribution": "unknown",
+  "expectedStability": "unstable",
+  "updatePolicy": "Resolve explicitly, review license evidence, and accept changed bytes only by command.",
+  "notes": ["The source record does not grant rights to every third-party asset it may contain."]
+}

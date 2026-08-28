@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "ordinary-conformance",
+  "title": "Ordinary codec conformance",
+  "description": "Ordinary codec conformance cases.",
+  "intendedUse": "Ordinary codec conformance",
+  "networkPolicy": "optional",
+  "maximumVendoredBytes": 26214400,
+  "caseIds": [],
+  "selectors": [
+    {
+      "domain": "ordinary"
+    }
+  ],
+  "exclusions": []
+}

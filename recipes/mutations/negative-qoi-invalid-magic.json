@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "mutation/negative-qoi-invalid-magic",
+  "kind": "mutation",
+  "caseId": "negative/qoi/invalid-magic",
+  "description": "Replace the QOI magic bytes.",
+  "parentSha256": "de75cd612126474634e37aea8010595e8a75f1855cb220ff58c82b553d6f302e",
+  "target": "rgba-2x2.qoi",
+  "operations": [
+    {
+      "op": "overwrite-bytes",
+      "offset": 0,
+      "bytesHex": "00000000"
+    }
+  ]
+}

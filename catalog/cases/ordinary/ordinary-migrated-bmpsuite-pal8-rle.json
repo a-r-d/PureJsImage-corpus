@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "id": "ordinary/migrated/bmpsuite-pal8-rle",
+  "caseRevision": 1,
+  "title": "bmpsuite pal8 rle",
+  "description": "Migrated without changing source bytes from PureJsImage benchmark/corpus/manifest.json.",
+  "domain": "ordinary",
+  "format": {
+    "family": "bmp",
+    "extensions": ["bmp"],
+    "mediaTypes": ["application/octet-stream"],
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.bmp",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.bmp"
+    ]
+  },
+  "layout": {
+    "kind": "single-file",
+    "entrypoint": "bmpsuite-pal8-rle.bmp",
+    "requiredPaths": ["bmpsuite-pal8-rle.bmp"]
+  },
+  "assets": [
+    {
+      "path": "bmpsuite-pal8-rle.bmp",
+      "role": "primary",
+      "storage": "external",
+      "sourceId": "purejsimage",
+      "sourcePath": "bmpsuite-pal8-rle.bmp",
+      "resolvedUrl": "https://entropymine.com/jason/bmpsuite/bmpsuite/g/pal8rle.bmp",
+      "bytes": 8788,
+      "sha256": "809938ab0e821710b5f566d85ba735870e5b8ef690eaca7f54a81cf1729fe10a",
+      "mediaType": "application/octet-stream"
+    }
+  ],
+  "provenance": {
+    "sourceId": "purejsimage",
+    "originalUrl": "https://entropymine.com/jason/bmpsuite/bmpsuite/g/pal8rle.bmp",
+    "resolvedAt": "2026-08-28T00:00:00.000Z",
+    "method": "migrated"
+  },
+  "rights": {
+    "licenseName": "Public domain generated image file",
+    "evidenceUrl": "https://entropymine.com/jason/bmpsuite/bmpsuite/html/bmpsuite.html",
+    "attribution": "Jason Summers and BMP Suite contributors",
+    "redistribution": "allowed"
+  },
+  "privacy": {
+    "reviewStatus": "not-required",
+    "containsHumanData": false,
+    "phi": "none",
+    "burnedInText": "none",
+    "gps": "none",
+    "faces": "none",
+    "deidentified": "not-applicable",
+    "notes": ["No human-derived medical data."]
+  },
+  "expected": {
+    "classification": "valid",
+    "outcome": "success",
+    "operations": ["metadata", "full-decode", "range-read"],
+    "comparison": {
+      "method": "structural"
+    },
+    "metadata": {
+      "width": 127,
+      "height": 64
+    },
+    "resourceLimits": {
+      "timeoutMs": 5000,
+      "maxInputBytes": 8788,
+      "maxDecodedPixels": 100000000,
+      "maxFrames": 1000,
+      "maxHeapMiB": 512
+    }
+  },
+  "coverage": {
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.bmp",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.bmp"
+    ],
+    "selectionReason": "Preserves an existing PureJsImage benchmark and regression input.",
+    "priority": "medium"
+  },
+  "collections": ["ordinary-conformance", "benchmark-content"],
+  "notes": ["Original PureJsImage manifest ID: bmpsuite-pal8-rle"]
+}

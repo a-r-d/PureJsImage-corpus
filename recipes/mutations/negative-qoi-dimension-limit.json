@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "mutation/negative-qoi-dimension-limit",
+  "kind": "mutation",
+  "caseId": "negative/qoi/dimension-limit",
+  "description": "Declare a width above configured limits.",
+  "parentSha256": "de75cd612126474634e37aea8010595e8a75f1855cb220ff58c82b553d6f302e",
+  "target": "rgba-2x2.qoi",
+  "operations": [
+    {
+      "op": "patch-u32-be",
+      "offset": 4,
+      "value": 100000001
+    }
+  ]
+}

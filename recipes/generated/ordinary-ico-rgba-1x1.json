@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "generated/ordinary-ico-rgba-1x1",
+  "kind": "generated",
+  "caseId": "ordinary/ico/rgba-1x1",
+  "description": "Deterministically generate ICO DIB RGBA 1 by 1.",
+  "generator": "ico-dib",
+  "parameters": {}
+}

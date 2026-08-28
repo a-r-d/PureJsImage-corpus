@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "scientific/ncem-emd/si100",
+  "caseRevision": 1,
+  "title": "NCEM EMD Si100 array",
+  "description": "NCEM EMD Si100 array, pinned by SHA-256 and exact upstream revision where available.",
+  "domain": "scientific",
+  "format": {
+    "family": "ncem-emd",
+    "extensions": ["emd"],
+    "mediaTypes": ["application/octet-stream"],
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.ncem-emd",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.ncem-emd"
+    ]
+  },
+  "layout": {
+    "kind": "single-file",
+    "entrypoint": "Si100.emd",
+    "requiredPaths": ["Si100.emd"]
+  },
+  "assets": [
+    {
+      "path": "Si100.emd",
+      "role": "primary",
+      "storage": "external",
+      "sourceId": "rosettasciio",
+      "sourcePath": "emd/Si100_1x1x3-zStart5.43.emd",
+      "resolvedUrl": "https://raw.githubusercontent.com/hyperspy/rosettasciio/bc254db14cd7d4d23169b11aeb622a0a7eac1fbe/rsciio/tests/data/emd/Si100_1x1x3-zStart5.43.emd",
+      "bytes": 158144,
+      "sha256": "eea3f9bb5a3bdbca0a3f4c498c3c866aafec2ced06de1964cf0b904a48cab1c1",
+      "mediaType": "application/octet-stream"
+    }
+  ],
+  "provenance": {
+    "sourceId": "rosettasciio",
+    "originalUrl": "https://raw.githubusercontent.com/hyperspy/rosettasciio/bc254db14cd7d4d23169b11aeb622a0a7eac1fbe/rsciio/tests/data/emd/Si100_1x1x3-zStart5.43.emd",
+    "resolvedAt": "2026-08-28T00:00:00.000Z",
+    "method": "downloaded"
+  },
+  "rights": {
+    "licenseName": "Asset license not established",
+    "evidenceUrl": "https://github.com/hyperspy/rosettasciio",
+    "attribution": "See upstream source metadata.",
+    "redistribution": "unknown"
+  },
+  "privacy": {
+    "reviewStatus": "not-required",
+    "containsHumanData": false,
+    "phi": "none",
+    "burnedInText": "none",
+    "gps": "none",
+    "faces": "none",
+    "deidentified": "not-applicable",
+    "notes": ["No human-derived medical data."]
+  },
+  "expected": {
+    "classification": "valid",
+    "outcome": "success",
+    "operations": ["metadata", "full-decode", "range-read"],
+    "comparison": {
+      "method": "structural"
+    },
+    "metadata": {},
+    "resourceLimits": {
+      "timeoutMs": 5000,
+      "maxInputBytes": 158144,
+      "maxDecodedPixels": 100000000,
+      "maxFrames": 1000,
+      "maxHeapMiB": 512
+    }
+  },
+  "coverage": {
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.ncem-emd",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.ncem-emd"
+    ],
+    "selectionReason": "Exercises the real ncem-emd reader with independently hashed upstream bytes.",
+    "priority": "high"
+  },
+  "collections": ["scientific-small", "large-range"],
+  "notes": ["External because asset-level redistribution rights are not established."]
+}

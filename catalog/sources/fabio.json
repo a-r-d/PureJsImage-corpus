@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "fabio",
+  "project": "FabIO",
+  "homepage": "https://github.com/silx-kit/fabio",
+  "sourceType": "github-repository",
+  "trackingRef": "main",
+  "pinnedRevision": "0d1c2bdda5b815566d165cf57c99bf561f05059f",
+  "evidence": {
+    "sourceUrls": ["https://github.com/silx-kit/fabio"],
+    "licenseUrls": [
+      "https://github.com/silx-kit/fabio/blob/0d1c2bdda5b815566d165cf57c99bf561f05059f/copyright"
+    ]
+  },
+  "defaultRedistribution": "unknown",
+  "expectedStability": "repository",
+  "updatePolicy": "Resolve explicitly, review license evidence, and accept changed bytes only by command.",
+  "notes": ["The source record does not grant rights to every third-party asset it may contain."]
+}

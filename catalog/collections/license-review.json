@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "license-review",
+  "title": "Cases requiring asset license review",
+  "description": "Cases requiring asset license review cases.",
+  "intendedUse": "Cases requiring asset license review",
+  "networkPolicy": "required",
+  "maximumVendoredBytes": 0,
+  "caseIds": [
+    "geo/netcdf/netcdf4-grouped",
+    "ordinary/libavif/irot-alpha",
+    "ordinary/libheif/example-heic",
+    "ordinary/libjpeg-turbo/testorig",
+    "ordinary/libjxl/jpeg-reconstruction-1x1",
+    "ordinary/libwebp/lossless1",
+    "ordinary/openjpeg/file1-jp2",
+    "scientific/aperio-svs/cmu-small-region",
+    "scientific/blockfile/test1",
+    "scientific/dicom/obxxxx1a",
+    "scientific/digital-micrograph/dm3-test1",
+    "scientific/digital-micrograph/dm4-test1",
+    "scientific/digital-surf/test-surface",
+    "scientific/emsa/example1",
+    "scientific/mrc/rosetta-int16",
+    "scientific/ncem-emd/si100",
+    "scientific/rpl/rosetta-float32",
+    "scientific/tia-emi/tem-search-pair",
+    "scientific/tia-ser/tem-search",
+    "scientific/velox-emd/version11-archive"
+  ],
+  "selectors": [],
+  "exclusions": []
+}

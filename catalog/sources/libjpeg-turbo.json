@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "libjpeg-turbo",
+  "project": "libjpeg-turbo",
+  "homepage": "https://github.com/libjpeg-turbo/libjpeg-turbo/tree/main/testimages",
+  "sourceType": "github-tree",
+  "trackingRef": "main",
+  "pinnedRevision": "1157d37cfab977f8f7f8344aededdfd951222c89",
+  "evidence": {
+    "sourceUrls": ["https://github.com/libjpeg-turbo/libjpeg-turbo/tree/main/testimages"],
+    "licenseUrls": [
+      "https://github.com/libjpeg-turbo/libjpeg-turbo/blob/1157d37cfab977f8f7f8344aededdfd951222c89/LICENSE.md"
+    ]
+  },
+  "defaultRedistribution": "allowed",
+  "expectedStability": "repository",
+  "updatePolicy": "Resolve explicitly, review license evidence, and accept changed bytes only by command.",
+  "notes": ["The source record does not grant rights to every third-party asset it may contain."]
+}

@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "astropy-data",
+  "project": "Astropy data",
+  "homepage": "https://github.com/astropy/astropy-data",
+  "sourceType": "github-repository",
+  "trackingRef": "main",
+  "pinnedRevision": "55caddceddd4eb1694bb3712e4ab6358c15afe67",
+  "evidence": {
+    "sourceUrls": ["https://github.com/astropy/astropy-data"],
+    "licenseUrls": [
+      "https://github.com/astropy/astropy-data/tree/55caddceddd4eb1694bb3712e4ab6358c15afe67"
+    ]
+  },
+  "defaultRedistribution": "unknown",
+  "expectedStability": "repository",
+  "updatePolicy": "Resolve explicitly, review license evidence, and accept changed bytes only by command.",
+  "notes": ["The source record does not grant rights to every third-party asset it may contain."]
+}

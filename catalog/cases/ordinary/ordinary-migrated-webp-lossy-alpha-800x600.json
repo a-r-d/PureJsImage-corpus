@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "id": "ordinary/migrated/webp-lossy-alpha-800x600",
+  "caseRevision": 1,
+  "title": "webp lossy alpha 800x600",
+  "description": "Migrated without changing source bytes from PureJsImage benchmark/corpus/manifest.json.",
+  "domain": "ordinary",
+  "format": {
+    "family": "webp",
+    "extensions": ["webp"],
+    "mediaTypes": ["application/octet-stream"],
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.webp",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.webp"
+    ]
+  },
+  "layout": {
+    "kind": "single-file",
+    "entrypoint": "webp-lossy-alpha-800x600.webp",
+    "requiredPaths": ["webp-lossy-alpha-800x600.webp"]
+  },
+  "assets": [
+    {
+      "path": "webp-lossy-alpha-800x600.webp",
+      "role": "primary",
+      "storage": "external",
+      "sourceId": "purejsimage",
+      "sourcePath": "webp-lossy-alpha-800x600.webp",
+      "resolvedUrl": "https://www.gstatic.com/webp/gallery3/3_webp_a.webp",
+      "bytes": 52872,
+      "sha256": "3007986171ba049ea85169be273750e85c4b55893d8cdc481ce11aa58dbbc734",
+      "mediaType": "application/octet-stream"
+    }
+  ],
+  "provenance": {
+    "sourceId": "purejsimage",
+    "originalUrl": "https://www.gstatic.com/webp/gallery3/3_webp_a.webp",
+    "resolvedAt": "2026-08-28T00:00:00.000Z",
+    "method": "migrated"
+  },
+  "rights": {
+    "licenseName": "Creative Commons Attribution-ShareAlike 3.0 Unported",
+    "evidenceUrl": "https://developers.google.com/speed/webp/gallery2",
+    "attribution": "POV-Ray source code demonstration",
+    "redistribution": "allowed"
+  },
+  "privacy": {
+    "reviewStatus": "not-required",
+    "containsHumanData": false,
+    "phi": "none",
+    "burnedInText": "none",
+    "gps": "none",
+    "faces": "none",
+    "deidentified": "not-applicable",
+    "notes": ["No human-derived medical data."]
+  },
+  "expected": {
+    "classification": "valid",
+    "outcome": "success",
+    "operations": ["metadata", "full-decode", "range-read"],
+    "comparison": {
+      "method": "structural"
+    },
+    "metadata": {
+      "width": 800,
+      "height": 600
+    },
+    "resourceLimits": {
+      "timeoutMs": 5000,
+      "maxInputBytes": 52872,
+      "maxDecodedPixels": 100000000,
+      "maxFrames": 1000,
+      "maxHeapMiB": 512
+    }
+  },
+  "coverage": {
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.webp",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.webp"
+    ],
+    "selectionReason": "Preserves an existing PureJsImage benchmark and regression input.",
+    "priority": "medium"
+  },
+  "collections": ["ordinary-conformance", "benchmark-content"],
+  "notes": ["Original PureJsImage manifest ID: webp-lossy-alpha-800x600"]
+}

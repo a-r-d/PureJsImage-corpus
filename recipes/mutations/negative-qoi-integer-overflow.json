@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "mutation/negative-qoi-integer-overflow",
+  "kind": "mutation",
+  "caseId": "negative/qoi/integer-overflow",
+  "description": "Declare dimensions whose pixel product overflows 32-bit arithmetic.",
+  "parentSha256": "de75cd612126474634e37aea8010595e8a75f1855cb220ff58c82b553d6f302e",
+  "target": "rgba-2x2.qoi",
+  "operations": [
+    {
+      "op": "patch-u32-be",
+      "offset": 4,
+      "value": 4294967295
+    },
+    {
+      "op": "patch-u32-be",
+      "offset": 8,
+      "value": 4294967295
+    }
+  ]
+}

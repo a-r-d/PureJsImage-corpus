@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "gdal-aaigrid",
+  "project": "GDAL AAIGrid tests",
+  "homepage": "https://github.com/OSGeo/gdal/tree/master/autotest/gdrivers/data/aaigrid",
+  "sourceType": "github-tree",
+  "trackingRef": "main",
+  "pinnedRevision": "37d8fb785f6ca88b78460462942f328f1f60aeab",
+  "evidence": {
+    "sourceUrls": ["https://github.com/OSGeo/gdal/tree/master/autotest/gdrivers/data/aaigrid"],
+    "licenseUrls": [
+      "https://github.com/OSGeo/gdal/blob/37d8fb785f6ca88b78460462942f328f1f60aeab/LICENSE.TXT"
+    ]
+  },
+  "defaultRedistribution": "unknown",
+  "expectedStability": "repository",
+  "updatePolicy": "Resolve explicitly, review license evidence, and accept changed bytes only by command.",
+  "notes": ["The source record does not grant rights to every third-party asset it may contain."]
+}

@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "id": "scientific/velox-emd/version11-archive",
+  "caseRevision": 1,
+  "title": "Velox EMD version 11 archive",
+  "description": "Velox EMD version 11 archive, pinned by SHA-256 and exact upstream revision where available.",
+  "domain": "scientific",
+  "format": {
+    "family": "velox-emd",
+    "extensions": ["zip"],
+    "mediaTypes": ["application/octet-stream"],
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "compression.zip",
+      "format.velox-emd",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.archive",
+      "purejsimage.reader.velox-emd"
+    ]
+  },
+  "layout": {
+    "kind": "archive",
+    "entrypoint": "velox_emd_version11.zip",
+    "requiredPaths": ["velox_emd_version11.zip"]
+  },
+  "assets": [
+    {
+      "path": "velox_emd_version11.zip",
+      "role": "archive",
+      "storage": "external",
+      "sourceId": "rosettasciio",
+      "sourcePath": "emd/velox_emd_version11.zip",
+      "resolvedUrl": "https://raw.githubusercontent.com/hyperspy/rosettasciio/bc254db14cd7d4d23169b11aeb622a0a7eac1fbe/rsciio/tests/data/emd/velox_emd_version11.zip",
+      "bytes": 147888,
+      "sha256": "125f0f6b1517e6bb2a1c44f2157b874fe244bb7716f37a9efbda853f16e395c1",
+      "mediaType": "application/octet-stream"
+    }
+  ],
+  "provenance": {
+    "sourceId": "rosettasciio",
+    "originalUrl": "https://raw.githubusercontent.com/hyperspy/rosettasciio/bc254db14cd7d4d23169b11aeb622a0a7eac1fbe/rsciio/tests/data/emd/velox_emd_version11.zip",
+    "resolvedAt": "2026-08-28T00:00:00.000Z",
+    "method": "downloaded"
+  },
+  "rights": {
+    "licenseName": "Asset license not established",
+    "evidenceUrl": "https://github.com/hyperspy/rosettasciio",
+    "attribution": "See upstream source metadata.",
+    "redistribution": "unknown"
+  },
+  "privacy": {
+    "reviewStatus": "not-required",
+    "containsHumanData": false,
+    "phi": "none",
+    "burnedInText": "none",
+    "gps": "none",
+    "faces": "none",
+    "deidentified": "not-applicable",
+    "notes": ["No human-derived medical data."]
+  },
+  "expected": {
+    "classification": "valid",
+    "outcome": "success",
+    "operations": ["metadata", "full-decode", "range-read"],
+    "comparison": {
+      "method": "structural"
+    },
+    "metadata": {},
+    "resourceLimits": {
+      "timeoutMs": 5000,
+      "maxInputBytes": 147888,
+      "maxDecodedPixels": 100000000,
+      "maxFrames": 1000,
+      "maxHeapMiB": 512
+    }
+  },
+  "coverage": {
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "compression.zip",
+      "format.velox-emd",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.archive",
+      "purejsimage.reader.velox-emd"
+    ],
+    "selectionReason": "Exercises the real velox-emd reader with independently hashed upstream bytes.",
+    "priority": "high"
+  },
+  "collections": ["scientific-small", "large-range", "directory-formats"],
+  "notes": ["External because asset-level redistribution rights are not established."]
+}

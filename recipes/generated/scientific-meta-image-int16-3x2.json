@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "generated/scientific-meta-image-int16-3x2",
+  "kind": "generated",
+  "caseId": "scientific/meta-image/int16-3x2",
+  "description": "Deterministically generate MetaImage MHD plus RAW.",
+  "generator": "meta-image",
+  "parameters": {}
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "generated/scientific-nrrd-int16-3x2",
+  "kind": "generated",
+  "caseId": "scientific/nrrd/int16-3x2",
+  "description": "Deterministically generate NRRD raw int16 array.",
+  "generator": "nrrd",
+  "parameters": {}
+}

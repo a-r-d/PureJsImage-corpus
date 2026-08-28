@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "mutation/negative-tiff-overlapping-regions",
+  "kind": "mutation",
+  "caseId": "negative/tiff/overlapping-regions",
+  "description": "Point TIFF strip bytes into the IFD.",
+  "parentSha256": "842147c29020528aa8f120625492a6b5267e5605c5e44a18c6e68738997eaf30",
+  "target": "gray-2x2.tiff",
+  "operations": [
+    {
+      "op": "patch-u32-le",
+      "offset": 78,
+      "value": 8
+    }
+  ]
+}

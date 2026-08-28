@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "scientific-small",
+  "title": "Small scientific readers",
+  "description": "Small scientific readers cases.",
+  "intendedUse": "Small scientific readers",
+  "networkPolicy": "optional",
+  "maximumVendoredBytes": 26214400,
+  "caseIds": [],
+  "selectors": [
+    {
+      "domain": "scientific"
+    }
+  ],
+  "exclusions": []
+}

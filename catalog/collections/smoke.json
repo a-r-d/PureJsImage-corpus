@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "smoke",
+  "title": "Offline smoke suite",
+  "description": "Offline smoke suite cases.",
+  "intendedUse": "Offline smoke suite",
+  "networkPolicy": "offline",
+  "maximumVendoredBytes": 26214400,
+  "caseIds": [],
+  "selectors": [
+    {
+      "storage": "generated"
+    }
+  ],
+  "exclusions": []
+}

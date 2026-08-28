@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "scientific/dicom/obxxxx1a",
+  "caseRevision": 1,
+  "title": "pydicom OBXXXX1A fixture",
+  "description": "pydicom OBXXXX1A fixture, pinned by SHA-256 and exact upstream revision where available.",
+  "domain": "scientific",
+  "format": {
+    "family": "dicom",
+    "extensions": ["dcm"],
+    "mediaTypes": ["application/dicom"],
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.dicom",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.dicom"
+    ]
+  },
+  "layout": {
+    "kind": "single-file",
+    "entrypoint": "OBXXXX1A.dcm",
+    "requiredPaths": ["OBXXXX1A.dcm"]
+  },
+  "assets": [
+    {
+      "path": "OBXXXX1A.dcm",
+      "role": "primary",
+      "storage": "external",
+      "sourceId": "pydicom-data",
+      "sourcePath": "OBXXXX1A.dcm",
+      "resolvedUrl": "https://raw.githubusercontent.com/pydicom/pydicom-data/abc42b90985fb6cf385aa4af766d2c9c94a257a4/data_store/data/OBXXXX1A.dcm",
+      "bytes": 486008,
+      "sha256": "164a460bebdc15fbe391ad4bfe4c84672eb2bad57adfe7dad372fd7367b0f63e",
+      "mediaType": "application/dicom"
+    }
+  ],
+  "provenance": {
+    "sourceId": "pydicom-data",
+    "originalUrl": "https://github.com/pydicom/pydicom-data/blob/abc42b90985fb6cf385aa4af766d2c9c94a257a4/data_store/data/OBXXXX1A.dcm",
+    "resolvedAt": "2026-08-28T00:00:00.000Z",
+    "method": "downloaded"
+  },
+  "rights": {
+    "licenseName": "Asset license not established",
+    "evidenceUrl": "https://github.com/pydicom/pydicom-data/tree/master/data_store/data",
+    "attribution": "See upstream source metadata.",
+    "redistribution": "unknown"
+  },
+  "privacy": {
+    "reviewStatus": "pending",
+    "containsHumanData": true,
+    "phi": "unknown",
+    "burnedInText": "unknown",
+    "gps": "unknown",
+    "faces": "unknown",
+    "deidentified": "unknown",
+    "notes": ["Kept external until an explicit tag and pixel privacy review passes."]
+  },
+  "expected": {
+    "classification": "valid",
+    "outcome": "success",
+    "operations": ["metadata", "full-decode", "range-read"],
+    "comparison": {
+      "method": "structural"
+    },
+    "metadata": {},
+    "resourceLimits": {
+      "timeoutMs": 5000,
+      "maxInputBytes": 486008,
+      "maxDecodedPixels": 100000000,
+      "maxFrames": 1000,
+      "maxHeapMiB": 512
+    }
+  },
+  "coverage": {
+    "features": [
+      "axes.xy",
+      "compression.unknown",
+      "format.dicom",
+      "frames.single",
+      "http.range",
+      "image.bit-depth.unknown",
+      "image.color.unknown",
+      "image.sample.unknown",
+      "layout.single-file",
+      "purejsimage.reader.dicom"
+    ],
+    "selectionReason": "Exercises the real dicom reader with independently hashed upstream bytes.",
+    "priority": "high"
+  },
+  "collections": ["scientific-small", "large-range"],
+  "notes": ["External because asset-level redistribution rights are not established."]
+}
