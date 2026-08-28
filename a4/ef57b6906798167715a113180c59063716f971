@@ -1,0 +1,545 @@
+catalog/cases/ordinary/ordinary-migrated-portrait-2400x3000.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+catalog/cases/scientific/scientific-fits-int16-3x2.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 72
+  s_e3a321cc07d10d::t_741ee72c60f943 65-68
+  s_e3a321cc07d10d::t_571c9fffd83eeb 76
+catalog/cases/ordinary/ordinary-migrated-pngsuite-gray-16.json
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_68dc85309f5a08 36,71
+src/purejsimage/types.ts
+  s_e3a321cc07d10d::t_d14bb926ed2b2e 22,47,67
+  s_e3a321cc07d10d::t_c03f34f54e341c 26
+catalog/cases/ordinary/ordinary-migrated-libultrahdr-minnie-yuv-icc.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+recipes/mutations/negative-meta-image-mismatched-dimensions.json
+  s_e3a321cc07d10d::t_571c9fffd83eeb 12
+catalog/taxonomy/features.json
+  s_e3a321cc07d10d::t_571c9fffd83eeb 69
+catalog/cases/ordinary/ordinary-migrated-libtiff-miniswhite-1c-1b.json
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+catalog/cases/ordinary/ordinary-migrated-bmpsuite-rgba32-v5.json
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+catalog/cases/scientific/scientific-npy-int16-2x3.json
+  s_e3a321cc07d10d::t_571c9fffd83eeb 76
+  s_e3a321cc07d10d::t_68dc85309f5a08 72
+  s_e3a321cc07d10d::t_741ee72c60f943 65-68
+catalog/cases/scientific/scientific-gsf-float32-3x2.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 72
+  s_e3a321cc07d10d::t_571c9fffd83eeb 76
+  s_e3a321cc07d10d::t_741ee72c60f943 65-68
+catalog/cases/geo/geo-envi-bsq-int16.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 85
+  s_e3a321cc07d10d::t_741ee72c60f943 78-81
+  s_e3a321cc07d10d::t_571c9fffd83eeb 89
+generated/checksums.sha256
+  s_e3a321cc07d10d::t_d6c09ebb0a2e1e 10
+  s_e3a321cc07d10d::t_83150951cea6a7 18,39,53
+test/schema-semantic.test.ts
+  s_e3a321cc07d10d::t_b7841af3a3b30d 162-164
+  s_e3a321cc07d10d::t_68dc85309f5a08 166-168
+  s_e3a321cc07d10d::t_7f990a53b6ac82 204
+  s_e3a321cc07d10d::t_1bf3de33f48c42 137-161,165,169-170
+  s_e3a321cc07d10d::t_b630dd61ea1e29 82
+catalog/cases/geo/geo-geotiff-wgs84-2x2.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 74
+  s_e3a321cc07d10d::t_741ee72c60f943 67-70
+  s_e3a321cc07d10d::t_571c9fffd83eeb 78
+catalog/cases/negative/negative-qoi-truncated-payload.json
+  s_e3a321cc07d10d::t_571c9fffd83eeb 77,84-85,88
+  s_e3a321cc07d10d::t_741ee72c60f943 66-69
+  s_e3a321cc07d10d::t_68dc85309f5a08 73,86-87,89
+catalog/cases/ordinary/ordinary-migrated-bmpsuite-rgb32-bitfields.json
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+src/download/fetch.ts
+  s_e3a321cc07d10d::t_2bf4dfe1a45f9d 2-3,15,27-29,47-55,67,70-73,142
+catalog/cases/ordinary/ordinary-pfm-rgb-big-endian.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 72
+  s_e3a321cc07d10d::t_571c9fffd83eeb 76
+  s_e3a321cc07d10d::t_741ee72c60f943 65-68
+catalog/cases/geo/geo-netcdf-netcdf4-grouped.json
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+catalog/cases/ordinary/ordinary-migrated-webp-lossless-rose-400x301.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+catalog/cases/scientific/scientific-envi-bsq-int16.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 84
+  s_e3a321cc07d10d::t_571c9fffd83eeb 88
+  s_e3a321cc07d10d::t_741ee72c60f943 77-80
+schemas/case.schema.json
+  s_e3a321cc07d10d::t_2b5c16de8b40ee 270
+  s_e3a321cc07d10d::t_c03f34f54e341c 269,271
+  s_e3a321cc07d10d::t_575630265971bb 296-298,305-317,325-326
+  s_e3a321cc07d10d::t_cc1da1ac9c0c02 299-304,318-324
+  s_e3a321cc07d10d::t_3767d410f9136c 20,41,188-222
+  s_e3a321cc07d10d::t_148e2003a3b0b8 223-224
+catalog/cases/ordinary/ordinary-migrated-bmpsuite-rgb16-565.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+catalog/cases/ordinary/ordinary-migrated-libtiff-minisblack-1c-8b.json
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+catalog/cases/ordinary/ordinary-migrated-bmpsuite-pal4.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+catalog/cases/scientific/scientific-nifti-nifti-2-int16.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 73
+  s_e3a321cc07d10d::t_741ee72c60f943 66-69
+  s_e3a321cc07d10d::t_571c9fffd83eeb 77
+catalog/cases/ordinary/ordinary-migrated-bmpsuite-rgb24.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+catalog/cases/ordinary/ordinary-migrated-pngsuite-palette-8.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 36,71
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+catalog/cases/scientific/scientific-aperio-svs-cmu-small-region.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+catalog/cases/negative/negative-qoi-zero-dimensions.json
+  s_e3a321cc07d10d::t_741ee72c60f943 66-69
+  s_e3a321cc07d10d::t_68dc85309f5a08 73,86-87,89
+  s_e3a321cc07d10d::t_571c9fffd83eeb 77,84-85,88
+catalog/cases/ordinary/ordinary-openjpeg-file1-jp2.json
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+catalog/cases/ordinary/ordinary-tiff-gray-2x2.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 72
+  s_e3a321cc07d10d::t_571c9fffd83eeb 76
+  s_e3a321cc07d10d::t_741ee72c60f943 65-68
+catalog/cases/ordinary/ordinary-migrated-bmpsuite-rgb16-555.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+catalog/collections/purejsimage-0-17-smoke.json
+  s_e3a321cc07d10d::t_98ff6cbf339410 1-58
+catalog/cases/negative/negative-qoi-decompression-bomb.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 73,86-87,89
+  s_e3a321cc07d10d::t_571c9fffd83eeb 77,84-85,88
+  s_e3a321cc07d10d::t_741ee72c60f943 66-69
+catalog/cases/ordinary/ordinary-migrated-old-faithful-6000x4000.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+catalog/collections/large-range.json
+  s_e3a321cc07d10d::t_571c9fffd83eeb 4-6,10
+catalog/cases/geo/geo-netcdf-classic-int16.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 72
+  s_e3a321cc07d10d::t_571c9fffd83eeb 76
+  s_e3a321cc07d10d::t_741ee72c60f943 65-68
+catalog/cases/ordinary/ordinary-libjxl-jpeg-reconstruction-1x1.json
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+docs/ORACLES.md
+  s_e3a321cc07d10d::t_c03f34f54e341c 14-26,29-31
+  s_e3a321cc07d10d::t_5b945b4026c887 7-13,38-40
+  s_e3a321cc07d10d::t_bc7e82413ae1c6 41
+src/catalog/types.ts
+  s_e3a321cc07d10d::t_2b5c16de8b40ee 133
+  s_e3a321cc07d10d::t_3767d410f9136c 99-116
+  s_e3a321cc07d10d::t_82ba3617b9ce43 148
+  s_e3a321cc07d10d::t_956a7474b07623 144-147,149
+catalog/cases/negative/negative-geozarr-invalid-metadata.json
+  s_e3a321cc07d10d::t_741ee72c60f943 80-83
+  s_e3a321cc07d10d::t_68dc85309f5a08 87,100-101,103
+  s_e3a321cc07d10d::t_571c9fffd83eeb 91,98-99,102
+catalog/cases/geo/geo-envi-bip-int16.json
+  s_e3a321cc07d10d::t_741ee72c60f943 78-81
+  s_e3a321cc07d10d::t_68dc85309f5a08 85
+  s_e3a321cc07d10d::t_571c9fffd83eeb 89
+catalog/cases/negative/negative-png-invalid-chunk-length.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 85,98-99,101
+  s_e3a321cc07d10d::t_741ee72c60f943 78-81
+  s_e3a321cc07d10d::t_571c9fffd83eeb 89,96-97,100
+catalog/cases/negative/negative-qoi-dimension-limit.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 73,86-87,89
+  s_e3a321cc07d10d::t_571c9fffd83eeb 77,84-85,88
+  s_e3a321cc07d10d::t_741ee72c60f943 66-69
+catalog/cases/ordinary/ordinary-migrated-bmpsuite-pal1.json
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+catalog/cases/scientific/scientific-mrc-int16-3x2.json
+  s_e3a321cc07d10d::t_741ee72c60f943 66-69
+  s_e3a321cc07d10d::t_68dc85309f5a08 73
+  s_e3a321cc07d10d::t_571c9fffd83eeb 77
+catalog/cases/scientific/scientific-nifti-nifti-1-int16.json
+  s_e3a321cc07d10d::t_741ee72c60f943 66-69
+  s_e3a321cc07d10d::t_571c9fffd83eeb 77
+  s_e3a321cc07d10d::t_68dc85309f5a08 73
+catalog/cases/negative/negative-srtm-hgt-wrong-size.json
+  s_e3a321cc07d10d::t_741ee72c60f943 68-71
+  s_e3a321cc07d10d::t_571c9fffd83eeb 79,86-87,90
+  s_e3a321cc07d10d::t_68dc85309f5a08 75,88-89,91
+catalog/cases/scientific/scientific-digital-surf-test-surface.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+catalog/cases/ordinary/ordinary-migrated-webp-lossy-alpha-800x600.json
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+catalog/cases/ordinary/ordinary-migrated-bmpsuite-pal8-v5.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+catalog/cases/ordinary/ordinary-migrated-libtiff-lzw-single-strip.json
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+catalog/cases/ordinary/ordinary-libavif-irot-alpha.json
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+catalog/cases/ordinary/ordinary-migrated-wpt-webcodecs-mozjpeg-yuv420.json
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+catalog/cases/ordinary/ordinary-pfm-rgb-little-endian.json
+  s_e3a321cc07d10d::t_571c9fffd83eeb 76
+  s_e3a321cc07d10d::t_68dc85309f5a08 72
+  s_e3a321cc07d10d::t_741ee72c60f943 65-68
+catalog/cases/ordinary/ordinary-migrated-libtiff-palette-1c-8b.json
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+catalog/cases/scientific/scientific-mrc-rosetta-int16.json
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+catalog/cases/scientific/scientific-ome-zarr-int16-2x3.json
+  s_e3a321cc07d10d::t_571c9fffd83eeb 87
+  s_e3a321cc07d10d::t_68dc85309f5a08 83
+  s_e3a321cc07d10d::t_741ee72c60f943 76-79
+src/materialize/archive.ts
+  s_e3a321cc07d10d::t_8fe3632e87a2eb 3,20-49,51-62,64-66,68
+catalog/cases/ordinary/ordinary-migrated-webp-gallery-fire-1024x752.json
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+catalog/collections/smoke.json
+  s_e3a321cc07d10d::t_571c9fffd83eeb 4-6,9-14,16,18-54,56-57,59
+  s_e3a321cc07d10d::t_98ff6cbf339410 15,17,55
+src/validation/semantic.ts
+  s_e3a321cc07d10d::t_1bf3de33f48c42 166,168-178,182-193,261,263-269
+  s_e3a321cc07d10d::t_4d1e40b3863ca1 262
+  s_e3a321cc07d10d::t_6fac8770f00349 2-3,83-85
+  s_e3a321cc07d10d::t_ab41c4b50d6652 27-33,35-49,112,224
+  s_e3a321cc07d10d::t_5a70721a3f6408 34,50,52-65,119-121,140,143-144,149,153-165,167,194-198,208-209,234-243
+  s_e3a321cc07d10d::t_68dc85309f5a08 148,150-152,179-181,244-246
+  s_e3a321cc07d10d::t_088678876b8e00 51
+catalog/cases/negative/negative-qoi-truncated-header.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 73,86-87,89
+  s_e3a321cc07d10d::t_571c9fffd83eeb 77,84-85,88
+  s_e3a321cc07d10d::t_741ee72c60f943 66-69
+catalog/cases/ordinary/ordinary-libjpeg-turbo-testorig.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+catalog/cases/negative/negative-qoi-integer-overflow.json
+  s_e3a321cc07d10d::t_571c9fffd83eeb 77,84-85,88
+  s_e3a321cc07d10d::t_741ee72c60f943 66-69
+  s_e3a321cc07d10d::t_68dc85309f5a08 73,86-87,89
+assets/vendored/sha256/9d/9d822c7bdd1c83356c99cbe318263d4056fcc4cd32ff1e90fffb2c3fea949237
+  s_e3a321cc07d10d::t_571c9fffd83eeb 1-5
+catalog/cases/geo/geo-netcdf-cf-latlon-int16.json
+  s_e3a321cc07d10d::t_571c9fffd83eeb 78
+  s_e3a321cc07d10d::t_741ee72c60f943 67-70
+  s_e3a321cc07d10d::t_68dc85309f5a08 74
+catalog/cases/ordinary/ordinary-libheif-example-heic.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+catalog/cases/geo/geo-envi-bil-int16.json
+  s_e3a321cc07d10d::t_741ee72c60f943 78-81
+  s_e3a321cc07d10d::t_68dc85309f5a08 85
+  s_e3a321cc07d10d::t_571c9fffd83eeb 89
+catalog/cases/scientific/scientific-velox-emd-version11-archive.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+catalog/cases/ordinary/ordinary-netpbm-pbm-ascii.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+  s_e3a321cc07d10d::t_571c9fffd83eeb 75
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+catalog/cases/ordinary/ordinary-imazen-pbm-1x1.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 72
+  s_e3a321cc07d10d::t_741ee72c60f943 65-68
+test/download-server.test.ts
+  s_e3a321cc07d10d::t_8fe3632e87a2eb 7,12,76-82
+  s_e3a321cc07d10d::t_b611e0b508b354 2,13,83-103
+  s_e3a321cc07d10d::t_74bd448e6a99a1 104
+catalog/cases/scientific/scientific-nrrd-int16-3x2.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 72
+  s_e3a321cc07d10d::t_571c9fffd83eeb 76
+  s_e3a321cc07d10d::t_741ee72c60f943 65-68
+catalog/cases/scientific/scientific-rpl-uint16-3x2.json
+  s_e3a321cc07d10d::t_571c9fffd83eeb 87
+  s_e3a321cc07d10d::t_741ee72c60f943 76-79
+  s_e3a321cc07d10d::t_68dc85309f5a08 83
+catalog/cases/ordinary/ordinary-migrated-iphone12-greyhounds-4032x3024-heic.json
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+src/generators/bootstrap.ts
+  s_e3a321cc07d10d::t_5a08d971cc4245 58,479-482,484-492,516
+  s_e3a321cc07d10d::t_ab41c4b50d6652 2224-2227
+  s_e3a321cc07d10d::t_98ff6cbf339410 2366-2368,2424-2437
+  s_e3a321cc07d10d::t_68dc85309f5a08 483,1723-1727,1798-1804,2240-2244,2364,2393
+  s_e3a321cc07d10d::t_b630dd61ea1e29 35,71,839,856,873,1732,1764,1848,1947,1981,2136,2156,2298
+  s_e3a321cc07d10d::t_209d4a439ec4e1 1300,1722,1728,1768,1797,1805,2239,2245
+  s_e3a321cc07d10d::t_a2dfa26c2654f1 2019
+  s_e3a321cc07d10d::t_c85bba9ea06b68 2423,2438,2441-2443,2445-2453
+  s_e3a321cc07d10d::t_632a3a49b7caac 1986,2006-2018,2020-2094,2157-2177,2184-2192
+  s_e3a321cc07d10d::t_d42ce75e676a95 2439-2440,2444
+  s_e3a321cc07d10d::t_0c7cb399020409 2456
+catalog/cases/scientific/scientific-dicom-obxxxx1a.json
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+catalog/cases/scientific/scientific-tia-ser-tem-search.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+catalog/cases/scientific/scientific-x3p-float32-3x2.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 72
+  s_e3a321cc07d10d::t_741ee72c60f943 4,65-67
+  s_e3a321cc07d10d::t_571c9fffd83eeb 37-38,76,79
+  s_e3a321cc07d10d::t_60a09e6c01665b 68
+catalog/cases/ordinary/ordinary-migrated-tundra-4000x3000.json
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+catalog/cases/ordinary/ordinary-migrated-libtiff-rgb-3c-8b.json
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+catalog/cases/scientific/scientific-digital-micrograph-dm4-test1.json
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+catalog/cases/ordinary/ordinary-migrated-wpt-webcodecs-mozjpeg-rgb.json
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+catalog/cases/geo/geo-geozarr-int16-2x3.json
+  s_e3a321cc07d10d::t_571c9fffd83eeb 89
+  s_e3a321cc07d10d::t_68dc85309f5a08 85
+  s_e3a321cc07d10d::t_741ee72c60f943 78-81
+catalog/cases/ordinary/ordinary-migrated-bmpsuite-pal4-rle.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+generated/cases.jsonl
+  s_e3a321cc07d10d::t_741ee72c60f943 1-66,69-117
+  s_e3a321cc07d10d::t_68dc85309f5a08 67-68
+catalog/cases/ordinary/ordinary-migrated-libultrahdr-apple-gainmap-new.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+src/generators/fixtures.ts
+  s_e3a321cc07d10d::t_cc8426fc651af4 307-308,311,319
+  s_e3a321cc07d10d::t_a2dfa26c2654f1 296
+README.md
+  s_e3a321cc07d10d::t_741ee72c60f943 47,69-72,96-97,104-105,186-189
+  s_e3a321cc07d10d::t_b8628bc78167aa 110
+catalog/cases/ordinary/ordinary-migrated-iphone12-classic-car-4032x3024-heic.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+catalog/cases/scientific/scientific-ome-tiff-uint8-2x2.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 73
+  s_e3a321cc07d10d::t_571c9fffd83eeb 77
+  s_e3a321cc07d10d::t_741ee72c60f943 66-69
+catalog/cases/negative/negative-qoi-invalid-magic.json
+  s_e3a321cc07d10d::t_741ee72c60f943 66-69
+  s_e3a321cc07d10d::t_68dc85309f5a08 73,86-87,89
+  s_e3a321cc07d10d::t_571c9fffd83eeb 77,84-85,88
+catalog/cases/scientific/scientific-ncem-emd-si100.json
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+catalog/cases/ordinary/ordinary-migrated-earthrise-2400x2400.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+src/purejsimage/report.ts
+  s_e3a321cc07d10d::t_c0d1bd45309e83 27-56,63-99,104,134-137
+  s_e3a321cc07d10d::t_29ed42f21520b0 57-62
+  s_e3a321cc07d10d::t_f6a97dc9355ec0 126-129
+catalog/cases/ordinary/ordinary-netpbm-pgm-binary.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_571c9fffd83eeb 75
+catalog/cases/negative/negative-tiff-overlapping-regions.json
+  s_e3a321cc07d10d::t_571c9fffd83eeb 72-73,78,107
+  s_e3a321cc07d10d::t_68dc85309f5a08 74
+  s_e3a321cc07d10d::t_741ee72c60f943 4,67-69
+  s_e3a321cc07d10d::t_f68cf627dc2844 70
+catalog/cases/ordinary/ordinary-imazen-apng-two-frame.json
+  s_e3a321cc07d10d::t_571c9fffd83eeb 16,90
+  s_e3a321cc07d10d::t_741ee72c60f943 65-68
+  s_e3a321cc07d10d::t_68dc85309f5a08 72
+catalog/cases/negative/negative-tiff-bad-ifd-offset.json
+  s_e3a321cc07d10d::t_571c9fffd83eeb 78,85-86,89
+  s_e3a321cc07d10d::t_741ee72c60f943 67-70
+  s_e3a321cc07d10d::t_68dc85309f5a08 74,87-88,90
+catalog/cases/geo/geo-esri-ascii-grid-tiny.json
+  s_e3a321cc07d10d::t_741ee72c60f943 66-69
+  s_e3a321cc07d10d::t_68dc85309f5a08 73
+  s_e3a321cc07d10d::t_571c9fffd83eeb 77
+catalog/cases/scientific/scientific-rpl-rosetta-float32.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 83
+  s_e3a321cc07d10d::t_741ee72c60f943 76-79
+catalog/cases/ordinary/ordinary-migrated-libtiff-deflate-extra-strip-data.json
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+catalog/cases/ordinary/ordinary-migrated-libtiff-packbits-gray-alpha.json
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+catalog/cases/ordinary/ordinary-migrated-bmpsuite-pal8-top-down.json
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+catalog/cases/negative/negative-meta-image-missing-companion.json
+  s_e3a321cc07d10d::t_571c9fffd83eeb 78,85-86,89
+  s_e3a321cc07d10d::t_68dc85309f5a08 74,87-88,90
+  s_e3a321cc07d10d::t_741ee72c60f943 67-70
+generated/coverage.json
+  s_e3a321cc07d10d::t_83150951cea6a7 70-71,84,89,99,106,114-115,132
+  s_e3a321cc07d10d::t_741ee72c60f943 74-77
+catalog/cases/scientific/scientific-tia-emi-tem-search-pair.json
+  s_e3a321cc07d10d::t_741ee72c60f943 76-79
+  s_e3a321cc07d10d::t_68dc85309f5a08 83
+src/reporting/index.ts
+  s_e3a321cc07d10d::t_5b945b4026c887 98
+src/purejsimage/worker.ts
+  s_e3a321cc07d10d::t_b4a71ea3817c1f 565,741
+  s_e3a321cc07d10d::t_9ff0a9dbaafdb0 169-188,194-245,250,254,259,262-266,268,270-278,280-292,294-299,308,313-320,322-323,329,340
+  s_e3a321cc07d10d::t_14830d3a814911 125-127
+  s_e3a321cc07d10d::t_68dc85309f5a08 189-193,335-339
+  s_e3a321cc07d10d::t_c03f34f54e341c 310,343
+  s_e3a321cc07d10d::t_5876d96313ebf3 324-328
+catalog/cases/negative/negative-meta-image-mismatched-dimensions.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 85,98-99,101
+  s_e3a321cc07d10d::t_571c9fffd83eeb 39,89,96-97,100
+  s_e3a321cc07d10d::t_741ee72c60f943 4,78-80
+  s_e3a321cc07d10d::t_9f04a6ffbf9736 81
+catalog/cases/ordinary/ordinary-migrated-iphone12-old-safe-wall-4032x3024-heic.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+.github/workflows/ci.yml
+  s_e3a321cc07d10d::t_98ff6cbf339410 32,56
+catalog/cases/scientific/scientific-nanonis-sxm-float32-3x2.json
+  s_e3a321cc07d10d::t_d6c09ebb0a2e1e 37-38,79
+  s_e3a321cc07d10d::t_68dc85309f5a08 72
+  s_e3a321cc07d10d::t_741ee72c60f943 4,65-67
+  s_e3a321cc07d10d::t_571c9fffd83eeb 76
+  s_e3a321cc07d10d::t_8b677582ad4f29 68
+catalog/cases/ordinary/ordinary-netpbm-pam-rgba.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_571c9fffd83eeb 75
+test/purejsimage-report.test.ts
+  s_e3a321cc07d10d::t_0639ef323fcac7 31,35,45,49-55,60-63
+  s_e3a321cc07d10d::t_113ed79fd015d6 24-25,102
+catalog/cases/ordinary/ordinary-tga-rgb-2x2.json
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_571c9fffd83eeb 75
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+catalog/cases/ordinary/ordinary-migrated-bmpsuite-pal8-rle.json
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+catalog/cases/ordinary/ordinary-qoi-rgba-2x2.json
+  s_e3a321cc07d10d::t_571c9fffd83eeb 75
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+catalog/cases/geo/geo-world-file-png-affine.json
+  s_e3a321cc07d10d::t_741ee72c60f943 76-79
+  s_e3a321cc07d10d::t_68dc85309f5a08 83
+  s_e3a321cc07d10d::t_571c9fffd83eeb 87
+catalog/cases/scientific/scientific-blockfile-test1.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+catalog/cases/ordinary/ordinary-migrated-bmpsuite-pal8-os2.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+src/materialize/index.ts
+  s_e3a321cc07d10d::t_c2afb1d3c39a1c 1-3,20-34,36-41
+catalog/cases/ordinary/ordinary-ico-rgba-1x1.json
+  s_e3a321cc07d10d::t_571c9fffd83eeb 75
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+catalog/cases/ordinary/ordinary-migrated-bmpsuite-pal8.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+catalog/cases/ordinary/ordinary-radiance-rgbe-2x2.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+  s_e3a321cc07d10d::t_571c9fffd83eeb 75
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+catalog/cases/ordinary/ordinary-imazen-gif-1x1.json
+  s_e3a321cc07d10d::t_741ee72c60f943 65-68
+  s_e3a321cc07d10d::t_68dc85309f5a08 72
+catalog/cases/scientific/scientific-digital-micrograph-dm3-test1.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+catalog/cases/ordinary/ordinary-libwebp-lossless1.json
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+src/purejsimage/runner.ts
+  s_e3a321cc07d10d::t_2daf22e7da0b3a 7,57-58,285-291,313
+catalog/cases/negative/negative-png-bad-checksum.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 85,98-99,101
+  s_e3a321cc07d10d::t_741ee72c60f943 78-81
+  s_e3a321cc07d10d::t_571c9fffd83eeb 89,96-97,100
+generated/catalog.json
+  s_e3a321cc07d10d::t_d6c09ebb0a2e1e 2498,13268-13269,13315
+  s_e3a321cc07d10d::t_741ee72c60f943 944-947,1078-1081,1212-1215,1331-1334,1449-1452,1582-1585,1702-1705,1819-1822,1933-1936,2048-2051,2178-2181,2312-2315,2382,2466-2469,2607-2610,2760-2763,2913-2916,3052-3055,3188-3191,3324-3327,3460-3463,3596-3599,3732-3735,3869-3872,4007-4010,4146-4149,4214,4285-4288,4409-4412,4523-4526,4637-4640,4751-4754,4864-4867,4977-4980,5090-5093,5203-5206,5316-5319,5429-5432,5546-5549,5662-5665,5778-5781,5894-5897,6010-6013,6126-6129,6242-6245,6358-6361,6474-6477,6590-6593,6706-6709,6822-6825,6938-6941,7054-7057,7170-7173,7286-7289,7403-7406,7519-7522,7635-7638,7751-7754,7867-7870,7983-7986,8099-8102,8215-8218,8331-8334,8447-8450,8563-8566,8679-8682,8795-8798,8911-8914,9027-9030,9143-9146,9259-9262,9375-9378,9491-9494,9607-9610,9723-9726,9839-9842,9955-9958,10071-10074,10187-10190,10304-10307,10421-10424,10534-10537,10647-10650,10760-10763,10873-10876,10987-10990,11102-11105,11216-11219,11329-11332,11442-11445,11556-11559,11670-11673,11783-11786,11828,11897-11900,12011-12014,12124-12127,12237-12240,12350-12353,12463-12466,12592-12595,12709-12712,12824-12827,12952-12955,13069-13072,13184-13187,13229,13298-13301,13412-13415,13527-13530,13644-13647,13760-13763,13875-13878,13991-13994,14121-14124,14250-14253,14378-14381,14507-14510,14627-14630,14740-14743,14785,14854-14857
+  s_e3a321cc07d10d::t_b8628bc78167aa 15088-15143
+  s_e3a321cc07d10d::t_83150951cea6a7 953,958,1087,1092,1221,1226,1340,1345,1458,1463,1591,1596,1711,1716,1828,1833,1942,2057,2062,2187,2192,2321,2326,2333-2344,2425,2475,2480,2487-2497,2499,2616,2621,2628-2639,2769,2774,2781-2792,2922,2927,2934-2946,3061,3066,3073-3084,3197,3202,3209-3220,3333,3338,3345-3356,3469,3474,3481-3492,3605,3610,3617-3628,3741,3746,3753-3765,3878,3883,3890-3901,4016,4021,4028-4039,4155,4160,4167-4179,4290-4291,4294,4299,4328,4418,4423,4470,4532,4551,4646,4760,4873,4986,5099,5212,5325,5377,5438,5461,5555,5671,5787,5903,6019,6135,6251,6367,6483,6599,6715,6831,6947,7063,7179,7295,7412,7528,7644,7760,7876,7992,8108,8224,8340,8456,8572,8688,8804,8920,9036,9152,9268,9384,9500,9616,9732,9848,9964,10080,10196,10313,10430,10435,10543,10548,10656,10661,10769,10774,10882,10996,11001,11111,11116,11225,11230,11338,11343,11451,11456,11565,11570,11679,11792,11867-11868,11906,11911,11914,12020,12133,12246,12359,12472,12601,12606,12718,12723,12833,12838,12961,12966,13078,13083,13193,13307,13312,13421,13536,13541,13653,13658,13769,13774,13884,13889,14000,14005,14130,14135,14259,14387,14392,14516,14636,14749,14824-14825,14863,14868,14871,15012-15014,15018,15163-15165,15168-15216,15218,15289
+  s_e3a321cc07d10d::t_68dc85309f5a08 8997,9113
+  s_e3a321cc07d10d::t_32a1292438b483 11506,15086-15087
+catalog/cases/ordinary/ordinary-migrated-webp-lossless-tux-386x395.json
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+catalog/cases/ordinary/ordinary-migrated-exif-orientation-6.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+README.template.md
+  s_e3a321cc07d10d::t_98ff6cbf339410 110
+  s_e3a321cc07d10d::t_5b945b4026c887 47,69-72,96-97,104-105,131-134
+catalog/cases/ordinary/ordinary-migrated-animated-gif-cc0.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_571c9fffd83eeb 16,93
+catalog/cases/geo/geo-srtm-hgt-n00e000-1201.json
+  s_e3a321cc07d10d::t_741ee72c60f943 66-69
+  s_e3a321cc07d10d::t_68dc85309f5a08 73
+  s_e3a321cc07d10d::t_571c9fffd83eeb 77
+catalog/cases/ordinary/ordinary-migrated-libultrahdr-minnie-rgb.json
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+catalog/cases/scientific/scientific-meta-image-int16-3x2.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 83
+  s_e3a321cc07d10d::t_741ee72c60f943 76-79
+  s_e3a321cc07d10d::t_571c9fffd83eeb 87
+catalog/cases/ordinary/ordinary-netpbm-ppm-binary.json
+  s_e3a321cc07d10d::t_571c9fffd83eeb 75
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+src/cli.ts
+  s_e3a321cc07d10d::t_a2e91d302cb0f9 3,101-103
+catalog/cases/ordinary/ordinary-migrated-bmpsuite-pal8-padding-125.json
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+catalog/cases/scientific/scientific-cbf-uint8-3x2.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 72
+  s_e3a321cc07d10d::t_741ee72c60f943 4,65-67
+  s_e3a321cc07d10d::t_571c9fffd83eeb 37-38,76,79
+  s_e3a321cc07d10d::t_b7b252ad00f919 68
+catalog/cases/ordinary/ordinary-migrated-webp-gallery-cherry-1024x772.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+catalog/cases/ordinary/ordinary-migrated-webp-fbi-portrait-1600x2000.json
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+catalog/cases/scientific/scientific-emsa-example1.json
+  s_e3a321cc07d10d::t_68dc85309f5a08 71
+  s_e3a321cc07d10d::t_741ee72c60f943 64-67
+generated/coverage.md
+  s_e3a321cc07d10d::t_741ee72c60f943 86-92
+  s_e3a321cc07d10d::t_83150951cea6a7 82-83,102,110,123,133,147-148,185
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "a4ef57b6906798167715a113180c59063716f971",
+  "prompts": {},
+  "sessions": {
+    "s_e3a321cc07d10d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0491c-ab65-7521-b3ec-414d41c0c2e9",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "aaron decker <aaron@ard.ninja>"
+    }
+  }
+}
